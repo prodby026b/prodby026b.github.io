@@ -29,6 +29,23 @@
       }
     }
 
+    .status-bar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      border-radius: 10px;
+      padding: 8px 20px;
+      color: #FFD700;
+      font-size: 1.2em;
+      font-weight: bold;
+      box-shadow: 0 0 12px #FFD70055;
+      z-index: 100;
+      text-align: center;
+    }
+
     h1 {
       font-size: 4em;
       margin: 0;
@@ -111,6 +128,9 @@
   </style>
 </head>
 <body>
+  <!-- 🧭 نوار وضعیت بالا -->
+  <div class="status-bar">prodby026b</div>
+
   <h1>cyber chaser</h1>
 
   <div class="card-container">
@@ -125,7 +145,7 @@
     </div>
   </div>
 
-  <!-- 🔍 فیلد جستجو بدون آیکون -->
+  <!-- 🔍 فیلد جستجو -->
   <div class="search-box">
     <input type="text" placeholder="type your command or filename...">
   </div>
