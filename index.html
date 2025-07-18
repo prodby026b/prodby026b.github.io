@@ -23,7 +23,6 @@
       text-align: center;
     }
 
-    /* 📱 تصویر موبایل وقتی عرض صفحه کمتر از 600px باشه */
     @media (max-width: 600px) {
       body {
         background-image: url('mobile-bg.jpg'); /* تصویر موبایل */
@@ -64,6 +63,31 @@
       color: #000;
     }
 
+    .music-box {
+      margin-top: 40px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 2px solid #FFD700;
+      border-radius: 16px;
+      padding: 20px;
+      width: 90%;
+      max-width: 500px;
+      color: #FFD700;
+      text-align: center;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 20px #FFD70088;
+    }
+
+    .music-box h2 {
+      margin-bottom: 15px;
+      font-size: 1.6em;
+    }
+
+    .music-box audio {
+      width: 100%;
+      outline: none;
+      border-radius: 8px;
+    }
+
     footer {
       position: absolute;
       bottom: 20px;
@@ -82,6 +106,9 @@
       .card {
         font-size: 1.2em;
         padding: 16px;
+      }
+      .music-box h2 {
+        font-size: 1.3em;
       }
       footer {
         font-size: 1em;
@@ -104,6 +131,15 @@
     <div class="card" onclick="window.open('https://t.me/PacketChaser026b', '_blank')">
       PacketChaser026b
     </div>
+  </div>
+
+  <!-- 🎧 کادر موزیک ویژه -->
+  <div class="music-box">
+    <h2>🎧 آهنگ ویژه: Cyber Pulse</h2>
+    <audio controls>
+      <source src="music.mp3" type="audio/mpeg">
+      مرورگر شما از پخش موزیک پشتیبانی نمی‌کند.
+    </audio>
   </div>
 
   <footer>prodby026b</footer>
