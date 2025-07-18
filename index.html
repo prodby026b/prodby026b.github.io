@@ -9,53 +9,77 @@
       padding: 0;
       background-color: #000;
       color: #FFD700;
-      font-family: 'Tahoma', sans-serif;
-      text-align: center;
-    }
-
-    header {
-      padding: 50px 0;
-      background-color: #111;
-      border-bottom: 2px solid #FFD700;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
     }
 
     h1 {
       font-size: 3em;
       margin: 0;
+      opacity: 0;
+      animation: fadeInUp 1.2s ease-out forwards;
     }
 
     p {
       font-size: 1.2em;
       margin-top: 20px;
+      opacity: 0;
+      animation: fadeInUp 1.5s ease-out forwards;
+      animation-delay: 0.5s;
     }
 
     footer {
-      margin-top: 100px;
-      padding: 20px;
-      background-color: #111;
-      border-top: 1px solid #FFD700;
+      position: absolute;
+      bottom: 20px;
       font-size: 0.9em;
+      color: #888;
+      opacity: 0;
+      animation: fadeIn 2s ease-out forwards;
+      animation-delay: 1.5s;
     }
 
     a {
       color: #FFD700;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     a:hover {
-      text-decoration: underline;
+      color: #fff;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>به سایت Barsam خوش آمدید 🖤</h1>
-    <p>این یه قالب ساده با تم مشکی و طلاییه</p>
-  </header>
+  <h1>سلام Barsam 👋</h1>
+  <p>به سایت شخصی‌ات خوش اومدی — طراحی مدرن با تم مشکی و طلایی</p>
 
   <footer>
-    <p>ساخته شده با ❤️ توسط Barsam</p>
-    <p><a href="https://github.com/prodby026b" target="_blank">گیت‌هاب من</a></p>
+    ساخته شده با ❤️ توسط <a href="https://github.com/prodby026b" target="_blank">Barsam</a>
   </footer>
 </body>
 </html>
