@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>cyber chaser</title>
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
@@ -12,7 +11,7 @@
       padding: 0;
       font-family: 'Vazirmatn', Tahoma, sans-serif;
       color: #FFD700;
-      background-image: url('bg.jpg'); /* تصویر دسکتاپ */
+      background-image: url('bg.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -26,7 +25,7 @@
 
     @media (max-width: 600px) {
       body {
-        background-image: url('mobile-bg.jpg'); /* تصویر موبایل */
+        background-image: url('mobile-bg.jpg');
       }
     }
 
@@ -65,7 +64,6 @@
     }
 
     .search-box {
-      position: relative;
       width: 90%;
       max-width: 500px;
       margin-top: 40px;
@@ -73,7 +71,7 @@
 
     .search-box input {
       width: 100%;
-      padding: 12px 44px 12px 16px;
+      padding: 12px 16px;
       font-size: 1.2em;
       border: 2px solid #FFD700;
       border-radius: 10px;
@@ -81,17 +79,6 @@
       color: #FFD700;
       backdrop-filter: blur(4px);
       box-shadow: 0 0 10px #FFD70055;
-    }
-
-    .search-box img {
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 2px #FFD700);
     }
 
     footer {
@@ -115,11 +102,7 @@
       }
       .search-box input {
         font-size: 1em;
-        padding: 10px 40px 10px 12px;
-      }
-      .search-box img {
-        width: 18px;
-        height: 18px;
+        padding: 10px 12px;
       }
       footer {
         font-size: 1em;
@@ -134,20 +117,17 @@
     <div class="card" onclick="window.open('https://t.me/cipherAlgorithm', '_blank')">
       cipher algorithm
     </div>
-
     <div class="card" onclick="window.open('https://t.me/Pixel_Chaser', '_blank')">
       [Pixel•Chaser]
     </div>
-
     <div class="card" onclick="window.open('https://t.me/PacketChaser026b', '_blank')">
       PacketChaser026b
     </div>
   </div>
 
-  <!-- 🔍 فیلد جستجو با آیکون آپلودشده -->
+  <!-- 🔍 فیلد جستجو بدون آیکون -->
   <div class="search-box">
     <input type="text" placeholder="type your command or filename...">
-    <img src="search-icon.png" alt="search icon">
   </div>
 
   <footer>prodby026b</footer>
