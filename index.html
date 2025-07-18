@@ -2,13 +2,13 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>cyber chaser</title>
+  <title>Cyber Nexus 026b</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
     :root {
       --neon: #FFD700;
-      --blur: rgba(0, 0, 0, 0.5);
+      --bg-blur: rgba(0, 0, 0, 0.5);
     }
 
     * {
@@ -25,6 +25,10 @@
       background-position: center;
       background-repeat: no-repeat;
       height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       overflow: hidden;
       text-align: center;
     }
@@ -35,13 +39,39 @@
       }
     }
 
+    /* ✅ Boot Screen */
+    #boot {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--neon);
+      font-size: 1.8em;
+      font-weight: bold;
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      animation: fadeOut 2.4s ease-in-out 2.6s forwards;
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
     .status-bar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 40px;
-      background-color: var(--blur);
+      background-color: var(--bg-blur);
       backdrop-filter: blur(6px);
       color: var(--neon);
       display: flex;
@@ -49,32 +79,17 @@
       justify-content: center;
       font-size: 1.2em;
       font-weight: bold;
-      z-index: 100;
       box-shadow: 0 0 8px #FFD70055;
-      animation: fadeIn 1.2s ease-in-out;
+      z-index: 100;
     }
 
     h1 {
-      font-size: 4em;
-      margin-top: 80px;
+      font-size: 3.5em;
       backdrop-filter: blur(4px);
-      background-color: var(--blur);
-      padding: 12px 24px;
+      background-color: var(--bg-blur);
+      padding: 10px 24px;
       border-radius: 10px;
-      display: inline-block;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid var(--neon);
-      animation: typing 3s steps(25, end), blink 0.7s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
+      margin-top: 60px;
     }
 
     .card-container {
@@ -87,21 +102,21 @@
     }
 
     .card {
-      background-color: var(--blur);
+      background-color: var(--bg-blur);
       border: 2px solid var(--neon);
       border-radius: 12px;
       padding: 20px;
       font-size: 1.4em;
       color: var(--neon);
       cursor: pointer;
-      transition: transform 0.4s ease, background-color 0.3s ease;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 20px #FFD70033;
       animation: floatCard 3s ease-in-out infinite alternate, fadeInUp 1s ease forwards;
     }
 
     .card:hover {
-      background-color: var(--neon);
-      color: #000;
-      transform: scale(1.03);
+      transform: translateY(-6px);
+      box-shadow: 0 0 30px #FFD700aa;
     }
 
     @keyframes floatCard {
@@ -116,13 +131,18 @@
 
     footer {
       position: fixed;
-      bottom: 20px;
-      font-size: 1.2em;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      font-size: 1em;
       color: var(--neon);
-      background-color: rgba(0, 0, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(4px);
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 8px 12px;
+      border-top: 1px solid var(--neon);
+      display: flex;
+      justify-content: space-between;
+      z-index: 50;
       animation: fadeIn 1s ease-in-out;
     }
 
@@ -133,28 +153,29 @@
 
     @media (max-width: 600px) {
       h1 {
-        font-size: 2.5em;
-        margin-top: 60px;
+        font-size: 2.2em;
       }
       .card {
         font-size: 1.2em;
         padding: 16px;
       }
-      footer {
-        font-size: 1em;
-      }
       .status-bar {
         font-size: 1em;
         height: 36px;
+      }
+      footer {
+        font-size: 0.9em;
       }
     }
   </style>
 </head>
 <body>
 
+  <div id="boot">Initializing Cyber Nexus...</div>
+
   <div class="status-bar">prodby026b</div>
 
-  <h1>cyber chaser</h1>
+  <h1>Cyber Nexus 026b</h1>
 
   <div class="card-container">
     <div class="card" onclick="window.open('https://t.me/cipherAlgorithm', '_blank')">cipher algorithm</div>
@@ -162,7 +183,11 @@
     <div class="card" onclick="window.open('https://t.me/PacketChaser026b', '_blank')">PacketChaser026b</div>
   </div>
 
-  <footer>prodby026b</footer>
+  <footer>
+    <div>Network: stable</div>
+    <div>Packet log: active</div>
+    <div>© prodby026b</div>
+  </footer>
 
 </body>
 </html>
