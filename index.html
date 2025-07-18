@@ -29,26 +29,28 @@
       }
     }
 
+    /* نوار وضعیت گوشی شکل */
     .status-bar {
       position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
       background-color: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(6px);
-      border-radius: 10px;
-      padding: 8px 20px;
       color: #FFD700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.2em;
       font-weight: bold;
-      box-shadow: 0 0 12px #FFD70055;
       z-index: 100;
-      text-align: center;
+      box-shadow: 0 0 8px #FFD70055;
     }
 
     h1 {
       font-size: 4em;
-      margin: 0;
+      margin: 60px 0 0 0;
       backdrop-filter: blur(4px);
       background-color: rgba(0, 0, 0, 0.5);
       padding: 12px 24px;
@@ -104,13 +106,13 @@
       }
       .status-bar {
         font-size: 1em;
-        padding: 6px 16px;
+        height: 36px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- 🧭 نوار وضعیت بالا -->
+  <!-- 🧭 نوار بالا شبیه وضعیت گوشی -->
   <div class="status-bar">prodby026b</div>
 
   <h1>cyber chaser</h1>
