@@ -82,6 +82,14 @@
       font-size: 1.6em;
     }
 
+    .cover-image {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 15px #FFD70088;
+    }
+
     .music-box audio {
       width: 100%;
       outline: none;
@@ -135,9 +143,15 @@
 
   <!-- 🎧 کادر موزیک ویژه -->
   <div class="music-box">
+    <!-- ✅ اسم آهنگ رو اینجا بنویس -->
     <h2>🎧 آهنگ ویژه: Cyber Pulse</h2>
+
+    <!-- ✅ تصویر کاور آهنگ رو با نام cover.jpg آپلود کن -->
+    <img src="cover.jpg" alt="کاور آهنگ" class="cover-image">
+
+    <!-- ✅ فایل MP3 رو با نام cyber-pulse.mp3 آپلود کن -->
     <audio controls>
-      <source src="music.mp3" type="audio/mpeg">
+      <source src="cyber-pulse.mp3" type="audio/mpeg">
       مرورگر شما از پخش موزیک پشتیبانی نمی‌کند.
     </audio>
   </div>
