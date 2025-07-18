@@ -2,35 +2,29 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>Cyber Nexus 026b</title>
+  <title>Cyber Layers Interface</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
-
     :root {
       --neon: #FFD700;
-      --bg-blur: rgba(0, 0, 0, 0.5);
+      --blur-dark: rgba(0, 0, 0, 0.5);
     }
 
     * {
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
       padding: 0;
       font-family: 'Vazirmatn', Tahoma, sans-serif;
-      color: var(--neon);
       background-image: url('bg.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      text-align: center;
+      color: var(--neon);
+      overflow-x: hidden;
     }
 
     @media (max-width: 600px) {
@@ -39,92 +33,52 @@
       }
     }
 
-    /* ✅ Boot Screen */
-    #boot {
-      position: absolute;
-      top: 0;
-      left: 0;
+    section {
       height: 100vh;
       width: 100%;
-      background-color: rgba(0,0,0,0.7);
+      padding: 80px 20px 40px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      color: var(--neon);
-      font-size: 1.8em;
-      font-weight: bold;
-      backdrop-filter: blur(8px);
-      z-index: 9999;
-      animation: fadeOut 2.4s ease-in-out 2.6s forwards;
+      justify-content: center;
+      text-align: center;
     }
 
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        visibility: hidden;
-      }
-    }
-
-    .status-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 40px;
-      background-color: var(--bg-blur);
+    .blur-box {
+      background-color: var(--blur-dark);
       backdrop-filter: blur(6px);
-      color: var(--neon);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2em;
-      font-weight: bold;
-      box-shadow: 0 0 8px #FFD70055;
-      z-index: 100;
-    }
-
-    h1 {
-      font-size: 3.5em;
-      backdrop-filter: blur(4px);
-      background-color: var(--bg-blur);
-      padding: 10px 24px;
-      border-radius: 10px;
-      margin-top: 60px;
-    }
-
-    .terminal {
-      margin-top: 30px;
-      width: 90%;
-      max-width: 600px;
-      background-color: var(--bg-blur);
-      border: 2px solid var(--neon);
-      padding: 16px;
       border-radius: 12px;
-      font-family: monospace;
-      text-align: left;
-      box-shadow: 0 0 10px #FFD70055;
+      padding: 20px;
+      box-shadow: 0 0 12px #FFD70055;
     }
 
-    .terminal input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--neon);
-      font-size: 1.2em;
+    .layer-title {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    .intro-message {
+      font-size: 1.5em;
+      font-weight: bold;
+      animation: glowText 2s infinite alternate;
+    }
+
+    @keyframes glowText {
+      from { text-shadow: 0 0 10px #FFD70066; }
+      to   { text-shadow: 0 0 20px #FFD700aa; }
     }
 
     .card-container {
-      margin-top: 40px;
       display: flex;
       flex-direction: column;
       gap: 20px;
+      margin-top: 30px;
       width: 90%;
       max-width: 500px;
     }
 
     .card {
-      background-color: var(--bg-blur);
+      background-color: var(--blur-dark);
       border: 2px solid var(--neon);
       border-radius: 12px;
       padding: 20px;
@@ -140,66 +94,67 @@
       box-shadow: 0 0 30px #FFD700aa;
     }
 
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+    .nav-down {
+      margin-top: 40px;
       font-size: 1em;
-      color: var(--neon);
-      background-color: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(4px);
-      padding: 8px 12px;
-      border-top: 1px solid var(--neon);
-      display: flex;
-      justify-content: space-between;
-      z-index: 50;
+      color: #FFD700aa;
+      animation: pulse 1.5s infinite;
     }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.2em;
-      }
-      .card {
-        font-size: 1.2em;
-        padding: 16px;
-      }
-      .status-bar {
-        font-size: 1em;
-        height: 36px;
-      }
-      footer {
-        font-size: 0.9em;
-      }
+    @keyframes pulse {
+      0%   { opacity: 0.3; }
+      50%  { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    footer {
+      position: relative;
+      bottom: 0;
+      font-size: 1em;
+      color: var(--neon);
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 10px 16px;
+      margin-top: 60px;
+      border-radius: 6px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Boot Loader -->
-  <div id="boot">Initializing Cyber Nexus...</div>
+  <!-- Layer 0: Welcome -->
+  <section id="layer0">
+    <div class="blur-box">
+      <div class="layer-title">Welcome to Cyber Nexus</div>
+      <div class="intro-message">system initializing… loading layers</div>
+      <div class="nav-down"><a href="#layer1">↓ Enter</a></div>
+    </div>
+  </section>
 
-  <div class="status-bar">prodby026b</div>
+  <!-- Layer 1: Bit Identity Vault -->
+  <section id="layer1">
+    <div class="blur-box">
+      <div class="layer-title">Beats Vault</div>
+      <div class="card-container">
+        <div class="card" onclick="window.open('https://t.me/cipherAlgorithm', '_blank')">cipher algorithm</div>
+        <div class="card" onclick="window.open('https://t.me/Pixel_Chaser', '_blank')">[Pixel•Chaser]</div>
+        <div class="card" onclick="window.open('https://t.me/PacketChaser026b', '_blank')">PacketChaser026b</div>
+      </div>
+      <div class="nav-down"><a href="#layer2">↓ Network</a></div>
+    </div>
+  </section>
 
-  <h1>Cyber Nexus 026b</h1>
-
-  <!-- ترمینال ورودی -->
-  <div class="terminal">
-    <span>$ user026b@vault:~$ </span><input type="text" placeholder="type command...">
-  </div>
-
-  <!-- کارت‌های بیت یا بخش‌ها -->
-  <div class="card-container">
-    <div class="card" onclick="window.open('https://t.me/cipherAlgorithm', '_blank')">cipher algorithm</div>
-    <div class="card" onclick="window.open('https://t.me/Pixel_Chaser', '_blank')">[Pixel•Chaser]</div>
-    <div class="card" onclick="window.open('https://t.me/PacketChaser026b', '_blank')">PacketChaser026b</div>
-  </div>
-
-  <footer>
-    <div>Network: stable</div>
-    <div>Packet log: active</div>
-    <div>© prodby026b</div>
-  </footer>
+  <!-- Layer 2: Network Connect -->
+  <section id="layer2">
+    <div class="blur-box">
+      <div class="layer-title">Network Connect</div>
+      <p>connecting you to the grid...</p>
+      <p><a href="https://t.me/cipherAlgorithm">Bot: cipherAlgorithm</a></p>
+      <p><a href="https://t.me/Pixel_Chaser">Channel: Pixel•Chaser</a></p>
+      <p><a href="https://t.me/PacketChaser026b">PacketChaser Vault</a></p>
+      <footer>prodby026b • system v1.0</footer>
+    </div>
+  </section>
 
 </body>
 </html>
