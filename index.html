@@ -2,29 +2,25 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>Cyber Layers Interface</title>
+  <title>cyber chaser</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
-    :root {
-      --neon: #FFD700;
-      --blur-dark: rgba(0, 0, 0, 0.5);
-    }
-
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
 
     body {
       margin: 0;
       padding: 0;
       font-family: 'Vazirmatn', Tahoma, sans-serif;
+      color: #FFD700;
       background-image: url('bg.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      color: var(--neon);
-      overflow-x: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     @media (max-width: 600px) {
@@ -33,128 +29,99 @@
       }
     }
 
-    section {
-      height: 100vh;
+    .status-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      padding: 80px 20px 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(6px);
+      color: #FFD700;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-    }
-
-    .blur-box {
-      background-color: var(--blur-dark);
-      backdrop-filter: blur(6px);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 0 12px #FFD70055;
-    }
-
-    .layer-title {
-      font-size: 3em;
-      margin-bottom: 20px;
-    }
-
-    .intro-message {
-      font-size: 1.5em;
+      font-size: 1.2em;
       font-weight: bold;
-      animation: glowText 2s infinite alternate;
+      box-shadow: 0 0 8px #FFD70055;
+      z-index: 100;
     }
 
-    @keyframes glowText {
-      from { text-shadow: 0 0 10px #FFD70066; }
-      to   { text-shadow: 0 0 20px #FFD700aa; }
+    h1 {
+      font-size: 4em;
+      margin-top: 60px;
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 12px 24px;
+      border-radius: 10px;
     }
 
     .card-container {
+      margin-top: 40px;
       display: flex;
       flex-direction: column;
       gap: 20px;
-      margin-top: 30px;
       width: 90%;
       max-width: 500px;
     }
 
     .card {
-      background-color: var(--blur-dark);
-      border: 2px solid var(--neon);
+      background-color: rgba(0, 0, 0, 0.6);
+      border: 2px solid #FFD700;
       border-radius: 12px;
       padding: 20px;
       font-size: 1.4em;
-      color: var(--neon);
+      color: #FFD700;
       cursor: pointer;
-      transition: transform 0.3s ease;
-      box-shadow: 0 0 20px #FFD70033;
+      transition: all 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 30px #FFD700aa;
-    }
-
-    .nav-down {
-      margin-top: 40px;
-      font-size: 1em;
-      color: #FFD700aa;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0%   { opacity: 0.3; }
-      50%  { opacity: 1; }
-      100% { opacity: 0.3; }
+      background-color: #FFD700;
+      color: #000;
     }
 
     footer {
-      position: relative;
-      bottom: 0;
-      font-size: 1em;
-      color: var(--neon);
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.2em;
+      color: #FFD700;
       backdrop-filter: blur(4px);
       background-color: rgba(0, 0, 0, 0.3);
-      padding: 10px 16px;
-      margin-top: 60px;
+      padding: 6px 12px;
       border-radius: 6px;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5em;
+      }
+      .card {
+        font-size: 1.2em;
+        padding: 16px;
+      }
+      footer {
+        font-size: 1em;
+      }
+      .status-bar {
+        font-size: 1em;
+        height: 36px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- 🧭 نوار بالا به سبک نوار وضعیت گوشی -->
+  <div class="status-bar">prodby026b</div>
 
-  <!-- Layer 0: Welcome -->
-  <section id="layer0">
-    <div class="blur-box">
-      <div class="layer-title">Welcome to Cyber Nexus</div>
-      <div class="intro-message">system initializing… loading layers</div>
-      <div class="nav-down"><a href="#layer1">↓ Enter</a></div>
-    </div>
-  </section>
+  <h1>cyber chaser</h1>
 
-  <!-- Layer 1: Bit Identity Vault -->
-  <section id="layer1">
-    <div class="blur-box">
-      <div class="layer-title">Beats Vault</div>
-      <div class="card-container">
-        <div class="card" onclick="window.open('https://t.me/cipherAlgorithm', '_blank')">cipher algorithm</div>
-        <div class="card" onclick="window.open('https://t.me/Pixel_Chaser', '_blank')">[Pixel•Chaser]</div>
-        <div class="card" onclick="window.open('https://t.me/PacketChaser026b', '_blank')">PacketChaser026b</div>
-      </div>
-      <div class="nav-down"><a href="#layer2">↓ Network</a></div>
-    </div>
-  </section>
+  <div class="card-container">
+    <div class="card" onclick="window.open('https://t.me/cipherAlgorithm', '_blank')">cipher algorithm</div>
+    <div class="card" onclick="window.open('https://t.me/Pixel_Chaser', '_blank')">[Pixel•Chaser]</div>
+    <div class="card" onclick="window.open('https://t.me/PacketChaser026b', '_blank')">PacketChaser026b</div>
+  </div>
 
-  <!-- Layer 2: Network Connect -->
-  <section id="layer2">
-    <div class="blur-box">
-      <div class="layer-title">Network Connect</div>
-      <p>connecting you to the grid...</p>
-      <p><a href="https://t.me/cipherAlgorithm">Bot: cipherAlgorithm</a></p>
-      <p><a href="https://t.me/Pixel_Chaser">Channel: Pixel•Chaser</a></p>
-      <p><a href="https://t.me/PacketChaser026b">PacketChaser Vault</a></p>
-      <footer>prodby026b • system v1.0</footer>
-    </div>
-  </section>
-
+  <footer>prodby026b</footer>
 </body>
 </html>
