@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>cyber chaser</title>
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 
@@ -16,10 +17,7 @@
       background-position: center;
       background-repeat: no-repeat;
       height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
       text-align: center;
     }
 
@@ -29,9 +27,8 @@
       }
     }
 
-    /* نوار وضعیت گوشی شکل */
     .status-bar {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -46,15 +43,30 @@
       font-weight: bold;
       z-index: 100;
       box-shadow: 0 0 8px #FFD70055;
+      animation: fadeIn 1.2s ease-in-out;
     }
 
     h1 {
       font-size: 4em;
-      margin: 60px 0 0 0;
+      margin-top: 80px;
       backdrop-filter: blur(4px);
       background-color: rgba(0, 0, 0, 0.5);
       padding: 12px 24px;
       border-radius: 10px;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #FFD700;
+      animation: typing 3s steps(25, end), blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
     }
 
     .card-container {
@@ -74,12 +86,24 @@
       font-size: 1.4em;
       color: #FFD700;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform 0.4s ease, background-color 0.3s ease;
+      animation: floatCard 3s ease-in-out infinite alternate, fadeInUp 1s ease forwards;
     }
 
     .card:hover {
       background-color: #FFD700;
       color: #000;
+      transform: scale(1.03);
+    }
+
+    @keyframes floatCard {
+      from { transform: translateY(0) }
+      to { transform: translateY(-10px) }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px) }
+      to { opacity: 1; transform: translateY(0) }
     }
 
     footer {
@@ -91,11 +115,18 @@
       background-color: rgba(0, 0, 0, 0.3);
       padding: 6px 12px;
       border-radius: 6px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
     }
 
     @media (max-width: 600px) {
       h1 {
         font-size: 2.5em;
+        margin-top: 60px;
       }
       .card {
         font-size: 1.2em;
@@ -112,23 +143,18 @@
   </style>
 </head>
 <body>
-  <!-- 🧭 نوار بالا شبیه وضعیت گوشی -->
+
   <div class="status-bar">prodby026b</div>
 
   <h1>cyber chaser</h1>
 
   <div class="card-container">
-    <div class="card" onclick="window.open('https://t.me/cipherAlgorithm', '_blank')">
-      cipher algorithm
-    </div>
-    <div class="card" onclick="window.open('https://t.me/Pixel_Chaser', '_blank')">
-      [Pixel•Chaser]
-    </div>
-    <div class="card" onclick="window.open('https://t.me/PacketChaser026b', '_blank')">
-      PacketChaser026b
-    </div>
+    <div class="card" onclick="window.open('https://t.me/cipherAlgorithm', '_blank')">cipher algorithm</div>
+    <div class="card" onclick="window.open('https://t.me/Pixel_Chaser', '_blank')">[Pixel•Chaser]</div>
+    <div class="card" onclick="window.open('https://t.me/PacketChaser026b', '_blank')">PacketChaser026b</div>
   </div>
 
   <footer>prodby026b</footer>
+
 </body>
 </html>
