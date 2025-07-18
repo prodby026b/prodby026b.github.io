@@ -4,12 +4,14 @@
   <meta charset="UTF-8">
   <title>cyber chaser</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
       color: #FFD700;
-      background-image: url('bg.jpg'); /* لینک تصویر جدیدت */
+      background-image: url('bg.jpg'); /* تصویر بک‌گراندت */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -39,6 +41,28 @@
       border-radius: 8px;
     }
 
+    .links {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .links a {
+      font-size: 1.2em;
+      color: #FFD700;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .links a:hover {
+      background-color: #FFD700;
+      color: #000;
+    }
+
     footer {
       position: absolute;
       bottom: 20px;
@@ -57,6 +81,9 @@
       p {
         font-size: 1.4em;
       }
+      .links a {
+        font-size: 1em;
+      }
       footer {
         font-size: 1em;
       }
@@ -65,7 +92,19 @@
 </head>
 <body>
   <h1>cyber chaser</h1>
-  <p>welcome to the packet chaser 🦈</p>
+  <p>welcome to the packet chaser🦈</p>
+
+  <div class="links">
+    <!-- اینجا لینک کانال اول رو بذار -->
+    <a href="https://t.me/CHANNEL_ONE" target="_blank">https://t.me/cipherAlgorithm</a>
+
+    <!-- اینجا لینک کانال دوم رو بذار -->
+    <a href="https://t.me/CHANNEL_TWO" target="_blank">https://t.me/Pixel_Chaser</a>
+
+    <!-- اینجا لینک گپ عمومی رو بذار -->
+    <a href="https://t.me/PUBLIC_GROUP" target="_blank">https://t.me/PacketChaser026b</a>
+  </div>
+
   <footer>prodby026b</footer>
 </body>
 </html>
