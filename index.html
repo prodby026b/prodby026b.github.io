@@ -11,7 +11,7 @@
       padding: 0;
       font-family: 'Vazirmatn', Tahoma, sans-serif;
       color: #FFD700;
-      background-image: url('bg.jpg'); /* تصویر بک‌گراندت */
+      background-image: url('bg.jpg'); /* تصویر دسکتاپ */
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -21,6 +21,13 @@
       align-items: center;
       justify-content: center;
       text-align: center;
+    }
+
+    /* 📱 تصویر موبایل وقتی عرض صفحه کمتر از 600px باشه */
+    @media (max-width: 600px) {
+      body {
+        background-image: url('mobile-bg.jpg'); /* تصویر موبایل */
+      }
     }
 
     h1 {
@@ -86,17 +93,14 @@
   <h1>cyber chaser</h1>
 
   <div class="card-container">
-    <!-- کادر اول: متن دلخواهت رو اینجا بنویس و لینک رو جایگزین کن -->
     <div class="card" onclick="window.open('https://t.me/cipherAlgorithm', '_blank')">
       cipher algorithm
     </div>
 
-    <!-- کادر دوم: متن دلخواهت رو اینجا بنویس و لینک رو جایگزین کن -->
     <div class="card" onclick="window.open('https://t.me/Pixel_Chaser', '_blank')">
       [Pixel•Chaser]
     </div>
 
-    <!-- کادر سوم: متن دلخواهت رو اینجا بنویس و لینک رو جایگزین کن -->
     <div class="card" onclick="window.open('https://t.me/PacketChaser026b', '_blank')">
       PacketChaser026b
     </div>
