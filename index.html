@@ -64,20 +64,22 @@
       background-color: var(--bg-blur);
       padding: 12px 24px;
       border-radius: 10px;
+      border-right: 2px solid var(--neon);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 3s steps(25, end), blink 0.7s step-end infinite;
     }
 
-    .welcome {
-      margin-top: 20px;
-      font-size: 1.5em;
-      background-color: rgba(0,0,0,0.4);
-      backdrop-filter: blur(6px);
-      padding: 10px 20px;
-      border-radius: 10px;
-      color: var(--neon);
-      animation: fadeIn 1.5s ease-in-out;
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
     }
 
-    .input-box, .theme-box {
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .theme-box {
       margin-top: 30px;
       display: flex;
       flex-direction: column;
@@ -86,7 +88,7 @@
       max-width: 400px;
     }
 
-    input, select {
+    select {
       padding: 12px;
       font-size: 1em;
       border: 2px solid var(--neon);
@@ -177,11 +179,6 @@
 
   <h1>Cyber Nexus 026b</h1>
 
-  <div class="input-box">
-    <input id="userIdInput" type="text" placeholder="Enter your name or ID">
-    <button onclick="setWelcome()">Enter</button>
-  </div>
-
   <div class="theme-box">
     <select id="themeSelect">
       <option value="default">Default Theme</option>
@@ -191,8 +188,6 @@
     </select>
     <button onclick="setTheme()">Change Theme</button>
   </div>
-
-  <div id="welcomeBox" class="welcome" style="display:none;"></div>
 
   <div class="card-container">
     <div class="card" onclick="window.open('https://t.me/cipherAlgorithm','_blank')">cipher algorithm</div>
@@ -207,15 +202,6 @@
   </footer>
 
   <script>
-    function setWelcome() {
-      const input = document.getElementById("userIdInput").value.trim();
-      const welcome = document.getElementById("welcomeBox");
-      if (input) {
-        welcome.innerText = `Welcome, ${input} ⚡`;
-        welcome.style.display = "block";
-      }
-    }
-
     function setTheme() {
       const choice = document.getElementById("themeSelect").value;
       const root = document.documentElement;
