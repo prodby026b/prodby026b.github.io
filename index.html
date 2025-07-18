@@ -2,35 +2,41 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
-  <title>سایت Barsam</title>
+  <title>cyber chaser</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-color: #000;
-      color: #FFD700;
       font-family: 'Segoe UI', Tahoma, sans-serif;
+      color: #FFD700;
+      background-image: url('bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      overflow: hidden;
+      text-align: center;
     }
 
     h1 {
       font-size: 3em;
       margin: 0;
-      opacity: 0;
-      animation: fadeInUp 1.2s ease-out forwards;
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
     }
 
     p {
       font-size: 1.2em;
       margin-top: 20px;
-      opacity: 0;
-      animation: fadeInUp 1.5s ease-out forwards;
-      animation-delay: 0.5s;
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 8px 16px;
+      border-radius: 8px;
     }
 
     footer {
@@ -38,38 +44,25 @@
       bottom: 20px;
       font-size: 1em;
       color: #FFD700;
-      opacity: 0;
-      animation: fadeIn 2s ease-out forwards;
-      animation-delay: 1.5s;
+      backdrop-filter: blur(4px);
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 5px 10px;
+      border-radius: 6px;
     }
 
-    @keyframes fadeInUp {
-      from {
-        transform: translateY(30px);
-        opacity: 0;
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
       }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
+      p {
+        font-size: 1em;
       }
     }
   </style>
 </head>
 <body>
   <h1>cyber chaser</h1>
-  <p>welcome to the packet chaser🦈</p>
-
-  <footer>
-    prodby026b
-  </footer>
+  <p>welcome to the packet chaser 🦈</p>
+  <footer>prodby026b</footer>
 </body>
 </html>
