@@ -55,13 +55,6 @@
       box-shadow: 0 0 8px #00FFFF55;
       z-index: 100;
     }
-    .status-bar span {
-      margin-left: 20px;
-      font-weight: normal;
-      font-size: 0.95em;
-      cursor: pointer;
-      text-decoration: underline;
-    }
     h1 {
       font-size: 3.5em;
       margin-top: 70px;
@@ -80,6 +73,49 @@
     }
     @keyframes blink {
       50% { border-color: transparent }
+    }
+    .hamburger {
+      position: fixed;
+      top: 10px;
+      right: 15px;
+      font-size: 2em;
+      color: var(--neon);
+      cursor: pointer;
+      z-index: 1000;
+      user-select: none;
+      transition: transform 0.3s;
+    }
+    .hamburger:hover {
+      transform: scale(1.1);
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -220px;
+      width: 200px;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      backdrop-filter: blur(6px);
+      border-left: 2px solid var(--neon);
+      box-shadow: -4px 0 20px #00FFFF55;
+      transition: right 0.4s ease;
+      z-index: 999;
+      padding-top: 60px;
+    }
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .side-menu ul li {
+      padding: 14px 20px;
+      color: var(--neon);
+      font-size: 1.1em;
+      border-bottom: 1px solid #00FFFF33;
+      cursor: pointer;
+    }
+    .side-menu ul li:hover {
+      background-color: rgba(0,255,255,0.1);
     }
     .card-container {
       margin-top: 50px;
@@ -138,9 +174,16 @@
 </head>
 <body>
 
-  <div class="status-bar">
-    prodby026b
-    <span onclick="showAbout()">About</span>
+  <div class="status-bar">prodby026b</div>
+
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li onclick="alert('Cyber Nexus 026b • Designed by Barsam')">About Me</li>
+      <li onclick="alert('Vault coming soon 🔐')">Vault</li>
+      <li onclick="alert('Settings coming soon ⚙️')">Settings</li>
+    </ul>
   </div>
 
   <h1>Cyber Nexus 026b</h1>
@@ -158,8 +201,9 @@
   </footer>
 
   <script>
-    function showAbout() {
-      alert("Cyber Nexus 026b\nDesigned by Barsam\nEncrypted beats. Neon logic. Welcome to the vault.");
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      menu.style.right = menu.style.right === '0px' ? '-220px' : '0px';
     }
   </script>
 
