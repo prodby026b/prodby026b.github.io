@@ -6,17 +6,12 @@
   <title>Cyber Nexus 026b</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
-
     :root {
       --neon: #00FFFF;
       --bg-blur: rgba(0, 0, 0, 0.6);
       --theme-bg: url('bg.jpg');
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     html, body {
       margin: 0;
       padding: 0;
@@ -29,7 +24,6 @@
       height: 100%;
       width: 100%;
     }
-
     body {
       display: flex;
       flex-direction: column;
@@ -39,24 +33,20 @@
       text-align: center;
       padding-bottom: 60px;
     }
-
     @media (max-width: 600px) {
       body {
         background-image: url('mobile-bg.jpg');
         font-size: 14px;
       }
-
       h1 {
         font-size: 2em !important;
         padding: 8px 16px !important;
       }
-
       .card {
         font-size: 1.1em;
         padding: 14px;
       }
     }
-
     .status-bar {
       position: fixed;
       top: 0;
@@ -74,7 +64,6 @@
       box-shadow: 0 0 8px #00FFFF55;
       z-index: 100;
     }
-
     .hamburger {
       position: fixed;
       top: 10px;
@@ -82,15 +71,13 @@
       font-size: 2em;
       color: var(--neon);
       cursor: pointer;
-      z-index: 1000;
+      z-index: 1001;
       user-select: none;
       transition: transform 0.3s;
     }
-
     .hamburger:hover {
       transform: scale(1.1);
     }
-
     .side-menu {
       position: fixed;
       top: 0;
@@ -102,16 +89,14 @@
       border-left: 2px solid var(--neon);
       box-shadow: -4px 0 20px #00FFFF55;
       transition: right 0.4s ease;
-      z-index: 999;
+      z-index: 1000;
       padding-top: 60px;
     }
-
     .side-menu ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-
     .side-menu ul li {
       padding: 14px 20px;
       color: var(--neon);
@@ -119,39 +104,9 @@
       border-bottom: 1px solid #00FFFF33;
       cursor: pointer;
     }
-
     .side-menu ul li:hover {
       background-color: rgba(0,255,255,0.1);
     }
-
-    .cyber-signature {
-      position: absolute;
-      bottom: 16px;
-      left: 0;
-      width: 100%;
-      font-size: 0.9em;
-      color: var(--neon);
-      text-align: center;
-      animation: glow 2s infinite alternate, shake 3s infinite;
-      font-weight: bold;
-      padding: 6px;
-      border-top: 1px solid #00FFFF55;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 4px #00FFFF44, 0 0 8px #00FFFF88 }
-      to   { text-shadow: 0 0 10px #00FFFFaa, 0 0 20px #00FFFF }
-    }
-
-    @keyframes shake {
-      0% { transform: translateX(0) }
-      20% { transform: translateX(1px) }
-      40% { transform: translateX(-1px) }
-      60% { transform: translateX(1px) }
-      80% { transform: translateX(-1px) }
-      100% { transform: translateX(0) }
-    }
-
     h1 {
       font-size: 3.5em;
       margin-top: 70px;
@@ -164,16 +119,13 @@
       overflow: hidden;
       animation: typing 3s steps(25, end), blink 0.7s step-end infinite;
     }
-
     @keyframes typing {
       from { width: 0 }
       to { width: 100% }
     }
-
     @keyframes blink {
       50% { border-color: transparent }
     }
-
     .card-container {
       margin-top: 50px;
       margin-bottom: 100px;
@@ -183,7 +135,6 @@
       width: 90%;
       max-width: 500px;
     }
-
     .card {
       background-color: var(--bg-blur);
       border: 2px solid var(--neon);
@@ -196,12 +147,10 @@
       box-shadow: 0 0 20px #00FFFF33;
       animation: floatCard 3s ease-in-out infinite alternate, fadeInUp 1s ease forwards;
     }
-
     .card:hover {
       transform: translateY(-6px);
       box-shadow: 0 0 30px #00FFFFaa;
     }
-
     footer {
       position: fixed;
       bottom: 0;
@@ -218,17 +167,14 @@
       z-index: 999;
       animation: fadeIn 1s ease-in-out;
     }
-
     @keyframes floatCard {
       from { transform: translateY(0) }
       to { transform: translateY(-10px) }
     }
-
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px) }
       to { opacity: 1; transform: translateY(0) }
     }
-
     @keyframes fadeIn {
       from { opacity: 0 }
       to { opacity: 1 }
@@ -247,9 +193,6 @@
       <li onclick="alert('Vault coming soon 🔐')">Vault</li>
       <li onclick="alert('Settings coming soon ⚙️')">Settings</li>
     </ul>
-    <div class="cyber-signature">
-      You’ve reached the sidewall of cyberspace.
-    </div>
   </div>
 
   <h1>Cyber Nexus 026b</h1>
@@ -257,4 +200,22 @@
   <div class="card-container">
     <div class="card" onclick="window.open('https://t.me/cipherAlgorithm','_blank')">cipher algorithm</div>
     <div class="card" onclick="window.open('https://t.me/Pixel_Chaser','_blank')">[Pixel•Chaser]</div>
-    <div class="card" onclick="window
+    <div class="card" onclick="window.open('https://t.me/PacketChaser026b','_blank')">PacketChaser026b</div>
+  </div>
+
+  <footer>
+    <div>Network: stable</div>
+    <div>Packet log: active</div>
+    <div>© prodby026b</div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      const currentRight = window.getComputedStyle(menu).getPropertyValue('right');
+      menu.style.right = currentRight === '0px' ? '-220px' : '0px';
+    }
+  </script>
+
+</body>
+</html>
