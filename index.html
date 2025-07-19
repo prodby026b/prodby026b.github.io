@@ -109,6 +109,31 @@
     .side-menu ul li:hover {
       background-color: rgba(0,255,255,0.1);
     }
+    .cyber-signature {
+      position: absolute;
+      bottom: 16px;
+      left: 0;
+      width: 100%;
+      font-size: 0.9em;
+      color: var(--neon);
+      text-align: center;
+      animation: glow 2s infinite alternate, shake 3s infinite;
+      font-weight: bold;
+      padding: 6px;
+      border-top: 1px solid #00FFFF55;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 4px #00FFFF44, 0 0 8px #00FFFF88 }
+      to   { text-shadow: 0 0 10px #00FFFFaa, 0 0 20px #00FFFF }
+    }
+    @keyframes shake {
+      0% { transform: translateX(0) }
+      20% { transform: translateX(1px) }
+      40% { transform: translateX(-1px) }
+      60% { transform: translateX(1px) }
+      80% { transform: translateX(-1px) }
+      100% { transform: translateX(0) }
+    }
     h1 {
       font-size: 3.5em;
       margin-top: 70px;
@@ -195,6 +220,9 @@
       <li onclick="alert('Vault coming soon 🔐')">Vault</li>
       <li onclick="alert('Settings coming soon ⚙️')">Settings</li>
     </ul>
+    <div class="cyber-signature">
+      You’ve reached the sidewall of cyberspace.
+    </div>
   </div>
 
   <h1>Cyber Nexus 026b</h1>
@@ -202,21 +230,4 @@
   <div class="card-container">
     <div class="card" onclick="window.open('https://t.me/cipherAlgorithm','_blank')">cipher algorithm</div>
     <div class="card" onclick="window.open('https://t.me/Pixel_Chaser','_blank')">[Pixel•Chaser]</div>
-    <div class="card" onclick="window.open('https://t.me/PacketChaser026b','_blank')">PacketChaser026b</div>
-  </div>
-
-  <footer>
-    <div>Network: stable</div>
-    <div>Packet log: active</div>
-    <div>© prodby026b</div>
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('sideMenu');
-      menu.style.right = menu.style.right === '0px' ? '-220px' : '0px';
-    }
-  </script>
-
-</body>
-</html>
+    <div class="card" onclick="window.open('https://t.me/PacketChaser026b','
