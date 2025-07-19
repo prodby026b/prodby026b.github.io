@@ -55,6 +55,13 @@
       box-shadow: 0 0 8px #00FFFF55;
       z-index: 100;
     }
+    .status-bar span {
+      margin-left: 20px;
+      font-weight: normal;
+      font-size: 0.95em;
+      cursor: pointer;
+      text-decoration: underline;
+    }
     h1 {
       font-size: 3.5em;
       margin-top: 70px;
@@ -131,7 +138,10 @@
 </head>
 <body>
 
-  <div class="status-bar">prodby026b</div>
+  <div class="status-bar">
+    prodby026b
+    <span onclick="showAbout()">About</span>
+  </div>
 
   <h1>Cyber Nexus 026b</h1>
 
@@ -146,6 +156,12 @@
     <div>Packet log: active</div>
     <div>© prodby026b</div>
   </footer>
+
+  <script>
+    function showAbout() {
+      alert("Cyber Nexus 026b\nDesigned by Barsam\nEncrypted beats. Neon logic. Welcome to the vault.");
+    }
+  </script>
 
 </body>
 </html>
