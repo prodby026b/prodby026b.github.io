@@ -46,6 +46,10 @@
         font-size: 1.1em;
         padding: 14px;
       }
+      .about-me {
+        font-size: 1em;
+        padding: 12px;
+      }
     }
     .status-bar {
       position: fixed;
@@ -151,6 +155,31 @@
       transform: translateY(-6px);
       box-shadow: 0 0 30px #00FFFFaa;
     }
+    .about-me {
+      background-color: var(--bg-blur);
+      border: 2px solid var(--neon);
+      border-radius: 12px;
+      margin: 30px auto 0 auto;
+      padding: 20px;
+      max-width: 500px;
+      width: 90%;
+      color: var(--neon);
+      font-size: 1.2em;
+      box-shadow: 0 0 20px #00FFFF33;
+      animation: fadeInUp 1.5s ease forwards;
+      text-align: right;
+      direction: rtl;
+    }
+    .about-title {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: var(--neon);
+      border-bottom: 1px solid #00FFFF55;
+      padding-bottom: 8px;
+      text-align: right;
+      direction: rtl;
+    }
     footer {
       position: fixed;
       bottom: 0;
@@ -189,13 +218,23 @@
 
   <div class="side-menu" id="sideMenu">
     <ul>
-      <li onclick="alert('Cyber Nexus 026b • Designed by Barsam')">About Me</li>
+      <li onclick="scrollToAbout()">About Me</li>
       <li onclick="alert('Vault coming soon 🔐')">Vault</li>
       <li onclick="alert('Settings coming soon ⚙️')">Settings</li>
     </ul>
   </div>
 
   <h1>Cyber Nexus 026b</h1>
+
+  <!-- About Me Section -->
+  <div class="about-me" id="aboutMe">
+    <div class="about-title">درباره من</div>
+    <div>
+      سلام! من یک توسعه‌دهنده وب و عاشق تکنولوژی هستم.  
+      علاقه‌مند به طراحی سایت، برنامه‌نویسی و یادگیری چیزهای جدید.  
+      اگر دوست دارید بیشتر درباره من و پروژه‌هایم بدانید، همینجا یا در شبکه‌های اجتماعی من را دنبال کنید!
+    </div>
+  </div>
 
   <div class="card-container">
     <div class="card" onclick="window.open('https://t.me/cipherAlgorithm','_blank')">cipher algorithm</div>
@@ -214,6 +253,10 @@
       const menu = document.getElementById('sideMenu');
       const currentRight = window.getComputedStyle(menu).getPropertyValue('right');
       menu.style.right = currentRight === '0px' ? '-220px' : '0px';
+    }
+    function scrollToAbout() {
+      document.getElementById('aboutMe').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      toggleMenu();
     }
   </script>
 
