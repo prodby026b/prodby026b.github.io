@@ -23,6 +23,7 @@
       color: var(--neon);
       height: 100%;
       width: 100%;
+      box-sizing: border-box;
     }
     body {
       display: flex;
@@ -32,6 +33,7 @@
       min-height: 100vh;
       text-align: center;
       padding-bottom: 60px;
+      box-sizing: border-box;
     }
     .status-bar {
       position: fixed;
@@ -85,46 +87,6 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-    /* Phone optimization */
-    @media (max-width: 600px) {
-      .status-bar {
-        height: 38px;
-      }
-      .cmd-dir-scroll {
-        height: 38px;
-      }
-      .dir-text-loop {
-        animation-duration: 170s; /* much slower on mobile */
-      }
-      .dir-text {
-        font-size: 0.73em;
-        padding-left: 8px;
-        letter-spacing: 0.08em;
-        line-height: 1.35;
-      }
-      h1 {
-        font-size: 1.5em !important;
-        padding: 8px 10px !important;
-        margin-top: 50px !important;
-      }
-      .about-me {
-        font-size: 1em;
-        padding: 12px;
-      }
-      .about-title {
-        font-size: 1.15em;
-        padding-bottom: 6px;
-      }
-      .card {
-        font-size: 1em;
-        padding: 10px;
-      }
-      .card-container {
-        margin-top: 24px;
-        margin-bottom: 60px;
-        gap: 12px;
-      }
-    }
     h1 {
       font-size: 3.5em;
       margin-top: 90px;
@@ -137,6 +99,9 @@
       overflow: hidden;
       animation: typing 3s steps(25, end), blink 0.7s step-end infinite;
       font-family: 'Share Tech Mono', monospace;
+      box-sizing: border-box;
+      width: fit-content;
+      max-width: 97vw;
     }
     @keyframes typing {
       from { width: 0 }
@@ -151,8 +116,9 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      width: 90%;
+      width: 90vw;
       max-width: 500px;
+      box-sizing: border-box;
     }
     .card {
       background-color: var(--bg-blur);
@@ -166,6 +132,8 @@
       box-shadow: 0 0 20px #00fff633;
       animation: floatCard 3s ease-in-out infinite alternate, fadeInUp 1s ease forwards;
       font-family: 'Share Tech Mono', monospace;
+      box-sizing: border-box;
+      width: 100%;
     }
     .card:hover {
       transform: translateY(-6px);
@@ -177,8 +145,8 @@
       border-radius: 12px;
       margin: 30px auto 0 auto;
       padding: 20px;
+      width: 90vw;
       max-width: 500px;
-      width: 90%;
       color: var(--neon);
       font-size: 1.2em;
       box-shadow: 0 0 20px #00fff633;
@@ -186,6 +154,9 @@
       text-align: left;
       direction: ltr;
       font-family: 'Share Tech Mono', monospace;
+      box-sizing: border-box;
+      overflow: hidden;
+      word-break: break-word;
     }
     .about-title {
       font-size: 1.5em;
@@ -200,8 +171,8 @@
     }
     footer {
       position: fixed;
-      bottom: 0;
       left: 0;
+      bottom: 0;
       width: 100vw;
       font-size: 1em;
       color: var(--neon);
@@ -211,9 +182,17 @@
       border-top: 1px solid var(--neon);
       display: flex;
       justify-content: space-between;
+      align-items: center;
       z-index: 999;
       animation: fadeIn 1s ease-in-out;
       font-family: 'Share Tech Mono', monospace;
+      box-sizing: border-box;
+      line-height: 1.5;
+      word-break: break-all;
+    }
+    footer div {
+      margin: 0;
+      padding: 0;
     }
     @keyframes floatCard {
       from { transform: translateY(0) }
@@ -226,6 +205,73 @@
     @keyframes fadeIn {
       from { opacity: 0 }
       to { opacity: 1 }
+    }
+    /* Phone optimization */
+    @media (max-width: 600px) {
+      .status-bar {
+        height: 38px;
+      }
+      .cmd-dir-scroll {
+        height: 38px;
+      }
+      .dir-text-loop {
+        animation-duration: 170s;
+      }
+      .dir-text {
+        font-size: 0.73em;
+        padding-left: 8px;
+        letter-spacing: 0.08em;
+        line-height: 1.35;
+      }
+      h1 {
+        font-size: 1.5em !important;
+        padding: 8px 10px !important;
+        margin-top: 50px !important;
+        max-width: 92vw;
+      }
+      .about-me {
+        font-size: 0.97em;
+        padding: 8px;
+        width: 94vw !important;
+        max-width: 98vw !important;
+        box-sizing: border-box;
+        margin: 18px auto 0 auto;
+        overflow: hidden;
+      }
+      .about-title {
+        font-size: 1.13em;
+        padding-bottom: 5px;
+      }
+      .card-container {
+        margin-top: 20px;
+        margin-bottom: 38px;
+        gap: 10px;
+        width: 98vw !important;
+        max-width: 98vw !important;
+      }
+      .card {
+        font-size: 0.98em;
+        padding: 8px;
+      }
+      footer {
+        left: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        font-size: 0.9em !important;
+        padding: 4px 6px !important;
+        border-top: 1px solid var(--neon);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        line-height: 1.5;
+        word-break: break-all;
+        box-sizing: border-box;
+      }
+      footer div {
+        margin-bottom: 2px;
+        margin-right: 0;
+        margin-left: 0;
+      }
     }
   </style>
 </head>
