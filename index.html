@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cyber Nexus 026b</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
     :root {
-      --neon: #00FFFF;
-      --bg-blur: rgba(0, 0, 0, 0.6);
+      --neon: #00fff6;
+      --neon-glow: 0 0 8px #00fff6, 0 0 32px #00fff688;
+      --bg-blur: rgba(0, 0, 0, 0.7);
       --theme-bg: url('bg.jpg');
     }
     * { box-sizing: border-box; }
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      font-family: 'Share Tech Mono', 'Vazirmatn', Tahoma, sans-serif;
       background-image: var(--theme-bg);
       background-size: cover;
       background-position: center;
@@ -55,22 +56,50 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 40px;
-      background-color: var(--bg-blur);
-      backdrop-filter: blur(6px);
+      width: 100vw;
+      height: 70px;
+      background: linear-gradient(90deg, #060606 0%, #16181b 60%, #101820 100%);
+      backdrop-filter: blur(12px);
       color: var(--neon);
+      box-shadow: 0 0 26px #00fff688, 0 0 10px #00fff655;
+      z-index: 100;
+      border-bottom: 2px solid #00fff6b2;
+      overflow: hidden;
+      font-family: 'Share Tech Mono', monospace;
+      display: block;
+    }
+    .cmd-dir-scroll {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 70px;
+      z-index: 1;
+      pointer-events: none;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.2em;
-      font-weight: bold;
-      box-shadow: 0 0 8px #00FFFF55;
-      z-index: 100;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .dir-text {
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 1.08em;
+      color: #00fff6;
+      text-shadow: 0 0 8px #00fff6, 0 0 32px #00fff688;
+      opacity: 0.85;
+      padding-left: 22px;
+      animation: dirScroll 24s linear infinite;
+      letter-spacing: 0.12em;
+      filter: blur(0.1px);
+      user-select: none;
+    }
+    @keyframes dirScroll {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-140vw); }
     }
     h1 {
       font-size: 3.5em;
-      margin-top: 70px;
+      margin-top: 90px;
       backdrop-filter: blur(4px);
       background-color: var(--bg-blur);
       padding: 12px 24px;
@@ -79,6 +108,7 @@
       white-space: nowrap;
       overflow: hidden;
       animation: typing 3s steps(25, end), blink 0.7s step-end infinite;
+      font-family: 'Share Tech Mono', monospace;
     }
     @keyframes typing {
       from { width: 0 }
@@ -105,12 +135,13 @@
       color: var(--neon);
       cursor: pointer;
       transition: transform 0.3s ease;
-      box-shadow: 0 0 20px #00FFFF33;
+      box-shadow: 0 0 20px #00fff633;
       animation: floatCard 3s ease-in-out infinite alternate, fadeInUp 1s ease forwards;
+      font-family: 'Share Tech Mono', monospace;
     }
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 0 30px #00FFFFaa;
+      box-shadow: 0 0 30px #00fff6aa;
     }
     .about-me {
       background-color: var(--bg-blur);
@@ -122,26 +153,28 @@
       width: 90%;
       color: var(--neon);
       font-size: 1.2em;
-      box-shadow: 0 0 20px #00FFFF33;
+      box-shadow: 0 0 20px #00fff633;
       animation: fadeInUp 1.5s ease forwards;
-      text-align: right;
-      direction: rtl;
+      text-align: left;
+      direction: ltr;
+      font-family: 'Share Tech Mono', monospace;
     }
     .about-title {
       font-size: 1.5em;
       font-weight: bold;
       margin-bottom: 10px;
       color: var(--neon);
-      border-bottom: 1px solid #00FFFF55;
+      border-bottom: 1px solid #00fff655;
       padding-bottom: 8px;
-      text-align: right;
-      direction: rtl;
+      text-align: left;
+      direction: ltr;
+      font-family: 'Share Tech Mono', monospace;
     }
     footer {
       position: fixed;
       bottom: 0;
       left: 0;
-      width: 100%;
+      width: 100vw;
       font-size: 1em;
       color: var(--neon);
       background-color: rgba(0, 0, 0, 0.4);
@@ -152,6 +185,7 @@
       justify-content: space-between;
       z-index: 999;
       animation: fadeIn 1s ease-in-out;
+      font-family: 'Share Tech Mono', monospace;
     }
     @keyframes floatCard {
       from { transform: translateY(0) }
@@ -169,15 +203,19 @@
 </head>
 <body>
 
-  <div class="status-bar">prodby026b</div>
+  <!-- Status Bar with dir /s style effect only -->
+  <div class="status-bar">
+    <div class="cmd-dir-scroll" id="cmdDirScroll">
+      <span class="dir-text" id="dirText"></span>
+    </div>
+  </div>
 
   <h1>Cyber Nexus 026b</h1>
 
   <!-- About Me Section -->
   <div class="about-me" id="aboutMe">
-    <div class="about-title">about me</div>
-    <div>prodby026b designs secure, optimized networks for advanced digital systems.
-    </div>
+    <div class="about-title">About Me</div>
+    <div>prodby026b designs secure, optimized networks for advanced digital systems.</div>
   </div>
 
   <div class="card-container">
@@ -190,6 +228,81 @@
     <div>Packet log: active</div>
     <div>© prodby026b</div>
   </footer>
+
+  <script>
+    // Network Status
+    function getNetworkStatusText() {
+      return navigator.onLine ? "Network: online" : "Network: offline";
+    }
+    // Activity Status (Last Visit)
+    function getLastActivityText() {
+      let last = localStorage.getItem('lastVisit026b');
+      if (last) {
+        return 'Last activity: ' + last;
+      } else {
+        return 'Last activity: now';
+      }
+    }
+    // Update last activity for next time
+    let now = new Date();
+    let dateStr = now.toLocaleDateString('en-US') + ' - ' + now.toLocaleTimeString('en-US');
+    localStorage.setItem('lastVisit026b', dateStr);
+
+    // dir /s fake output generator, includes status info
+    function getStatusInfo() {
+      return [
+        'Cyber Nexus Status',
+        '------------------',
+        'User: prodby026b',
+        getNetworkStatusText(),
+        getLastActivityText(),
+        ' '
+      ].join('    ');
+    }
+    function randomDirOutput() {
+      const folders = [
+        'C:\\CyberNexus\\system\\',
+        'C:\\CyberNexus\\network\\',
+        'C:\\CyberNexus\\security\\',
+        'C:\\CyberNexus\\logs\\',
+        'C:\\CyberNexus\\packets\\',
+        'C:\\CyberNexus\\ai\\',
+        'C:\\CyberNexus\\backup\\',
+      ];
+      const files = [
+        'init.bat', 'config.sys', 'packet.log', 'scan.exe', 'netstat.txt', 'firewall.db',
+        'secure.key', 'setup.cmd', 'dump.bin', 'readme.md', 'update.vbs', 'error.log',
+        'session.tmp', 'crypto.dll', 'auth.json', 'data.csv', 'driver.sys', 'matrix.py'
+      ];
+      const lines = [];
+      lines.push(getStatusInfo());
+      for(let i=0; i<folders.length; i++) {
+        lines.push(' Directory of ' + folders[i]);
+        let count = Math.floor(Math.random()*3) + 4;
+        for(let j=0; j<count; j++) {
+          let date = '2025-07-' + (Math.floor(Math.random()*20)+1).toString().padStart(2,'0');
+          let time = (Math.floor(Math.random()*12)+10) + ':' + (Math.floor(Math.random()*60)).toString().padStart(2,'0');
+          let isFolder = Math.random() > 0.7;
+          let name = isFolder ? '<DIR> ' + folders[Math.floor(Math.random()*folders.length)].split('\\').slice(-2,-1)[0] : files[Math.floor(Math.random()*files.length)];
+          lines.push(' ' + date + '  ' + time + '   ' + name);
+        }
+        lines.push(' ');
+      }
+      return lines.join('    ');
+    }
+
+    const dirText = document.getElementById('dirText');
+    function updateDirText() {
+      dirText.textContent = randomDirOutput();
+    }
+    updateDirText();
+    setInterval(updateDirText, 23000); // Each scroll, generate new output
+
+    // Update scrolling info if network goes up/down
+    window.addEventListener('online', updateDirText);
+    window.addEventListener('offline', updateDirText);
+
+  </script>
 
 </body>
 </html>
