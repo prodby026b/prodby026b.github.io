@@ -12,11 +12,10 @@
       --bg-blur: rgba(0, 0, 0, 0.7);
       --theme-bg: url('bg.jpg');
     }
-    * { box-sizing: border-box; }
     html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Share Tech Mono', 'Vazirmatn', Tahoma, sans-serif;
+      font-family: 'Share Tech Mono', monospace;
       background-image: var(--theme-bg);
       background-size: cover;
       background-position: center;
@@ -33,24 +32,6 @@
       min-height: 100vh;
       text-align: center;
       padding-bottom: 60px;
-    }
-    @media (max-width: 600px) {
-      body {
-        background-image: url('mobile-bg.jpg');
-        font-size: 14px;
-      }
-      h1 {
-        font-size: 2em !important;
-        padding: 8px 16px !important;
-      }
-      .card {
-        font-size: 1.1em;
-        padding: 14px;
-      }
-      .about-me {
-        font-size: 1em;
-        padding: 12px;
-      }
     }
     .status-bar {
       position: fixed;
@@ -79,23 +60,31 @@
       display: flex;
       align-items: center;
       font-family: 'Share Tech Mono', monospace;
+      overflow: hidden;
+    }
+    .dir-text-loop {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      /* Slower animation: 70s */
+      animation: dirScrollLoop 70s linear infinite;
     }
     .dir-text {
-      display: inline-block;
       white-space: nowrap;
       font-size: 1.08em;
       color: #00fff6;
       text-shadow: 0 0 8px #00fff6, 0 0 32px #00fff688;
       opacity: 0.85;
       padding-left: 22px;
-      animation: dirScroll 24s linear infinite;
       letter-spacing: 0.12em;
       filter: blur(0.1px);
       user-select: none;
+      font-family: 'Share Tech Mono', monospace;
+      display: inline-block;
     }
-    @keyframes dirScroll {
-      0% { transform: translateX(100vw); }
-      100% { transform: translateX(-140vw); }
+    @keyframes dirScrollLoop {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
     h1 {
       font-size: 3.5em;
@@ -203,16 +192,18 @@
 </head>
 <body>
 
-  <!-- Status Bar with dir /s style effect only -->
+  <!-- Status Bar with seamless dir/s scrolling effect -->
   <div class="status-bar">
     <div class="cmd-dir-scroll" id="cmdDirScroll">
-      <span class="dir-text" id="dirText"></span>
+      <div class="dir-text-loop" id="dirTextLoop">
+        <span class="dir-text" id="dirTextA"></span>
+        <span class="dir-text" id="dirTextB"></span>
+      </div>
     </div>
   </div>
 
   <h1>Cyber Nexus 026b</h1>
 
-  <!-- About Me Section -->
   <div class="about-me" id="aboutMe">
     <div class="about-title">About Me</div>
     <div>prodby026b designs secure, optimized networks for advanced digital systems.</div>
@@ -291,16 +282,18 @@
       return lines.join('    ');
     }
 
-    const dirText = document.getElementById('dirText');
-    function updateDirText() {
-      dirText.textContent = randomDirOutput();
+    const dirTextA = document.getElementById('dirTextA');
+    const dirTextB = document.getElementById('dirTextB');
+    function updateDirTextLoop() {
+      const text = randomDirOutput();
+      dirTextA.textContent = text;
+      dirTextB.textContent = text;
     }
-    updateDirText();
-    setInterval(updateDirText, 23000); // Each scroll, generate new output
+    updateDirTextLoop();
+    setInterval(updateDirTextLoop, 70000);
 
-    // Update scrolling info if network goes up/down
-    window.addEventListener('online', updateDirText);
-    window.addEventListener('offline', updateDirText);
+    window.addEventListener('online', updateDirTextLoop);
+    window.addEventListener('offline', updateDirTextLoop);
 
   </script>
 
