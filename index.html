@@ -66,7 +66,6 @@
       display: flex;
       align-items: center;
       white-space: nowrap;
-      /* Slower animation: 70s */
       animation: dirScrollLoop 70s linear infinite;
     }
     .dir-text {
@@ -85,6 +84,46 @@
     @keyframes dirScrollLoop {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
+    }
+    /* Phone optimization */
+    @media (max-width: 600px) {
+      .status-bar {
+        height: 38px;
+      }
+      .cmd-dir-scroll {
+        height: 38px;
+      }
+      .dir-text-loop {
+        animation-duration: 170s; /* much slower on mobile */
+      }
+      .dir-text {
+        font-size: 0.73em;
+        padding-left: 8px;
+        letter-spacing: 0.08em;
+        line-height: 1.35;
+      }
+      h1 {
+        font-size: 1.5em !important;
+        padding: 8px 10px !important;
+        margin-top: 50px !important;
+      }
+      .about-me {
+        font-size: 1em;
+        padding: 12px;
+      }
+      .about-title {
+        font-size: 1.15em;
+        padding-bottom: 6px;
+      }
+      .card {
+        font-size: 1em;
+        padding: 10px;
+      }
+      .card-container {
+        margin-top: 24px;
+        margin-bottom: 60px;
+        gap: 12px;
+      }
     }
     h1 {
       font-size: 3.5em;
@@ -290,7 +329,7 @@
       dirTextB.textContent = text;
     }
     updateDirTextLoop();
-    setInterval(updateDirTextLoop, 70000);
+    setInterval(updateDirTextLoop, 170000);
 
     window.addEventListener('online', updateDirTextLoop);
     window.addEventListener('offline', updateDirTextLoop);
