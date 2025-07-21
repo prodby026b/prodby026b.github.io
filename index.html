@@ -6,20 +6,15 @@
   <title>Cyber Nexus 026b</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-    :root {
-      --neon: #00fff6;
-      --neon-glow: 0 0 8px #00fff6, 0 0 32px #00fff688;
-      --bg-blur: rgba(0, 0, 0, 0.7);
-    }
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Share Tech Mono', monospace;
-      color: var(--neon);
+      background: #000;
+      color: #00fff6;
       height: 100%;
       width: 100%;
       box-sizing: border-box;
-      background: #000;
     }
     body {
       display: flex;
@@ -33,7 +28,7 @@
       position: relative;
       z-index: 1;
     }
-    /* --- Background video --- */
+    /* Background video */
     #bgVideo {
       position: fixed;
       top: 0; left: 0;
@@ -48,32 +43,7 @@
       pointer-events: none;
       transition: filter 0.5s;
     }
-    /* Fallback images when video can't play */
-    .bg-fallback {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -3;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      transition: opacity 0.4s;
-    }
-    .bg-fallback-desktop {
-      background-image: url('bg.jpg');
-      display: block;
-    }
-    .bg-fallback-mobile {
-      background-image: url('mobile-bg.jpg');
-      display: none;
-    }
-    /* Show/hide bg images based on device */
-    @media (max-width: 600px) {
-      .bg-fallback-desktop { display: none !important; }
-      .bg-fallback-mobile { display: block !important; }
-    }
-    /* --- Status bar and scrolling text --- */
+    /* Status bar and scrolling text */
     .status-bar {
       position: fixed;
       top: 0;
@@ -82,7 +52,7 @@
       height: 70px;
       background: linear-gradient(90deg, #060606 0%, #16181b 60%, #101820 100%);
       backdrop-filter: blur(12px);
-      color: var(--neon);
+      color: #00fff6;
       box-shadow: 0 0 26px #00fff688, 0 0 10px #00fff655;
       z-index: 100;
       border-bottom: 2px solid #00fff6b2;
@@ -130,10 +100,10 @@
       font-size: 3.5em;
       margin-top: 90px;
       backdrop-filter: blur(4px);
-      background-color: var(--bg-blur);
+      background-color: rgba(0,0,0,0.7);
       padding: 12px 24px;
       border-radius: 10px;
-      border-right: 2px solid var(--neon);
+      border-right: 2px solid #00fff6;
       white-space: nowrap;
       overflow: hidden;
       animation: typing 3s steps(25, end), blink 0.7s step-end infinite;
@@ -160,12 +130,12 @@
       box-sizing: border-box;
     }
     .card {
-      background-color: var(--bg-blur);
-      border: 2px solid var(--neon);
+      background-color: rgba(0,0,0,0.7);
+      border: 2px solid #00fff6;
       border-radius: 12px;
       padding: 20px;
       font-size: 1.4em;
-      color: var(--neon);
+      color: #00fff6;
       cursor: pointer;
       transition: transform 0.3s ease;
       box-shadow: 0 0 20px #00fff633;
@@ -179,14 +149,14 @@
       box-shadow: 0 0 30px #00fff6aa;
     }
     .about-me {
-      background-color: var(--bg-blur);
-      border: 2px solid var(--neon);
+      background-color: rgba(0,0,0,0.7);
+      border: 2px solid #00fff6;
       border-radius: 12px;
       margin: 30px auto 0 auto;
       padding: 20px;
       width: 90vw;
       max-width: 500px;
-      color: var(--neon);
+      color: #00fff6;
       font-size: 1.2em;
       box-shadow: 0 0 20px #00fff633;
       animation: fadeInUp 1.5s ease forwards;
@@ -201,7 +171,7 @@
       font-size: 1.5em;
       font-weight: bold;
       margin-bottom: 10px;
-      color: var(--neon);
+      color: #00fff6;
       border-bottom: 1px solid #00fff655;
       padding-bottom: 8px;
       text-align: left;
@@ -214,11 +184,11 @@
       bottom: 0;
       width: 100vw;
       font-size: 1em;
-      color: var(--neon);
+      color: #00fff6;
       background-color: rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(4px);
       padding: 8px 12px;
-      border-top: 1px solid var(--neon);
+      border-top: 1px solid #00fff6;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -298,7 +268,7 @@
         width: 100vw !important;
         font-size: 0.9em !important;
         padding: 4px 6px !important;
-        border-top: 1px solid var(--neon);
+        border-top: 1px solid #00fff6;
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
@@ -319,12 +289,8 @@
   <!-- Background Video -->
   <video autoplay muted loop playsinline id="bgVideo">
     <source src="bg-video.mp4" type="video/mp4">
-    <!-- Fallback text -->
     Your browser does not support the video tag.
   </video>
-  <!-- Fallback background images -->
-  <div class="bg-fallback bg-fallback-desktop"></div>
-  <div class="bg-fallback bg-fallback-mobile"></div>
 
   <!-- Status Bar with seamless dir/s scrolling effect -->
   <div class="status-bar">
@@ -428,25 +394,6 @@
 
     window.addEventListener('online', updateDirTextLoop);
     window.addEventListener('offline', updateDirTextLoop);
-
-    // Hide fallback if video is playing, show if not
-    const video = document.getElementById('bgVideo');
-    function handleVideo() {
-      if (video && video.readyState >= 2 && !video.paused) {
-        document.querySelectorAll('.bg-fallback').forEach(e=>e.style.opacity='0');
-        video.style.filter = "brightness(0.6) saturate(1.2) blur(0.5px)";
-      } else {
-        document.querySelectorAll('.bg-fallback').forEach(e=>e.style.opacity='1');
-        video.style.filter = "brightness(0.6) grayscale(0.5) blur(1px)";
-      }
-    }
-    video.addEventListener('play', handleVideo);
-    video.addEventListener('playing', handleVideo);
-    video.addEventListener('pause', handleVideo);
-    video.addEventListener('ended', handleVideo);
-    video.addEventListener('error', handleVideo);
-    // Initial
-    handleVideo();
   </script>
 
 </body>
