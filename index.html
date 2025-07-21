@@ -10,20 +10,16 @@
       --neon: #00fff6;
       --neon-glow: 0 0 8px #00fff6, 0 0 32px #00fff688;
       --bg-blur: rgba(0, 0, 0, 0.7);
-      --theme-bg: url('bg.jpg');
     }
     html, body {
       margin: 0;
       padding: 0;
       font-family: 'Share Tech Mono', monospace;
-      background-image: var(--theme-bg);
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
       color: var(--neon);
       height: 100%;
       width: 100%;
       box-sizing: border-box;
+      background: #000;
     }
     body {
       display: flex;
@@ -34,7 +30,50 @@
       text-align: center;
       padding-bottom: 60px;
       box-sizing: border-box;
+      position: relative;
+      z-index: 1;
     }
+    /* --- Background video --- */
+    #bgVideo {
+      position: fixed;
+      top: 0; left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      width: auto;
+      height: auto;
+      z-index: -2;
+      object-fit: cover;
+      filter: brightness(0.6) saturate(1.2) blur(0.5px);
+      background: #000;
+      pointer-events: none;
+      transition: filter 0.5s;
+    }
+    /* Fallback images when video can't play */
+    .bg-fallback {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -3;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: opacity 0.4s;
+    }
+    .bg-fallback-desktop {
+      background-image: url('bg.jpg');
+      display: block;
+    }
+    .bg-fallback-mobile {
+      background-image: url('mobile-bg.jpg');
+      display: none;
+    }
+    /* Show/hide bg images based on device */
+    @media (max-width: 600px) {
+      .bg-fallback-desktop { display: none !important; }
+      .bg-fallback-mobile { display: block !important; }
+    }
+    /* --- Status bar and scrolling text --- */
     .status-bar {
       position: fixed;
       top: 0;
@@ -277,6 +316,16 @@
 </head>
 <body>
 
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline id="bgVideo">
+    <source src="bg-video.mp4" type="video/mp4">
+    <!-- Fallback text -->
+    Your browser does not support the video tag.
+  </video>
+  <!-- Fallback background images -->
+  <div class="bg-fallback bg-fallback-desktop"></div>
+  <div class="bg-fallback bg-fallback-mobile"></div>
+
   <!-- Status Bar with seamless dir/s scrolling effect -->
   <div class="status-bar">
     <div class="cmd-dir-scroll" id="cmdDirScroll">
@@ -380,6 +429,24 @@
     window.addEventListener('online', updateDirTextLoop);
     window.addEventListener('offline', updateDirTextLoop);
 
+    // Hide fallback if video is playing, show if not
+    const video = document.getElementById('bgVideo');
+    function handleVideo() {
+      if (video && video.readyState >= 2 && !video.paused) {
+        document.querySelectorAll('.bg-fallback').forEach(e=>e.style.opacity='0');
+        video.style.filter = "brightness(0.6) saturate(1.2) blur(0.5px)";
+      } else {
+        document.querySelectorAll('.bg-fallback').forEach(e=>e.style.opacity='1');
+        video.style.filter = "brightness(0.6) grayscale(0.5) blur(1px)";
+      }
+    }
+    video.addEventListener('play', handleVideo);
+    video.addEventListener('playing', handleVideo);
+    video.addEventListener('pause', handleVideo);
+    video.addEventListener('ended', handleVideo);
+    video.addEventListener('error', handleVideo);
+    // Initial
+    handleVideo();
   </script>
 
 </body>
