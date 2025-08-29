@@ -23,13 +23,10 @@
     }
 
     header {
-      background: linear-gradient(90deg, #1e2a38 0%, #2f3e4f 100%);
+      background-color: var(--primary-color);
       color: white;
-      padding: 25px 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 20px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .header-content {
@@ -39,17 +36,6 @@
       flex-wrap: wrap;
     }
 
-    .header-content h1 {
-      font-size: 28px;
-      margin: 0;
-    }
-
-    .header-content p {
-      margin: 5px 0 0;
-      font-size: 15px;
-      opacity: 0.85;
-    }
-
     select {
       padding: 8px;
       border-radius: 5px;
@@ -57,7 +43,6 @@
       border: none;
       background-color: var(--accent-color);
       color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .intro {
@@ -85,7 +70,6 @@
       padding: 25px;
       width: 280px;
       transition: transform 0.3s ease;
-      text-align: center;
     }
 
     .plan:hover {
@@ -102,10 +86,6 @@
       margin-bottom: 20px;
     }
 
-    .plan a {
-      display: inline-block;
-    }
-
     .plan a button {
       background-color: var(--accent-color);
       color: white;
@@ -115,8 +95,6 @@
       font-size: 15px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      display: block;
-      margin: 0 auto;
     }
 
     .plan a button:hover {
@@ -216,4 +194,10 @@
         document.getElementById("vipTitle").textContent = "اشتراک ماهانه VIP";
         document.getElementById("vipPrice").textContent = "قیمت: ۱۹۹٬۰۰۰ تومان";
         document.getElementById("vipBtn").textContent = "خرید از بات";
-        document.getElementById("footerText").textContent = "©
+        document.getElementById("footerText").textContent = "© 2025 تمامی حقوق محفوظ است | Cipher Net VPN";
+      }
+    }
+  </script>
+
+</body>
+</html>
