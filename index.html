@@ -5,64 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cipher Net VPN</title>
   <style>
+    :root {
+      --primary-color: #1e2a38;
+      --accent-color: #00bcd4;
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --card-bg: #fff;
+    }
+
     body {
-      font-family: 'Tahoma', sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: var(--bg-color);
       margin: 0;
       padding: 0;
       direction: rtl;
+      color: var(--text-color);
     }
+
     header {
-      background-color: #1e2a38;
+      background-color: var(--primary-color);
       color: white;
-      padding: 20px;
+      padding: 20px 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
+
     .header-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
     }
-    .intro, .plans {
-      padding: 30px;
-      text-align: center;
-    }
-    .plans {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .plan {
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      padding: 20px;
-      width: 250px;
-      text-align: center;
-    }
-    .plan h3 {
-      color: #1e2a38;
-    }
-    .plan a button {
-      background-color: #1e2a38;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    footer {
-      background-color: #ddd;
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-    }
+
     select {
       padding: 8px;
       border-radius: 5px;
       font-size: 14px;
+      border: none;
+      background-color: var(--accent-color);
+      color: white;
+    }
+
+    .intro {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .intro h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .plans {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .plan {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 25px;
+      width: 280px;
+      transition: transform 0.3s ease;
+    }
+
+    .plan:hover {
+      transform: translateY(-5px);
+    }
+
+    .plan h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .plan p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .plan a button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .plan a button:hover {
+      background-color: #0097a7;
+    }
+
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -93,7 +137,7 @@
       <h3 id="dailyTitle">اشتراک روزانه</h3>
       <p id="dailyPrice">قیمت: ۱۵٬۰۰۰ تومان</p>
       <a href="https://t.me/cipher_net_bot" target="_blank">
-        <button id="dailyBtn">خرید</button>
+        <button id="dailyBtn">خرید از بات</button>
       </a>
     </div>
     <div class="plan">
@@ -127,7 +171,7 @@
         document.getElementById("whyText").textContent = "Enjoy unrestricted internet with high security, great speed, and full device compatibility.";
         document.getElementById("dailyTitle").textContent = "Daily Plan";
         document.getElementById("dailyPrice").textContent = "Price: 15,000 Toman";
-        document.getElementById("dailyBtn").textContent = "Buy";
+        document.getElementById("dailyBtn").textContent = "Buy from Bot";
         document.getElementById("monthlyTitle").textContent = "Standard Monthly Plan";
         document.getElementById("monthlyPrice").textContent = "Price: 124,000 Toman";
         document.getElementById("monthlyBtn").textContent = "Buy from Bot";
@@ -143,7 +187,7 @@
         document.getElementById("whyText").textContent = "با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و مناسب برای تمام دستگاه‌ها.";
         document.getElementById("dailyTitle").textContent = "اشتراک روزانه";
         document.getElementById("dailyPrice").textContent = "قیمت: ۱۵٬۰۰۰ تومان";
-        document.getElementById("dailyBtn").textContent = "خرید";
+        document.getElementById("dailyBtn").textContent = "خرید از بات";
         document.getElementById("monthlyTitle").textContent = "اشتراک ماهانه عادی";
         document.getElementById("monthlyPrice").textContent = "قیمت: ۱۲۴٬۰۰۰ تومان";
         document.getElementById("monthlyBtn").textContent = "خرید از بات";
