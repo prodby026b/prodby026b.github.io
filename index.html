@@ -16,7 +16,12 @@
       background-color: #1e2a38;
       color: white;
       padding: 20px;
-      text-align: center;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
     .intro {
       padding: 30px;
@@ -54,18 +59,33 @@
       padding: 10px;
       font-size: 14px;
     }
+    select {
+      padding: 8px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>سرویس VPN امن و سریع</h1>
-    <p>حفظ حریم خصوصی، عبور از محدودیت‌ها، اتصال پایدار</p>
+    <div class="header-content">
+      <div>
+        <h1>سرویس VPN امن و سریع</h1>
+        <p>حفظ حریم خصوصی، عبور از محدودیت‌ها، اتصال پایدار</p>
+      </div>
+      <div>
+        <select id="languageSwitcher" onchange="changeLanguage()">
+          <option value="fa">فارسی</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
   </header>
 
   <section class="intro">
     <h2>چرا VPN ما؟</h2>
-    <p>با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و پشتیبانی از تمام دستگاه‌ها.</p>
+    <p>با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و مناسب برای تمام دستگاه‌ها.</p>
   </section>
 
   <section class="plans">
@@ -89,6 +109,18 @@
   <footer>
     © 2025 تمامی حقوق محفوظ است | VPN Barsam
   </footer>
+
+  <script>
+    function changeLanguage() {
+      const lang = document.getElementById("languageSwitcher").value;
+      if (lang === "en") {
+        alert("Language switched to English. (در نسخه واقعی، محتوای صفحه تغییر خواهد کرد)");
+        // در نسخه واقعی، اینجا می‌تونی محتوای صفحه رو با زبان انتخاب‌شده بارگذاری کنی
+      } else {
+        alert("زبان به فارسی تغییر کرد.");
+      }
+    }
+  </script>
 
 </body>
 </html>
