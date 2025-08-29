@@ -23,7 +23,7 @@
       align-items: center;
       flex-wrap: wrap;
     }
-    .intro {
+    .intro, .plans {
       padding: 30px;
       text-align: center;
     }
@@ -32,7 +32,6 @@
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
-      padding: 20px;
     }
     .plan {
       background-color: white;
@@ -45,13 +44,14 @@
     .plan h3 {
       color: #1e2a38;
     }
-    .plan button {
+    .plan a button {
       background-color: #1e2a38;
       color: white;
       border: none;
       padding: 10px 20px;
       border-radius: 5px;
       cursor: pointer;
+      margin-top: 10px;
     }
     footer {
       background-color: #ddd;
@@ -71,8 +71,8 @@
   <header>
     <div class="header-content">
       <div>
-        <h1>سرویس VPN امن و سریع</h1>
-        <p>حفظ حریم خصوصی، عبور از محدودیت‌ها، اتصال پایدار</p>
+        <h1 id="title">سرویس VPN امن و سریع</h1>
+        <p id="subtitle">حفظ حریم خصوصی، عبور از محدودیت‌ها، اتصال پایدار</p>
       </div>
       <div>
         <select id="languageSwitcher" onchange="changeLanguage()">
@@ -84,29 +84,35 @@
   </header>
 
   <section class="intro">
-    <h2>چرا VPN ما؟</h2>
-    <p>با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و مناسب برای تمام دستگاه‌ها.</p>
+    <h2 id="whyTitle">چرا VPN ما؟</h2>
+    <p id="whyText">با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و مناسب برای تمام دستگاه‌ها.</p>
   </section>
 
   <section class="plans">
     <div class="plan">
-      <h3>اشتراک روزانه</h3>
-      <p>قیمت: ۱۰٬۰۰۰ تومان</p>
-      <button>خرید</button>
+      <h3 id="dailyTitle">اشتراک روزانه</h3>
+      <p id="dailyPrice">قیمت: ۱۰٬۰۰۰ تومان</p>
+      <a href="https://yourdomain.com/buy/daily" target="_blank">
+        <button id="dailyBtn">خرید</button>
+      </a>
     </div>
     <div class="plan">
-      <h3>اشتراک ماهانه</h3>
-      <p>قیمت: ۵۰٬۰۰۰ تومان</p>
-      <button>خرید</button>
+      <h3 id="monthlyTitle">اشتراک ماهانه</h3>
+      <p id="monthlyPrice">قیمت: ۵۰٬۰۰۰ تومان</p>
+      <a href="https://yourdomain.com/buy/monthly" target="_blank">
+        <button id="monthlyBtn">خرید</button>
+      </a>
     </div>
     <div class="plan">
-      <h3>اشتراک سالانه</h3>
-      <p>قیمت: ۴۰۰٬۰۰۰ تومان</p>
-      <button>خرید</button>
+      <h3 id="yearlyTitle">اشتراک سالانه</h3>
+      <p id="yearlyPrice">قیمت: ۴۰۰٬۰۰۰ تومان</p>
+      <a href="https://yourdomain.com/buy/yearly" target="_blank">
+        <button id="yearlyBtn">خرید</button>
+      </a>
     </div>
   </section>
 
-  <footer>
+  <footer id="footerText">
     © 2025 تمامی حقوق محفوظ است | VPN Barsam
   </footer>
 
@@ -114,10 +120,37 @@
     function changeLanguage() {
       const lang = document.getElementById("languageSwitcher").value;
       if (lang === "en") {
-        alert("Language switched to English. (در نسخه واقعی، محتوای صفحه تغییر خواهد کرد)");
-        // در نسخه واقعی، اینجا می‌تونی محتوای صفحه رو با زبان انتخاب‌شده بارگذاری کنی
+        document.body.style.direction = "ltr";
+        document.getElementById("title").textContent = "Secure & Fast VPN Service";
+        document.getElementById("subtitle").textContent = "Privacy protection, censorship bypass, stable connection";
+        document.getElementById("whyTitle").textContent = "Why Our VPN?";
+        document.getElementById("whyText").textContent = "Experience unrestricted internet with our service. High security, great speed, and device compatibility.";
+        document.getElementById("dailyTitle").textContent = "Daily Plan";
+        document.getElementById("dailyPrice").textContent = "Price: 10,000 Toman";
+        document.getElementById("dailyBtn").textContent = "Buy";
+        document.getElementById("monthlyTitle").textContent = "Monthly Plan";
+        document.getElementById("monthlyPrice").textContent = "Price: 50,000 Toman";
+        document.getElementById("monthlyBtn").textContent = "Buy";
+        document.getElementById("yearlyTitle").textContent = "Yearly Plan";
+        document.getElementById("yearlyPrice").textContent = "Price: 400,000 Toman";
+        document.getElementById("yearlyBtn").textContent = "Buy";
+        document.getElementById("footerText").textContent = "© 2025 All rights reserved | VPN Barsam";
       } else {
-        alert("زبان به فارسی تغییر کرد.");
+        document.body.style.direction = "rtl";
+        document.getElementById("title").textContent = "سرویس VPN امن و سریع";
+        document.getElementById("subtitle").textContent = "حفظ حریم خصوصی، عبور از محدودیت‌ها، اتصال پایدار";
+        document.getElementById("whyTitle").textContent = "چرا VPN ما؟";
+        document.getElementById("whyText").textContent = "با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و مناسب برای تمام دستگاه‌ها.";
+        document.getElementById("dailyTitle").textContent = "اشتراک روزانه";
+        document.getElementById("dailyPrice").textContent = "قیمت: ۱۰٬۰۰۰ تومان";
+        document.getElementById("dailyBtn").textContent = "خرید";
+        document.getElementById("monthlyTitle").textContent = "اشتراک ماهانه";
+        document.getElementById("monthlyPrice").textContent = "قیمت: ۵۰٬۰۰۰ تومان";
+        document.getElementById("monthlyBtn").textContent = "خرید";
+        document.getElementById("yearlyTitle").textContent = "اشتراک سالانه";
+        document.getElementById("yearlyPrice").textContent = "قیمت: ۴۰۰٬۰۰۰ تومان";
+        document.getElementById("yearlyBtn").textContent = "خرید";
+        document.getElementById("footerText").textContent = "© 2025 تمامی حقوق محفوظ است | VPN Barsam";
       }
     }
   </script>
