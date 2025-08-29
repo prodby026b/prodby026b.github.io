@@ -56,30 +56,20 @@
       align-items: center;
     }
 
-    .header-actions a button,
-    .header-actions select {
+    .header-actions a button {
       padding: 8px 16px;
       border-radius: 5px;
       font-size: 14px;
       border: none;
       cursor: pointer;
-      text-decoration: none;
-    }
-
-    .header-actions a button {
       background-color: var(--accent-color);
       color: white;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      text-decoration: none;
     }
 
     .header-actions a button:hover {
       background-color: #0097a7;
-    }
-
-    .header-actions select {
-      background-color: var(--accent-color);
-      color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
     .intro {
@@ -160,77 +150,49 @@
   <header>
     <div class="header-content">
       <div>
-        <h1 id="title">Cipher Net VPN</h1>
-        <p id="subtitle">حفظ حریم خصوصی، عبور از محدودیت‌ها، اتصال پایدار</p>
+        <h1>Cipher Net VPN</h1>
+        <p>حفظ حریم خصوصی، عبور از محدودیت‌ها، اتصال پایدار</p>
       </div>
       <div class="header-actions">
         <a href="https://t.me/cipher_net/32" target="_blank">
           <button>آموزش استفاده</button>
         </a>
-        <select id="languageSwitcher" onchange="changeLanguage()">
-          <option value="fa">فارسی</option>
-          <option value="en">English</option>
-        </select>
       </div>
     </div>
   </header>
 
   <section class="intro">
-    <h2 id="whyTitle">چرا VPN ما؟</h2>
-    <p id="whyText">با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و مناسب برای تمام دستگاه‌ها.</p>
+    <h2>چرا VPN ما؟</h2>
+    <p>با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و مناسب برای تمام دستگاه‌ها.</p>
   </section>
 
   <section class="plans">
     <div class="plan">
-      <h3 id="dailyTitle">اشتراک روزانه</h3>
-      <p id="dailyPrice">قیمت: ۱۵٬۰۰۰ تومان</p>
+      <h3>اشتراک روزانه</h3>
+      <p>قیمت: ۱۵٬۰۰۰ تومان</p>
       <a href="https://t.me/cipher_net_bot" target="_blank">
-        <button id="dailyBtn">خرید از بات</button>
+        <button>خرید از بات</button>
       </a>
     </div>
     <div class="plan">
-      <h3 id="monthlyTitle">اشتراک ماهانه عادی</h3>
-      <p id="monthlyPrice">قیمت: ۱۲۴٬۰۰۰ تومان</p>
+      <h3>اشتراک ماهانه عادی</h3>
+      <p>قیمت: ۱۲۴٬۰۰۰ تومان</p>
       <a href="https://t.me/cipher_net_bot" target="_blank">
-        <button id="monthlyBtn">خرید از بات</button>
+        <button>خرید از بات</button>
       </a>
     </div>
     <div class="plan">
-      <h3 id="vipTitle">اشتراک ماهانه VIP</h3>
-      <p id="vipPrice">قیمت: ۱۹۹٬۰۰۰ تومان</p>
+      <h3>اشتراک ماهانه VIP</h3>
+      <p>قیمت: ۱۹۹٬۰۰۰ تومان</p>
       <a href="https://t.me/cipher_net_bot" target="_blank">
-        <button id="vipBtn">خرید از بات</button>
+        <button>خرید از بات</button>
       </a>
     </div>
   </section>
 
-  <footer id="footerText">
+  <footer>
     © 2025 تمامی حقوق محفوظ است | Cipher Net VPN
   </footer>
 
-  <script>
-    function changeLanguage() {
-      const lang = document.getElementById("languageSwitcher").value;
-      if (lang === "en") {
-        document.body.style.direction = "ltr";
-        document.getElementById("title").textContent = "Cipher Net VPN";
-        document.getElementById("subtitle").textContent = "Privacy protection, censorship bypass, stable connection";
-        document.getElementById("whyTitle").textContent = "Why Our VPN?";
-        document.getElementById("whyText").textContent = "Enjoy unrestricted internet with high security, great speed, and full device compatibility.";
-        document.getElementById("dailyTitle").textContent = "Daily Plan";
-        document.getElementById("dailyPrice").textContent = "Price: 15,000 Toman";
-        document.getElementById("dailyBtn").textContent = "Buy from Bot";
-        document.getElementById("monthlyTitle").textContent = "Standard Monthly Plan";
-        document.getElementById("monthlyPrice").textContent = "Price: 124,000 Toman";
-        document.getElementById("monthlyBtn").textContent = "Buy from Bot";
-        document.getElementById("vipTitle").textContent = "VIP Monthly Plan";
-        document.getElementById("vipPrice").textContent = "Price: 199,000 Toman";
-        document.getElementById("vipBtn").textContent = "Buy from Bot";
-        document.getElementById("footerText").textContent = "© 2025 All rights reserved | Cipher Net VPN";
-      } else {
-        document.body.style.direction = "rtl";
-        document.getElementById("title").textContent = "Cipher Net VPN";
-        document.getElementById("subtitle").textContent = "حفظ حریم خصوصی، عبور از محدودیت‌ها، اتصال پایدار";
-        document.getElementById("whyTitle").textContent = "چرا VPN ما؟";
-        document.getElementById("whyText").textContent = "با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و مناسب برای تمام دستگاه‌ها.";
-        document.getElementById("dailyTitle").textContent
+</body>
+</html>
