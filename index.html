@@ -4,22 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cipher Net VPN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
       --primary-color: #1e2a38;
       --accent-color: #00bcd4;
       --bg-color: #f9f9f9;
       --text-color: #333;
-      --card-bg: #fff;
+      --card-bg: rgba(255, 255, 255, 0.15);
     }
 
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: var(--bg-color);
       margin: 0;
       padding: 0;
       direction: rtl;
       color: var(--text-color);
+      background: linear-gradient(-45deg, #1e2a38, #00bcd4, #2f3e4f, #1e2a38);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      transition: background 0.5s ease;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .dark-mode {
+      --bg-color: #121212;
+      --text-color: #eee;
+      --card-bg: rgba(30, 30, 30, 0.5);
     }
 
     header {
@@ -56,7 +73,7 @@
       align-items: center;
     }
 
-    .header-actions a button {
+    .header-actions button {
       padding: 8px 16px;
       border-radius: 5px;
       font-size: 14px;
@@ -65,10 +82,9 @@
       background-color: var(--accent-color);
       color: white;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      text-decoration: none;
     }
 
-    .header-actions a button:hover {
+    .header-actions button:hover {
       background-color: #0097a7;
     }
 
@@ -91,13 +107,16 @@
     }
 
     .plan {
-      background-color: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       padding: 25px;
       width: 280px;
       transition: transform 0.3s ease;
       text-align: center;
+      background-color: var(--card-bg);
+      color: var(--text-color);
     }
 
     .plan:hover {
@@ -114,10 +133,6 @@
       margin-bottom: 20px;
     }
 
-    .plan a {
-      text-decoration: none;
-    }
-
     .plan a button {
       background-color: var(--accent-color);
       color: white;
@@ -127,9 +142,6 @@
       font-size: 15px;
       cursor: pointer;
       transition: background-color 0.3s ease;
-      display: block;
-      margin: 0 auto;
-      text-decoration: none;
     }
 
     .plan a button:hover {
@@ -137,11 +149,12 @@
     }
 
     footer {
-      background-color: #eee;
+      background-color: rgba(255,255,255,0.1);
       text-align: center;
       padding: 15px;
       font-size: 14px;
       margin-top: 40px;
+      color: var(--text-color);
     }
   </style>
 </head>
@@ -150,42 +163,43 @@
   <header>
     <div class="header-content">
       <div>
-        <h1>Cipher Net VPN</h1>
+        <h1><i class="fas fa-shield-alt"></i> Cipher Net VPN</h1>
         <p>حفظ حریم خصوصی، عبور از محدودیت‌ها، اتصال پایدار</p>
       </div>
       <div class="header-actions">
         <a href="https://t.me/cipher_net/32" target="_blank">
-          <button>آموزش استفاده</button>
+          <button><i class="fas fa-book-open"></i> آموزش استفاده</button>
         </a>
+        <button onclick="toggleDark()"><i class="fas fa-adjust"></i> تغییر تم</button>
       </div>
     </div>
   </header>
 
-  <section class="intro">
+  <section class="intro" data-aos="fade-up">
     <h2>چرا VPN ما؟</h2>
     <p>با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و مناسب برای تمام دستگاه‌ها.</p>
   </section>
 
   <section class="plans">
-    <div class="plan">
+    <div class="plan" data-aos="fade-up" data-aos-delay="100">
       <h3>اشتراک روزانه</h3>
       <p>قیمت: ۱۵٬۰۰۰ تومان</p>
-      <a href="https://t.me/cipher_net_bot" target="_blank">
-        <button>خرید از بات</button>
+      <a href="https://t.me/cipher_net_bot/buy" target="_blank">
+        <button><i class="fas fa-robot"></i> خرید از بات</button>
       </a>
     </div>
-    <div class="plan">
+    <div class="plan" data-aos="fade-up" data-aos-delay="200">
       <h3>اشتراک ماهانه عادی</h3>
       <p>قیمت: ۱۵۸٬۰۰۰ تومان</p>
-      <a href="https://t.me/cipher_net_bot" target="_blank">
-        <button>خرید از بات</button>
+      <a href="https://t.me/cipher_net_bot/buy" target="_blank">
+        <button><i class="fas fa-robot"></i> خرید از بات</button>
       </a>
     </div>
-    <div class="plan">
+    <div class="plan" data-aos="fade-up" data-aos-delay="300">
       <h3>اشتراک ماهانه VIP</h3>
       <p>قیمت: ۲۲۰٬۰۰۰ تومان</p>
-      <a href="https://t.me/cipher_net_bot" target="_blank">
-        <button>خرید از بات</button>
+      <a href="https://t.me/cipher_net_bot/buy" target="_blank">
+        <button><i class="fas fa-robot"></i> خرید از بات</button>
       </a>
     </div>
   </section>
@@ -193,6 +207,14 @@
   <footer>
     © 2025 تمامی حقوق محفوظ است | Cipher Net VPN
   </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    function toggleDark() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
 
 </body>
 </html>
