@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cipher Net VPN</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #1e2a38;
-      --accent-color: #00bcd4;
-      --bg-color: #f9f9f9;
-      --text-color: #333;
-      --card-bg: rgba(255, 255, 255, 0.15);
+      --primary-color: #0f172a;
+      --accent-color: #00f0ff;
+      --bg-color: #0a0a0a;
+      --text-color: #e0f7fa;
+      --card-bg: rgba(0, 0, 0, 0.4);
     }
 
     body {
@@ -21,29 +20,16 @@
       padding: 0;
       direction: rtl;
       color: var(--text-color);
-      background: linear-gradient(-45deg, #1e2a38, #00bcd4, #2f3e4f, #1e2a38);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      transition: background 0.5s ease;
-    }
-
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    .dark-mode {
-      --bg-color: #121212;
-      --text-color: #eee;
-      --card-bg: rgba(30, 30, 30, 0.5);
+      background: radial-gradient(circle at top left, #0f172a, #0a0a0a, #001f2f);
+      background-attachment: fixed;
+      background-size: cover;
     }
 
     header {
-      background: linear-gradient(90deg, #1e2a38 0%, #2f3e4f 100%);
-      color: white;
+      background: linear-gradient(90deg, #001f2f 0%, #003c4d 100%);
+      color: var(--accent-color);
       padding: 25px 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -73,19 +59,20 @@
       align-items: center;
     }
 
-    .header-actions button {
+    .header-actions a button {
       padding: 8px 16px;
       border-radius: 5px;
       font-size: 14px;
       border: none;
       cursor: pointer;
       background-color: var(--accent-color);
-      color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      color: #000;
+      box-shadow: 0 2px 5px rgba(0,255,255,0.4);
+      text-decoration: none;
     }
 
-    .header-actions button:hover {
-      background-color: #0097a7;
+    .header-actions a button:hover {
+      background-color: #00c0d0;
     }
 
     .intro {
@@ -96,6 +83,7 @@
     .intro h2 {
       font-size: 28px;
       margin-bottom: 10px;
+      color: var(--accent-color);
     }
 
     .plans {
@@ -107,16 +95,15 @@
     }
 
     .plan {
+      background-color: var(--card-bg);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(0,255,255,0.2);
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,255,255,0.1);
       padding: 25px;
       width: 280px;
       transition: transform 0.3s ease;
       text-align: center;
-      background-color: var(--card-bg);
-      color: var(--text-color);
     }
 
     .plan:hover {
@@ -124,7 +111,7 @@
     }
 
     .plan h3 {
-      color: var(--primary-color);
+      color: var(--accent-color);
       margin-bottom: 10px;
     }
 
@@ -135,26 +122,28 @@
 
     .plan a button {
       background-color: var(--accent-color);
-      color: white;
+      color: #000;
       border: none;
       padding: 10px 25px;
       border-radius: 6px;
       font-size: 15px;
       cursor: pointer;
       transition: background-color 0.3s ease;
+      display: block;
+      margin: 0 auto;
     }
 
     .plan a button:hover {
-      background-color: #0097a7;
+      background-color: #00c0d0;
     }
 
     footer {
-      background-color: rgba(255,255,255,0.1);
+      background-color: #001f2f;
       text-align: center;
       padding: 15px;
       font-size: 14px;
       margin-top: 40px;
-      color: var(--text-color);
+      color: var(--accent-color);
     }
   </style>
 </head>
@@ -170,35 +159,34 @@
         <a href="https://t.me/cipher_net/32" target="_blank">
           <button><i class="fas fa-book-open"></i> آموزش استفاده</button>
         </a>
-        <button onclick="toggleDark()"><i class="fas fa-adjust"></i> تغییر تم</button>
       </div>
     </div>
   </header>
 
-  <section class="intro" data-aos="fade-up">
+  <section class="intro">
     <h2>چرا VPN ما؟</h2>
     <p>با سرویس ما، اینترنت بدون محدودیت را تجربه کنید. امنیت بالا، سرعت عالی، و مناسب برای تمام دستگاه‌ها.</p>
   </section>
 
   <section class="plans">
-    <div class="plan" data-aos="fade-up" data-aos-delay="100">
+    <div class="plan">
       <h3>اشتراک روزانه</h3>
       <p>قیمت: ۱۵٬۰۰۰ تومان</p>
-      <a href="https://t.me/cipher_net_bot/buy" target="_blank">
+      <a href="https://t.me/cipher_net_bot?start=buy" target="_blank">
         <button><i class="fas fa-robot"></i> خرید از بات</button>
       </a>
     </div>
-    <div class="plan" data-aos="fade-up" data-aos-delay="200">
+    <div class="plan">
       <h3>اشتراک ماهانه عادی</h3>
       <p>قیمت: ۱۵۸٬۰۰۰ تومان</p>
-      <a href="https://t.me/cipher_net_bot/buy" target="_blank">
+      <a href="https://t.me/cipher_net_bot?start=buy" target="_blank">
         <button><i class="fas fa-robot"></i> خرید از بات</button>
       </a>
     </div>
-    <div class="plan" data-aos="fade-up" data-aos-delay="300">
+    <div class="plan">
       <h3>اشتراک ماهانه VIP</h3>
       <p>قیمت: ۲۲۰٬۰۰۰ تومان</p>
-      <a href="https://t.me/cipher_net_bot/buy" target="_blank">
+      <a href="https://t.me/cipher_net_bot?start=buy" target="_blank">
         <button><i class="fas fa-robot"></i> خرید از بات</button>
       </a>
     </div>
@@ -207,14 +195,6 @@
   <footer>
     © 2025 تمامی حقوق محفوظ است | Cipher Net VPN
   </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-    function toggleDark() {
-      document.body.classList.toggle('dark-mode');
-    }
-  </script>
 
 </body>
 </html>
