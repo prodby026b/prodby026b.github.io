@@ -10,7 +10,6 @@
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#000000" />
 
-  <!-- Fonts: Persian + monospace for 'cyber' look -->
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <style>
@@ -33,7 +32,6 @@
       direction: rtl;
     }
 
-    /* Background Video (optional) */
     #bgVideo{
       position:fixed;
       inset:0;
@@ -46,7 +44,6 @@
       filter: brightness(0.5) saturate(1.15) blur(0.3px);
       pointer-events:none;
     }
-    /* Top status bar */
     .status-bar{
       position:fixed;
       top:0; right:0;
@@ -65,7 +62,6 @@
     }
     .status-item{opacity:0.9; white-space:nowrap}
 
-    /* Main layout */
     .wrap{
       min-height:100vh;
       display:flex;
@@ -101,7 +97,6 @@
       border-radius:8px;
     }
 
-    /* Cards area */
     .grid{
       display:grid;
       grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
@@ -159,7 +154,6 @@
     .footer-left{ display:flex; gap:12px; align-items:center; }
     .footer-right{ opacity:0.9; }
 
-    /* Responsive */
     @media (max-width:720px){
       h1{ font-size:1.5rem; padding:8px 12px; }
       .status-bar{ height:52px; font-size:0.85rem; padding:0 12px; }
@@ -171,10 +165,8 @@
 </head>
 <body>
 
-  <!-- Optional background video - replace or remove if you don't want video -->
   <video autoplay muted loop playsinline id="bgVideo" aria-hidden="true">
     <source src="bg-video.mp4" type="video/mp4">
-    <!-- اگر ویدیو ندارید این تگ را نگه دارید یا حذف کنید -->
   </video>
 
   <div class="status-bar" role="status" aria-live="polite">
@@ -188,8 +180,9 @@
     <header style="text-align:right; width:100%; max-width:980px;">
       <h1>prodby026b — مهندس شبکه و امنیت</h1>
       <p class="lead">
-        من prodby026b هستم — طراحی و پیاده‌سازی شبکه‌های امن، تحلیل ترافیک، تحقیق و توسعه ابزارهای عملیاتی
-        و مشاوره در زمینه امن‌سازی زیرساخت‌ها. در این سایت نمونه‌کارها، مهارت‌ها و راه‌های تماس با من را می‌توانید ببینید.
+        من prodby026b هستم — طراحی و پیاده‌سازی شبکه‌های امن، تحلیل ترافیک و توسعه ابزارهای عملیاتی.
+        در حال حاضر مدارک CompTIA Network+، Cisco CCNA و الپیک 1 را دارم.
+        اینجا خلاصه‌ای از مهارت‌ها، گواهی‌ها و نمونه‌کارهایم را می‌بینید؛ در صورت نیاز می‌توانم یک رزومهٔ پیش‌نویس برای شما آماده و قابل دانلود بسازم.
       </p>
     </header>
 
@@ -205,36 +198,48 @@
 
       <div class="card">
         <h3>مهارت‌ها</h3>
-        <p>شبکه (BGP, OSPF, VLAN), امنیت شبکه, تحلیل ترافیک (Wireshark), اتوماسیون (Ansible, Python), لینوکس و ابزارهای SOC.</p>
+        <p>شبکه (BGP, OSPF, VLAN)، امنیت شبکه، تحلیل ترافیک (Wireshark)، اتوماسیون (Ansible, Python)، لینوکس و ابزارهای SOC.</p>
       </div>
 
       <div class="card">
-        <h3>نمونه‌کارها</h3>
-        <p>اینجا فهرستی از پروژه‌ها و لینک نمونه‌کارها قرار می‌گیرد. برای مثال: تحلیل ترافیک، طراحی شبکه دیتاسنتر، ابزار مانیتورینگ.</p>
+        <h3>گواهی‌ها و تحصیلات</h3>
+        <p>
+          • CompTIA Network+ (گذراند شده)<br>
+          • Cisco CCNA (گذراند شده)<br>
+          • ELPIK / الپیک 1 (گذراند شده)
+        </p>
+        <p style="margin-top:8px; font-size:0.95rem; opacity:0.9">
+          اگر می‌خواهید این بخش کامل‌تر شود (تاریخ دریافت گواهی، شماره مدرک یا توضیح هر دوره)، اطلاعات را بفرستید تا وارد کنم.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>نمونه‌کارها / لینک‌ها</h3>
+        <p>تحلیل ترافیک، طراحی شبکهٔ دیتاسنتر و ابزارهای مانیتورینگ. لینک‌های مرتبط در زیر:</p>
         <div class="buttons">
           <a class="btn" href="https://github.com/prodby026b" target="_blank" rel="noopener">گیت‌هاب</a>
           <a class="btn" href="https://t.me/PacketChaser026b" target="_blank" rel="noopener">تلگرام</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <h3>رزومه و دانلود</h3>
-        <p>فایل رزومهٔ شما (PDF) را اینجا قرار دهید تا بازدیدکننده بتواند دانلود کند.</p>
-        <div class="buttons">
-          <a class="btn primary" href="resume.pdf" target="_blank" rel="noopener">دانلود رزومه (PDF)</a>
         </div>
       </div>
     </section>
 
     <section style="width:100%; max-width:980px; margin-top:12px; text-align:right;">
       <div class="card" style="direction:rtl;">
-        <h3>تماس و شبکه‌های اجتماعی</h3>
+        <h3>رزومه — پیش‌نویس</h3>
         <p>
-          ایمیل: <a href="mailto:your-email@example.com" style="color:var(--accent)">your-email@example.com</a><br>
-          تلگرام: <a href="https://t.me/cipherAlgorithm" target="_blank" rel="noopener" style="color:var(--accent)">@cipherAlgorithm</a><br>
-          گیت‌هاب: <a href="https://github.com/prodby026b" target="_blank" rel="noopener" style="color:var(--accent)">github.com/prodby026b</a>
+          هنوز رزومهٔ رسمی ندارید؟ مشکلی نیست — من می‌توانم یک رزومهٔ سادهٔ حرفه‌ای (PDF) بر اساس اطلاعات فعلی بسازم.
         </p>
-        <p style="margin-top:8px; font-size:0.95rem; opacity:0.9">توجه: این مقادیر را با اطلاعات واقعی خودتان جایگزین کنید.</p>
+        <ul style="margin:8px 0 0 18px; padding:0; line-height:1.6; color:var(--accent);">
+          <li>اطلاعات تماس (ایمیل/تلفن)</li>
+          <li>خلاصهٔ حرفه‌ای</li>
+          <li>گواهی‌ها (Network+, CCNA, الپیک 1)</li>
+          <li>مهارت‌ها و نمونه‌کارها</li>
+        </ul>
+        <div class="buttons" style="margin-top:10px;">
+          <a class="btn primary" href="mailto:your-email@example.com?subject=%D8%AF%D8%B1%D8%AE%D9%88%D8%A7%D8%B3%20%D8%B3%D8%A7%D8%AE%D8%AA%20%D8%B1%D8%B2%D9%88%D9%85%D9%87" aria-label="درخواست ساخت رزومه">درخواست ساخت رزومه</a>
+          <a class="btn" id="generateResumeBtn" href="#" aria-label="درخواست ساخت رزومه سریع">درخواست سریع (درون‌سایتی)</a>
+        </div>
+        <p style="margin-top:8px; font-size:0.95rem; opacity:0.9">روی «درخواست سریع» کلیک کنید تا یک پیش‌نویس رزومهٔ ساده ساخته شود (و بعد می‌توانید آن را دانلود کنید).</p>
       </div>
     </section>
   </main>
@@ -248,7 +253,6 @@
   </footer>
 
   <script>
-    // Simple dynamic status + last-activity storage
     const networkStatusEl = document.getElementById('networkStatus');
     const lastActivityEl = document.getElementById('lastActivity');
     const networkSimple = document.getElementById('networkSimple');
@@ -270,7 +274,6 @@
         lastActivityEl.textContent = 'اولین بازدید: اکنون';
       }
       const now = new Date();
-      // Persian-friendly format: YYYY/MM/DD - HH:MM
       const persianDate = now.getFullYear() + '/' + String(now.getMonth()+1).padStart(2,'0') + '/' + String(now.getDate()).padStart(2,'0')
                          + ' - ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
       localStorage.setItem(key, persianDate);
@@ -281,16 +284,74 @@
     updateNetwork();
     updateLastActivity();
 
-    // footer year
     yearEl.textContent = new Date().getFullYear();
 
-    // Small UX: open links in new tab safely for external links
     document.querySelectorAll('a[target="_blank"]').forEach(a=>{
       a.setAttribute('rel','noopener noreferrer');
     });
 
-    // Placeholder for packet log visual indicator (can be replaced with real logic)
     packetLog.textContent = 'گزارش بسته: فعال';
+
+    // Simple in-page resume draft generator (creates a downloadable blob PDF-like via printing to new tab)
+    document.getElementById('generateResumeBtn').addEventListener('click', function(e){
+      e.preventDefault();
+      // Simple HTML resume content (you can expand structure)
+      const resumeHtml = `
+        <!doctype html>
+        <html lang="fa" dir="rtl">
+        <head>
+          <meta charset="utf-8">
+          <title>رزومهٔ پیش‌نویس - prodby026b</title>
+          <style>
+            body{font-family: Vazirmatn, sans-serif; color:#0f1720; padding:20px;}
+            h1{color:#0b7285;}
+            h2{color:#0b7285; margin-top:12px;}
+            .section{margin-bottom:10px;}
+            .muted{color:#333; opacity:0.85;}
+            ul{margin:6px 0 0 18px;}
+          </style>
+        </head>
+        <body>
+          <h1>prodby026b</h1>
+          <div class="section">
+            <strong>عنوان حرفه‌ای:</strong> مهندس شبکه و امنیت
+          </div>
+          <div class="section">
+            <strong>تماس:</strong> your-email@example.com — +00000000000
+          </div>
+          <div class="section">
+            <h2>خلاصهٔ حرفه‌ای</h2>
+            <div class="muted">طراحی و پیاده‌سازی شبکه‌های امن، تحلیل ترافیک، و توسعه ابزارهای عملیاتی.</div>
+          </div>
+          <div class="section">
+            <h2>گواهی‌ها</h2>
+            <ul>
+              <li>CompTIA Network+</li>
+              <li>Cisco CCNA</li>
+              <li>ELPIK / الپیک 1</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h2>مهارت‌ها</h2>
+            <ul>
+              <li>BGP, OSPF, VLAN</li>
+              <li>Wireshark, تحلیل ترافیک</li>
+              <li>Ansible, Python, لینوکس</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h2>نمونه‌کارها</h2>
+            <div class="muted">لینک‌ها: github.com/prodby026b — t.me/PacketChaser026b</div>
+          </div>
+          <footer style="margin-top:24px; font-size:12px; color:#666;">تولیدشده به‌صورت خودکار — لطفاً اطلاعات تماس و جزئیات گواهی‌ها را ویرایش کنید.</footer>
+        </body>
+        </html>
+      `;
+      const w = window.open('', '_blank');
+      w.document.write(resumeHtml);
+      w.document.close();
+      alert('یک پیش‌نویس رزومه در تب جدید باز شد. برای ذخیره به عنوان PDF از گزینهٔ Print → Save as PDF استفاده کنید.');
+    });
   </script>
 
 </body>
