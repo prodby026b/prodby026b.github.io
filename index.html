@@ -1,241 +1,176 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>prodby026b — شبکه، امنیت و مهندسی سیستم‌ها</title>
-  <meta name="description" content="سایت شخصی prodby026b — مهندس شبکه و امنیت. گواهی‌ها و اطلاعات تماس." />
+  <meta name="description" content="سایت شخصی prodby026b — مهندس شبکه و امنیت، طراحی و پیاده‌سازی شبکه‌های امن و بهینه برای سامانه‌های پیشرفته." />
+  <meta property="og:title" content="prodby026b — مهندس شبکه و امنیت" />
+  <meta property="og:description" content="طراحی، پیاده‌سازی و امن‌سازی شبکه‌ها، تحلیل ترافیک و توسعه ابزارهای عملیاتی." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#000000" />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --accent:#00fff6;
-      --bg:#000;
-      --panel:rgba(0,0,0,0.7);
+    :root {
+      --accent: #00fff6;
+      --bg: #000;
+      --panel: rgba(0,0,0,0.7);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;padding:0;background:var(--bg);color:var(--accent);font-family:"Vazirmatn","Share Tech Mono",system-ui,sans-serif;direction:rtl}
-    /* header + profile */
-    .header-wrap{display:flex;align-items:center;gap:16px;max-width:980px;width:100%;padding:90px 20px 0 20px;box-sizing:border-box;justify-content:flex-end}
-    .profile-pic{
-      width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 6px 20px rgba(0,255,246,0.06);background:#071013;
+    * { box-sizing: border-box }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--bg);
+      color: var(--accent);
+      font-family: "Vazirmatn", "Share Tech Mono", system-ui, sans-serif;
+      direction: rtl;
     }
-    .title-block{background:var(--panel);padding:10px 14px;border-radius:10px;border-right:3px solid var(--accent);box-shadow:0 6px 22px rgba(0,255,246,0.06)}
-    h1{margin:0;font-size:1.9rem;font-family:"Share Tech Mono",monospace}
-    p.lead{margin:8px 0 0 0;max-width:900px;line-height:1.8;font-size:1.02rem;color:var(--accent);opacity:0.95;background:var(--panel);padding:10px 14px;border-radius:8px;display:block;margin-inline:20px 20px}
-
-    /* grid & cards */
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;width:100%;max-width:980px;margin:18px auto}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(0,255,246,0.12);padding:16px;border-radius:10px;box-shadow:0 10px 30px rgba(0,255,246,0.03);text-align:right}
-    .card h3{margin:0 0 8px 0;color:var(--accent);font-size:1.05rem}
-    .buttons{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
-    .btn{background:transparent;border:1px solid rgba(0,255,246,0.16);color:var(--accent);padding:8px 12px;border-radius:8px;text-decoration:none;font-family:"Share Tech Mono",monospace}
-    .btn.primary{background:linear-gradient(90deg, rgba(0,255,246,0.06), rgba(0,255,246,0.02));border-color:rgba(0,255,246,0.28)}
-
-    /* certs gallery */
-    .certs-section{width:100%;max-width:980px;margin:10px auto;padding:0 20px;box-sizing:border-box}
-    .certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:12px}
-    .cert-item{display:flex;flex-direction:column;gap:6px}
-    .cert-card{position:relative;width:100%;padding-top:100%;background:#071013;border:1px solid rgba(0,255,246,0.08);border-radius:8px;overflow:hidden;cursor:pointer}
-    .cert-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-    .cert-caption{font-size:0.82rem;text-align:center;color:var(--accent);background:transparent;word-break:break-all;padding:2px 6px}
-
-    /* caption overlay alternative (if you prefer overlay) */
-    .cert-card .overlay-caption{position:absolute;left:0;right:0;bottom:0;padding:6px 8px;background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.55));color:var(--accent);font-size:0.78rem;text-align:center}
-
-    footer{position:fixed;left:0;bottom:0;right:0;padding:10px 18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));border-top:1px solid rgba(0,255,246,0.06);display:flex;justify-content:space-between;align-items:center;font-size:0.95rem;z-index:60}
-    @media (max-width:720px){.header-wrap{padding:78px 12px 0 12px}.profile-pic{width:72px;height:72px}.title-block h1{font-size:1.2rem}}
+    .status-bar {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      height: 64px;
+      background: linear-gradient(90deg,#040404 0%, #0f1113 100%);
+      border-bottom: 1px solid rgba(0,255,246,0.18);
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      z-index: 50;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 0.95rem;
+    }
+    .wrap {
+      padding: 90px 20px 120px 20px;
+      max-width: 980px;
+      margin: auto;
+    }
+    .profile-pic {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 6px 20px rgba(0,255,246,0.06);
+      background: #071013;
+      display: none;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2.2rem;
+      background: var(--panel);
+      padding: 12px 18px;
+      border-radius: 10px;
+      border-right: 3px solid var(--accent);
+      box-shadow: 0 6px 22px rgba(0,255,246,0.06);
+      font-family: "Share Tech Mono", monospace;
+    }
+    p.lead {
+      margin-top: 12px;
+      background: var(--panel);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(0,255,246,0.12);
+      padding: 16px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,255,246,0.03);
+    }
+    .card h3 { margin: 0 0 8px 0; font-size: 1.05rem }
+    .card p { margin: 0; font-size: 0.96rem; line-height: 1.6 }
+    footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      padding: 10px 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));
+      border-top: 1px solid rgba(0,255,246,0.06);
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      z-index: 60;
+    }
   </style>
 </head>
 <body>
 
-  <!-- status bar (kept minimal) -->
-  <div style="position:fixed;top:0;right:0;left:0;height:64px;background:linear-gradient(90deg,#040404 0%,#0f1113 100%);border-bottom:1px solid rgba(0,255,246,0.12);z-index:50;display:flex;align-items:center;padding:0 18px;">
-    <div style="color:var(--accent);font-family:'Share Tech Mono',monospace">© prodby026b</div>
+  <div class="status-bar">
+    <div id="networkStatus">وضعیت شبکه: بررسی...</div>
+    <div style="flex:1"></div>
+    <div>© prodby026b</div>
   </div>
 
-  <!-- Header with profile picture (loaded from repo root if exists) -->
-  <div class="header-wrap" role="banner" aria-label="هدر سایت">
-    <div id="profileContainer" style="display:flex;align-items:center;gap:12px;justify-content:flex-end;">
-      <!-- profile image inserted here by JS if found -->
-      <img id="profilePic" class="profile-pic" src="" alt="عکس پروفایل" style="display:none" />
-    </div>
+  <main class="wrap">
+    <img id="profilePic" class="profile-pic" alt="عکس پروفایل" />
+    <h1>prodby026b — مهندس شبکه و امنیت</h1>
+    <p class="lead">
+      طراحی و پیاده‌سازی شبکه‌های امن، تحلیل ترافیک و توسعه ابزارهای عملیاتی. مدارک: CompTIA Network+, Cisco CCNA و ELPIK 1.
+    </p>
 
-    <div class="title-block">
-      <h1>prodby026b — مهندس شبکه و امنیت</h1>
-    </div>
-  </div>
-
-  <p class="lead" style="margin-top:6px;margin-inline:20px 20px;">
-    من prodby026b هستم — طراحی و پیاده‌سازی شبکه‌های امن، تحلیل ترافیک و توسعه ابزارهای عملیاتی.
-    مدارک: CompTIA Network+, Cisco CCNA و ELPIK 1. در ادامه می‌توانید مدارک (تصاویر) را ببینید.
-  </p>
-
-  <main style="padding:12px 0 110px 0">
-    <section class="grid" aria-label="معرفی و خدمات" style="padding:0 20px;box-sizing:border-box">
+    <section class="grid">
       <div class="card">
         <h3>خدمات اصلی</h3>
-        <p>مشاوره معماری شبکه، طراحی و پیاده‌سازی VLAN/SDN، تست نفوذ شبکه، پیاده‌سازی فایروال و سیاست‌های امنیتی.</p>
-        <div class="buttons"><a class="btn primary" href="mailto:your-email@example.com">ارسال ایمیل</a></div>
+        <p>مشاوره معماری شبکه، طراحی VLAN/SDN، تست نفوذ، پیاده‌سازی فایروال و سیاست‌های امنیتی.</p>
       </div>
-
       <div class="card">
         <h3>مهارت‌ها</h3>
-        <p>شبکه (BGP, OSPF, VLAN)، امنیت شبکه، تحلیل ترافیک (Wireshark)، لینوکس و ابزارهای SOC.</p>
+        <p>شبکه (BGP, OSPF, VLAN)، امنیت، تحلیل ترافیک، لینوکس و ابزارهای SOC.</p>
       </div>
-
       <div class="card">
         <h3>گواهی‌ها</h3>
         <p>CompTIA Network+, Cisco CCNA، ELPIK 1</p>
       </div>
-
       <div class="card">
         <h3>لینک‌ها</h3>
         <p>github.com/prodby026b — t.me/PacketChaser026b</p>
       </div>
     </section>
-
-    <!-- Certificates section -->
-    <section class="certs-section" aria-label="گواهی‌ها">
-      <div class="card">
-        <h3>گواهی‌ها (تصاویر)</h3>
-        <p>اگر یک پوشه با نام مشخص داخل ریشهٔ مخزن (root) ایجاد کرده‌اید، تصاویر آنجا خوانده می‌شوند. نام پوشه کنونی در کد: <code style="color:var(--accent)">certificates-prodby026b</code></p>
-
-        <div id="certsContent">
-          <div class="cert-empty" id="certsLoading">در حال بررسی پوشهٔ مدارک در ریپو...</div>
-        </div>
-
-        <p style="margin-top:10px;font-size:0.9rem;opacity:0.9">
-          توضیح: نام هر تصویر زیر آن نوشته شده و روی عکس کلیک کنید تا نسخهٔ کامل در تب جدید باز شود.
-        </p>
-      </div>
-    </section>
   </main>
 
-  <footer role="contentinfo">
-    <div style="display:flex;gap:12px;align-items:center">
-      <div id="networkSimple">وضعیت شبکه: پایدار</div>
-      <div id="packetLog">گزارش بسته: فعال</div>
-    </div>
+  <footer>
+    <div>وضعیت شبکه: پایدار</div>
     <div>ساخته شده توسط prodby026b — © <span id="year"></span></div>
   </footer>
 
   <script>
-    // ==== CONFIGURE for your repo ====
     const GITHUB_OWNER = 'prodby026b';
     const GITHUB_REPO = 'prodby026b.github.io';
-    const GITHUB_BRANCH = 'main'; // change to 'master' if needed
-    const CERT_FOLDER_NAME = 'certificates-prodby026b'; // folder in repo root with images
-    const PROFILE_CANDIDATES = ['profile.jpg','profile.png','avatar.jpg','avatar.png','me.jpg','me.png','profile.webp'];
-    // ==================================
+    const GITHUB_BRANCH = 'main';
+    const PROFILE_FILENAME = 'myprofile.png';
 
     document.getElementById('year').textContent = new Date().getFullYear();
-    // network quick indicator
-    function updateNetwork(){ const online = navigator.onLine; document.getElementById('networkSimple').textContent = online ? 'وضعیت شبکه: آنلاین' : 'وضعیت شبکه: آفلاین'; }
-    window.addEventListener('online', updateNetwork); window.addEventListener('offline', updateNetwork); updateNetwork();
 
-    // --- Certificates loading ---
-    const certsContent = document.getElementById('certsContent');
-    const certsLoading = document.getElementById('certsLoading');
+    function updateNetwork() {
+      const online = navigator.onLine;
+      document.getElementById('networkStatus').textContent = online ? 'وضعیت شبکه: آنلاین' : 'وضعیت شبکه: آفلاین';
+    }
+    window.addEventListener('online', updateNetwork);
+    window.addEventListener('offline', updateNetwork);
+    updateNetwork();
 
-    function showCertsMessage(msg){ certsContent.innerHTML = '<div class="cert-empty">'+msg+'</div>'; }
-
-    async function loadCertsFromRepo(){
-      certsLoading.textContent = 'در حال بررسی پوشهٔ مدارک در ریپو...';
-      const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(CERT_FOLDER_NAME)}?ref=${encodeURIComponent(GITHUB_BRANCH)}`;
+    async function loadProfileImage() {
+      const api = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${PROFILE_FILENAME}?ref=${GITHUB_BRANCH}`;
       try {
-        const res = await fetch(apiUrl);
-        if (res.status === 404) {
-          showCertsMessage('پوشه‌ای با نام "'+CERT_FOLDER_NAME+'" در ریشهٔ مخزن پیدا نشد. برای نمایش مدارک، پوشه را بسازید و تصاویر را داخل آن آپلود کنید.');
-          return;
+        const res = await fetch(api);
+        if (!res.ok) return;
+        const json = await res.json();
+        if (json && json.download_url) {
+          const img = document.getElementById('profilePic');
+          img.src = json.download_url;
+          img.style.display = 'block';
         }
-        if (!res.ok) {
-          showCertsMessage('خطا هنگام دسترسی به GitHub API: ' + res.status + ' ' + res.statusText);
-          return;
-        }
-        const items = await res.json();
-        if (!Array.isArray(items) || items.length === 0) {
-          showCertsMessage('پوشه موجود است اما فایل تصویری در آن پیدا نشد. لطفاً فایل‌های PNG/JPG داخل پوشه قرار دهید.');
-          return;
-        }
-        const images = items.filter(i => i.type === 'file' && /\.(jpe?g|png|webp|gif)$/i.test(i.name));
-        if (images.length === 0) {
-          showCertsMessage('هیچ فایل تصویری با فرمت JPG/PNG/WebP/GIF در پوشه یافت نشد.');
-          return;
-        }
-        // Build grid
-        const grid = document.createElement('div');
-        grid.className = 'certs-grid';
-        images.forEach(imgItem => {
-          const itemWrap = document.createElement('div');
-          itemWrap.className = 'cert-item';
-
-          const card = document.createElement('div');
-          card.className = 'cert-card';
-          const img = document.createElement('img');
-          img.src = imgItem.download_url;
-          img.alt = imgItem.name;
-          card.appendChild(img);
-
-          // overlay caption inside card (semi-transparent)
-          const overlay = document.createElement('div');
-          overlay.className = 'overlay-caption';
-          overlay.textContent = imgItem.name;
-          card.appendChild(overlay);
-
-          // caption below (visible as text)
-          const caption = document.createElement('div');
-          caption.className = 'cert-caption';
-          caption.textContent = imgItem.name;
-
-          card.addEventListener('click', () => { window.open(imgItem.download_url, '_blank', 'noopener'); });
-
-          itemWrap.appendChild(card);
-          itemWrap.appendChild(caption);
-          grid.appendChild(itemWrap);
-        });
-        certsContent.innerHTML = '';
-        certsContent.appendChild(grid);
-      } catch (err) {
-        console.error(err);
-        showCertsMessage('خطا هنگام بارگذاری مدارک: ' + err.message);
+      } catch (e) {
+        console.warn('خطا در بارگذاری عکس پروفایل:', e);
       }
     }
-
-    // Try to load certificates on page load
-    loadCertsFromRepo();
-
-    // --- Profile image loader (tries multiple filenames at repo root) ---
-    const profilePicEl = document.getElementById('profilePic');
-    async function tryFetchProfile(){
-      const container = document.getElementById('profileContainer');
-      for (const name of PROFILE_CANDIDATES){
-        const api = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(name)}?ref=${encodeURIComponent(GITHUB_BRANCH)}`;
-        try {
-          const res = await fetch(api);
-          if (!res.ok) {
-            if (res.status === 404) continue; // try next candidate
-            // other errors: just continue
-            continue;
-          }
-          const json = await res.json();
-          if (json && json.download_url) {
-            profilePicEl.src = json.download_url;
-            profilePicEl.style.display = 'block';
-            profilePicEl.alt = name;
-            // stop on first found
-            return;
-          }
-        } catch(e){
-          console.warn('profile fetch failed for',name,e);
-          continue;
-        }
-      }
-      // not found: leave hidden (you can place a local placeholder if desired)
-    }
-    tryFetchProfile();
-
-    // make external links safe
-    document.querySelectorAll('a[target="_blank"]').forEach(a=>a.setAttribute('rel','noopener noreferrer'));
+    loadProfileImage();
   </script>
+
 </body>
 </html>
