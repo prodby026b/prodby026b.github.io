@@ -1,243 +1,241 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>prodby026b — شبکه و امنیت</title>
+  <title>prodby026b — شبکه، امنیت و مهندسی سیستم‌ها</title>
+  <meta name="description" content="سایت شخصی prodby026b — مهندس شبکه و امنیت. گواهی‌ها و اطلاعات تماس." />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     :root{
-      --accent: #00fff6;
-      --bg: #000;
-      --panel: rgba(0,0,0,0.7);
+      --accent:#00fff6;
+      --bg:#000;
+      --panel:rgba(0,0,0,0.7);
     }
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;padding:0;background:var(--bg);color:var(--accent);font-family:"Vazirmatn","Share Tech Mono",system-ui,sans-serif;direction:rtl}
     /* header + profile */
-    .header-wrap{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      max-width:980px;
-      width:100%;
-      padding:84px 20px 8px 20px;
-      box-sizing:border-box;
-      justify-content:flex-end;
-    }
+    .header-wrap{display:flex;align-items:center;gap:16px;max-width:980px;width:100%;padding:90px 20px 0 20px;box-sizing:border-box;justify-content:flex-end}
     .profile-pic{
-      width:110px;
-      height:110px;
-      border-radius:50%;
-      object-fit:cover;
-      border:3px solid var(--accent);
-      box-shadow:0 8px 26px rgba(0,255,246,0.06);
-      background:#071013;
-      display:block;
+      width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 6px 20px rgba(0,255,246,0.06);background:#071013;
     }
-    .profile-placeholder{
-      width:110px;
-      height:110px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border:3px dashed rgba(0,255,246,0.12);
-      color:var(--accent);
-      font-family:"Share Tech Mono",monospace;
-      font-size:0.9rem;
-      text-align:center;
-    }
-    .title-block{
-      background:var(--panel);
-      padding:10px 14px;
-      border-radius:10px;
-      border-right:3px solid var(--accent);
-      box-shadow:0 6px 22px rgba(0,255,246,0.06);
-    }
+    .title-block{background:var(--panel);padding:10px 14px;border-radius:10px;border-right:3px solid var(--accent);box-shadow:0 6px 22px rgba(0,255,246,0.06)}
     h1{margin:0;font-size:1.9rem;font-family:"Share Tech Mono",monospace}
-    .profile-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
-    .btn{
-      background:transparent;border:1px solid rgba(0,255,246,0.16);color:var(--accent);padding:6px 10px;border-radius:8px;text-decoration:none;font-family:"Share Tech Mono",monospace;cursor:pointer;
-    }
-    .btn.small{padding:6px 8px;font-size:0.9rem}
-    .hint{font-size:0.9rem;color:var(--accent);opacity:0.9;margin-top:8px}
-    @media (max-width:720px){
-      .header-wrap{padding:68px 12px 8px 12px}
-      .profile-pic{width:80px;height:80px}
-      .profile-placeholder{width:80px;height:80px;font-size:0.78rem}
-      h1{font-size:1.2rem}
-    }
+    p.lead{margin:8px 0 0 0;max-width:900px;line-height:1.8;font-size:1.02rem;color:var(--accent);opacity:0.95;background:var(--panel);padding:10px 14px;border-radius:8px;display:block;margin-inline:20px 20px}
+
+    /* grid & cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;width:100%;max-width:980px;margin:18px auto}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(0,255,246,0.12);padding:16px;border-radius:10px;box-shadow:0 10px 30px rgba(0,255,246,0.03);text-align:right}
+    .card h3{margin:0 0 8px 0;color:var(--accent);font-size:1.05rem}
+    .buttons{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+    .btn{background:transparent;border:1px solid rgba(0,255,246,0.16);color:var(--accent);padding:8px 12px;border-radius:8px;text-decoration:none;font-family:"Share Tech Mono",monospace}
+    .btn.primary{background:linear-gradient(90deg, rgba(0,255,246,0.06), rgba(0,255,246,0.02));border-color:rgba(0,255,246,0.28)}
+
+    /* certs gallery */
+    .certs-section{width:100%;max-width:980px;margin:10px auto;padding:0 20px;box-sizing:border-box}
+    .certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:12px}
+    .cert-item{display:flex;flex-direction:column;gap:6px}
+    .cert-card{position:relative;width:100%;padding-top:100%;background:#071013;border:1px solid rgba(0,255,246,0.08);border-radius:8px;overflow:hidden;cursor:pointer}
+    .cert-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .cert-caption{font-size:0.82rem;text-align:center;color:var(--accent);background:transparent;word-break:break-all;padding:2px 6px}
+
+    /* caption overlay alternative (if you prefer overlay) */
+    .cert-card .overlay-caption{position:absolute;left:0;right:0;bottom:0;padding:6px 8px;background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0.55));color:var(--accent);font-size:0.78rem;text-align:center}
+
+    footer{position:fixed;left:0;bottom:0;right:0;padding:10px 18px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));border-top:1px solid rgba(0,255,246,0.06);display:flex;justify-content:space-between;align-items:center;font-size:0.95rem;z-index:60}
+    @media (max-width:720px){.header-wrap{padding:78px 12px 0 12px}.profile-pic{width:72px;height:72px}.title-block h1{font-size:1.2rem}}
   </style>
 </head>
 <body>
 
-  <!-- Top status minimal -->
+  <!-- status bar (kept minimal) -->
   <div style="position:fixed;top:0;right:0;left:0;height:64px;background:linear-gradient(90deg,#040404 0%,#0f1113 100%);border-bottom:1px solid rgba(0,255,246,0.12);z-index:50;display:flex;align-items:center;padding:0 18px;">
     <div style="color:var(--accent);font-family:'Share Tech Mono',monospace">© prodby026b</div>
   </div>
 
-  <!-- Header with profile picture + controls -->
+  <!-- Header with profile picture (loaded from repo root if exists) -->
   <div class="header-wrap" role="banner" aria-label="هدر سایت">
-    <div style="display:flex;align-items:center;gap:12px;flex-direction:row-reverse;">
-      <!-- Profile display area -->
-      <div id="profileArea" style="display:flex;flex-direction:column;align-items:center;">
-        <!-- image or placeholder inserted by JS -->
-        <div id="profileInner"></div>
-        <div class="profile-actions" style="margin-top:8px;">
-          <label class="btn small" for="profileFileInput" title="بارگذاری تصویر از دستگاه">
-            آپلود عکس پروفایل
-          </label>
-          <button id="clearProfileBtn" class="btn small" title="حذف عکس محلی ذخیره‌شده">پاک کردن عکس محلی</button>
-        </div>
-      </div>
+    <div id="profileContainer" style="display:flex;align-items:center;gap:12px;justify-content:flex-end;">
+      <!-- profile image inserted here by JS if found -->
+      <img id="profilePic" class="profile-pic" src="" alt="عکس پروفایل" style="display:none" />
+    </div>
 
-      <div class="title-block" style="text-align:right;">
-        <h1>prodby026b — مهندس شبکه و امنیت</h1>
-        <div style="font-size:0.95rem;color:var(--accent);opacity:0.95;margin-top:6px">مدارک: Network+, CCNA, ELPIK 1</div>
-      </div>
+    <div class="title-block">
+      <h1>prodby026b — مهندس شبکه و امنیت</h1>
     </div>
   </div>
 
-  <!-- Hidden file input for local upload -->
-  <input id="profileFileInput" type="file" accept="image/*" style="display:none" aria-hidden="true" />
+  <p class="lead" style="margin-top:6px;margin-inline:20px 20px;">
+    من prodby026b هستم — طراحی و پیاده‌سازی شبکه‌های امن، تحلیل ترافیک و توسعه ابزارهای عملیاتی.
+    مدارک: CompTIA Network+, Cisco CCNA و ELPIK 1. در ادامه می‌توانید مدارک (تصاویر) را ببینید.
+  </p>
 
-  <main style="padding:20px;">
-    <!-- rest of your site content -->
-    <p style="color:var(--accent);max-width:980px;margin:140px auto 40px auto;padding:0 18px;">
-      اینجا محتوا قرار می‌گیرد. عکس پروفایل می‌تواند از ریشهٔ مخزن GitHub خوانده شود (اگر آن‌جا آپلود کنید)
-      یا از طریق دکمهٔ «آپلود عکس پروفایل» از سیستم شما بارگذاری و در مرورگر ذخیره شود.
-    </p>
+  <main style="padding:12px 0 110px 0">
+    <section class="grid" aria-label="معرفی و خدمات" style="padding:0 20px;box-sizing:border-box">
+      <div class="card">
+        <h3>خدمات اصلی</h3>
+        <p>مشاوره معماری شبکه، طراحی و پیاده‌سازی VLAN/SDN، تست نفوذ شبکه، پیاده‌سازی فایروال و سیاست‌های امنیتی.</p>
+        <div class="buttons"><a class="btn primary" href="mailto:your-email@example.com">ارسال ایمیل</a></div>
+      </div>
+
+      <div class="card">
+        <h3>مهارت‌ها</h3>
+        <p>شبکه (BGP, OSPF, VLAN)، امنیت شبکه، تحلیل ترافیک (Wireshark)، لینوکس و ابزارهای SOC.</p>
+      </div>
+
+      <div class="card">
+        <h3>گواهی‌ها</h3>
+        <p>CompTIA Network+, Cisco CCNA، ELPIK 1</p>
+      </div>
+
+      <div class="card">
+        <h3>لینک‌ها</h3>
+        <p>github.com/prodby026b — t.me/PacketChaser026b</p>
+      </div>
+    </section>
+
+    <!-- Certificates section -->
+    <section class="certs-section" aria-label="گواهی‌ها">
+      <div class="card">
+        <h3>گواهی‌ها (تصاویر)</h3>
+        <p>اگر یک پوشه با نام مشخص داخل ریشهٔ مخزن (root) ایجاد کرده‌اید، تصاویر آنجا خوانده می‌شوند. نام پوشه کنونی در کد: <code style="color:var(--accent)">certificates-prodby026b</code></p>
+
+        <div id="certsContent">
+          <div class="cert-empty" id="certsLoading">در حال بررسی پوشهٔ مدارک در ریپو...</div>
+        </div>
+
+        <p style="margin-top:10px;font-size:0.9rem;opacity:0.9">
+          توضیح: نام هر تصویر زیر آن نوشته شده و روی عکس کلیک کنید تا نسخهٔ کامل در تب جدید باز شود.
+        </p>
+      </div>
+    </section>
   </main>
 
+  <footer role="contentinfo">
+    <div style="display:flex;gap:12px;align-items:center">
+      <div id="networkSimple">وضعیت شبکه: پایدار</div>
+      <div id="packetLog">گزارش بسته: فعال</div>
+    </div>
+    <div>ساخته شده توسط prodby026b — © <span id="year"></span></div>
+  </footer>
+
   <script>
-    // ====== CONFIG (تنظیمات) ======
+    // ==== CONFIGURE for your repo ====
     const GITHUB_OWNER = 'prodby026b';
     const GITHUB_REPO = 'prodby026b.github.io';
-    const GITHUB_BRANCH = 'main'; // یا 'master' اگر شاخهٔ شما master است
-    // نام‌هایی که در ریشهٔ ریپو بررسی می‌کنیم (در صورت آپلود در GitHub)
-    const PROFILE_CANDIDATES = ['profile.jpg','profile.png','avatar.jpg','avatar.png','me.jpg','me.png','profile.webp','profile.jpeg'];
-    // کلید localStorage برای عکس آپلود شده توسط شما
-    const LOCAL_STORAGE_KEY = 'pb_profile_image_dataurl_v1';
-    // =================================
+    const GITHUB_BRANCH = 'main'; // change to 'master' if needed
+    const CERT_FOLDER_NAME = 'certificates-prodby026b'; // folder in repo root with images
+    const PROFILE_CANDIDATES = ['profile.jpg','profile.png','avatar.jpg','avatar.png','me.jpg','me.png','profile.webp'];
+    // ==================================
 
-    const profileInner = document.getElementById('profileInner');
-    const fileInput = document.getElementById('profileFileInput');
-    const clearBtn = document.getElementById('clearProfileBtn');
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // network quick indicator
+    function updateNetwork(){ const online = navigator.onLine; document.getElementById('networkSimple').textContent = online ? 'وضعیت شبکه: آنلاین' : 'وضعیت شبکه: آفلاین'; }
+    window.addEventListener('online', updateNetwork); window.addEventListener('offline', updateNetwork); updateNetwork();
 
-    // Render functions
-    function renderProfileFromUrl(url, filename){
-      profileInner.innerHTML = '';
-      const img = document.createElement('img');
-      img.className = 'profile-pic';
-      img.src = url;
-      img.alt = filename || 'عکس پروفایل';
-      img.loading = 'lazy';
-      profileInner.appendChild(img);
-    }
-    function renderPlaceholder(){
-      profileInner.innerHTML = '';
-      const ph = document.createElement('div');
-      ph.className = 'profile-placeholder';
-      ph.textContent = 'عکس پروفایل\nندارد';
-      profileInner.appendChild(ph);
-    }
+    // --- Certificates loading ---
+    const certsContent = document.getElementById('certsContent');
+    const certsLoading = document.getElementById('certsLoading');
 
-    // Try localStorage first (prefer user's uploaded local image)
-    function tryLoadLocalProfile(){
+    function showCertsMessage(msg){ certsContent.innerHTML = '<div class="cert-empty">'+msg+'</div>'; }
+
+    async function loadCertsFromRepo(){
+      certsLoading.textContent = 'در حال بررسی پوشهٔ مدارک در ریپو...';
+      const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(CERT_FOLDER_NAME)}?ref=${encodeURIComponent(GITHUB_BRANCH)}`;
       try {
-        const data = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (data) {
-          renderProfileFromUrl(data, 'عکس آپلودی محلی');
-          return true;
+        const res = await fetch(apiUrl);
+        if (res.status === 404) {
+          showCertsMessage('پوشه‌ای با نام "'+CERT_FOLDER_NAME+'" در ریشهٔ مخزن پیدا نشد. برای نمایش مدارک، پوشه را بسازید و تصاویر را داخل آن آپلود کنید.');
+          return;
         }
-      } catch(e){ console.warn('localStorage read error', e); }
-      return false;
+        if (!res.ok) {
+          showCertsMessage('خطا هنگام دسترسی به GitHub API: ' + res.status + ' ' + res.statusText);
+          return;
+        }
+        const items = await res.json();
+        if (!Array.isArray(items) || items.length === 0) {
+          showCertsMessage('پوشه موجود است اما فایل تصویری در آن پیدا نشد. لطفاً فایل‌های PNG/JPG داخل پوشه قرار دهید.');
+          return;
+        }
+        const images = items.filter(i => i.type === 'file' && /\.(jpe?g|png|webp|gif)$/i.test(i.name));
+        if (images.length === 0) {
+          showCertsMessage('هیچ فایل تصویری با فرمت JPG/PNG/WebP/GIF در پوشه یافت نشد.');
+          return;
+        }
+        // Build grid
+        const grid = document.createElement('div');
+        grid.className = 'certs-grid';
+        images.forEach(imgItem => {
+          const itemWrap = document.createElement('div');
+          itemWrap.className = 'cert-item';
+
+          const card = document.createElement('div');
+          card.className = 'cert-card';
+          const img = document.createElement('img');
+          img.src = imgItem.download_url;
+          img.alt = imgItem.name;
+          card.appendChild(img);
+
+          // overlay caption inside card (semi-transparent)
+          const overlay = document.createElement('div');
+          overlay.className = 'overlay-caption';
+          overlay.textContent = imgItem.name;
+          card.appendChild(overlay);
+
+          // caption below (visible as text)
+          const caption = document.createElement('div');
+          caption.className = 'cert-caption';
+          caption.textContent = imgItem.name;
+
+          card.addEventListener('click', () => { window.open(imgItem.download_url, '_blank', 'noopener'); });
+
+          itemWrap.appendChild(card);
+          itemWrap.appendChild(caption);
+          grid.appendChild(itemWrap);
+        });
+        certsContent.innerHTML = '';
+        certsContent.appendChild(grid);
+      } catch (err) {
+        console.error(err);
+        showCertsMessage('خطا هنگام بارگذاری مدارک: ' + err.message);
+      }
     }
 
-    // Fetch profile candidates from repo root via GitHub Contents API
-    async function tryFetchProfileFromRepo(){
-      for (const name of PROFILE_CANDIDATES) {
+    // Try to load certificates on page load
+    loadCertsFromRepo();
+
+    // --- Profile image loader (tries multiple filenames at repo root) ---
+    const profilePicEl = document.getElementById('profilePic');
+    async function tryFetchProfile(){
+      const container = document.getElementById('profileContainer');
+      for (const name of PROFILE_CANDIDATES){
         const api = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(name)}?ref=${encodeURIComponent(GITHUB_BRANCH)}`;
         try {
           const res = await fetch(api);
           if (!res.ok) {
-            if (res.status === 404) continue;
-            // for other errors continue to next candidate
+            if (res.status === 404) continue; // try next candidate
+            // other errors: just continue
             continue;
           }
           const json = await res.json();
           if (json && json.download_url) {
-            renderProfileFromUrl(json.download_url, name);
-            return true;
+            profilePicEl.src = json.download_url;
+            profilePicEl.style.display = 'block';
+            profilePicEl.alt = name;
+            // stop on first found
+            return;
           }
-        } catch (e) {
-          console.warn('fetch profile error for', name, e);
+        } catch(e){
+          console.warn('profile fetch failed for',name,e);
           continue;
         }
       }
-      return false;
+      // not found: leave hidden (you can place a local placeholder if desired)
     }
+    tryFetchProfile();
 
-    // Initialize: priority => localStorage (user upload) > repo file > placeholder
-    (async function initProfile(){
-      // If local exists, use it
-      const gotLocal = tryLoadLocalProfile();
-      if (gotLocal) return;
-
-      // otherwise try repo
-      const gotRepo = await tryFetchProfileFromRepo();
-      if (gotRepo) return;
-
-      // fallback
-      renderPlaceholder();
-    })();
-
-    // Handle local upload
-    fileInput.addEventListener('change', async function(e){
-      const file = fileInput.files && fileInput.files[0];
-      if (!file) return;
-      // basic validation: image and reasonable size (e.g., < 5MB)
-      if (!file.type.startsWith('image/')) {
-        alert('لطفاً یک فایل تصویری انتخاب کنید.');
-        return;
-      }
-      if (file.size > 8 * 1024 * 1024) {
-        if (!confirm('فایل بزرگتر از 8MB است. ادامه می‌دهید؟')) return;
-      }
-      const reader = new FileReader();
-      reader.onload = function(evt){
-        const dataUrl = evt.target.result;
-        try {
-          localStorage.setItem(LOCAL_STORAGE_KEY, dataUrl);
-        } catch(err){
-          console.warn('Cannot save image in localStorage:', err);
-          alert('ذخیره‌سازی محلی ممکن نیست (حافظهٔ مرورگر پر یا تنظیمات محدود). تصویر فقط برای همین جلسه نمایش داده می‌شود.');
-        }
-        renderProfileFromUrl(dataUrl, file.name);
-      };
-      reader.readAsDataURL(file);
-    });
-
-    // Clear local profile
-    clearBtn.addEventListener('click', function(){
-      if (!confirm('آیا مطمئن هستید که می‌خواهید عکس پروفایل ذخیره‌شده محلی را پاک کنید؟')) return;
-      try {
-        localStorage.removeItem(LOCAL_STORAGE_KEY);
-        // After clearing, try to load from repo; if not present, show placeholder
-        (async function(){
-          const gotRepo = await tryFetchProfileFromRepo();
-          if (!gotRepo) renderPlaceholder();
-        })();
-      } catch(e){
-        console.warn('clear localStorage failed', e);
-        alert('پاک‌سازی انجام نشد.');
-      }
-    });
-
-    // Accessibility: allow label click to open file chooser
-    // (label already wired via for="profileFileInput")
-
+    // make external links safe
+    document.querySelectorAll('a[target="_blank"]').forEach(a=>a.setAttribute('rel','noopener noreferrer'));
   </script>
 </body>
 </html>
