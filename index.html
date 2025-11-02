@@ -1,176 +1,130 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>prodby026b — شبکه، امنیت و مهندسی سیستم‌ها</title>
-  <meta name="description" content="سایت شخصی prodby026b — مهندس شبکه و امنیت، طراحی و پیاده‌سازی شبکه‌های امن و بهینه برای سامانه‌های پیشرفته." />
-  <meta property="og:title" content="prodby026b — مهندس شبکه و امنیت" />
-  <meta property="og:description" content="طراحی، پیاده‌سازی و امن‌سازی شبکه‌ها، تحلیل ترافیک و توسعه ابزارهای عملیاتی." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="سایت شخصی prodby026b — مهندس شبکه و امنیت، طراحی و پیاده‌سازی شبکه‌های امن و بهینه." />
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --accent: #00fff6;
-      --bg: #000;
-      --panel: rgba(0,0,0,0.7);
+    :root{
+      --accent:#00fff6;
+      --bg:#000;
+      --panel:rgba(0,0,0,0.7);
     }
-    * { box-sizing: border-box }
-    html, body {
-      margin: 0; padding: 0;
-      background: var(--bg);
-      color: var(--accent);
-      font-family: "Vazirmatn", "Share Tech Mono", system-ui, sans-serif;
-      direction: rtl;
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;padding:0;background:var(--bg);color:var(--accent);font-family:"Vazirmatn","Share Tech Mono",system-ui,sans-serif;direction:rtl}
+    /* top status */
+    .status-bar{
+      position:fixed;top:0;left:0;right:0;height:70px;
+      background: linear-gradient(90deg,#060606 0%, #16181b 60%, #101820 100%);
+      display:flex;align-items:center;justify-content:space-between;padding:8px 18px;z-index:100;
+      border-bottom:2px solid rgba(0,255,246,0.12);box-shadow:0 0 18px rgba(0,255,246,0.06);
+      font-family:"Share Tech Mono",monospace;
     }
-    .status-bar {
-      position: fixed;
-      top: 0; right: 0; left: 0;
-      height: 64px;
-      background: linear-gradient(90deg,#040404 0%, #0f1113 100%);
-      border-bottom: 1px solid rgba(0,255,246,0.18);
-      display: flex;
-      align-items: center;
-      padding: 0 18px;
-      z-index: 50;
-      font-family: "Share Tech Mono", monospace;
-      font-size: 0.95rem;
+    .status-left{display:flex;align-items:center;gap:12px}
+    .status-right{font-size:0.95rem}
+    /* profile circle (top-right due to rtl) */
+    .profile-wrapper{display:flex;align-items:center;gap:12px}
+    .profile-pic{
+      width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);background:#071013;display:none;
+      box-shadow:0 8px 26px rgba(0,255,246,0.06);
     }
-    .wrap {
-      padding: 90px 20px 120px 20px;
-      max-width: 980px;
-      margin: auto;
+    .profile-placeholder{
+      width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      border:3px dashed rgba(0,255,246,0.12);color:var(--accent);font-family:"Share Tech Mono",monospace;font-size:0.85rem;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
     }
-    .profile-pic {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      box-shadow: 0 6px 20px rgba(0,255,246,0.06);
-      background: #071013;
-      display: none;
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: 2.2rem;
-      background: var(--panel);
-      padding: 12px 18px;
-      border-radius: 10px;
-      border-right: 3px solid var(--accent);
-      box-shadow: 0 6px 22px rgba(0,255,246,0.06);
-      font-family: "Share Tech Mono", monospace;
-    }
-    p.lead {
-      margin-top: 12px;
-      background: var(--panel);
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 1.05rem;
-      line-height: 1.8;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap: 18px;
-      margin-top: 20px;
-    }
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(0,255,246,0.12);
-      padding: 16px;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,255,246,0.03);
-    }
-    .card h3 { margin: 0 0 8px 0; font-size: 1.05rem }
-    .card p { margin: 0; font-size: 0.96rem; line-height: 1.6 }
-    footer {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      padding: 10px 18px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0));
-      border-top: 1px solid rgba(0,255,246,0.06);
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.95rem;
-      z-index: 60;
+
+    /* main */
+    .wrap{padding-top:110px;display:flex;flex-direction:column;align-items:center;gap:18px}
+    h1{font-family:"Share Tech Mono",monospace;font-size:2.6rem;margin:0;background:var(--panel);padding:12px 18px;border-radius:10px;border-right:3px solid var(--accent)}
+    .card-container{margin-top:20px;display:flex;flex-direction:column;gap:16px;width:90vw;max-width:640px}
+    .card{background:var(--panel);border:1px solid rgba(0,255,246,0.12);padding:14px;border-radius:10px}
+    footer{position:fixed;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);backdrop-filter:blur(4px);padding:8px 12px;border-top:1px solid rgba(0,255,246,0.08);display:flex;justify-content:space-between;color:var(--accent)}
+    @media (max-width:720px){
+      .profile-pic,.profile-placeholder{width:66px;height:66px}
+      .status-bar{height:56px;padding:6px 12px}
+      h1{font-size:1.4rem;padding:8px}
+      .wrap{padding-top:86px}
     }
   </style>
 </head>
 <body>
 
-  <div class="status-bar">
-    <div id="networkStatus">وضعیت شبکه: بررسی...</div>
-    <div style="flex:1"></div>
-    <div>© prodby026b</div>
+  <div class="status-bar" role="banner" aria-label="نوار وضعیت بالا">
+    <div class="status-left">
+      <div style="font-family:'Share Tech Mono',monospace;font-size:0.98rem;">prodby026b</div>
+      <div style="font-size:0.9rem;opacity:0.9">مهندس شبکه و امنیت</div>
+    </div>
+
+    <div class="profile-wrapper" aria-hidden="false">
+      <!-- Profile image will appear here if a file with specific name exists in repo root -->
+      <img id="profilePic" class="profile-pic" src="" alt="عکس پروفایل">
+      <div id="profilePlaceholder" class="profile-placeholder">عکس پروفایل<br>ندارد</div>
+    </div>
   </div>
 
-  <main class="wrap">
-    <img id="profilePic" class="profile-pic" alt="عکس پروفایل" />
-    <h1>prodby026b — مهندس شبکه و امنیت</h1>
-    <p class="lead">
-      طراحی و پیاده‌سازی شبکه‌های امن، تحلیل ترافیک و توسعه ابزارهای عملیاتی. مدارک: CompTIA Network+, Cisco CCNA و ELPIK 1.
-    </p>
+  <main class="wrap" role="main" aria-label="محتوای اصلی">
+    <h1>شبکه، امنیت و مهندسی سیستم‌ها</h1>
 
-    <section class="grid">
+    <div class="card-container">
       <div class="card">
-        <h3>خدمات اصلی</h3>
-        <p>مشاوره معماری شبکه، طراحی VLAN/SDN، تست نفوذ، پیاده‌سازی فایروال و سیاست‌های امنیتی.</p>
+        <strong>درباره من:</strong>
+        <p>prodby026b — طراحی و پیاده‌سازی شبکه‌های امن، تحلیل ترافیک. مدارک: Network+, CCNA, ELPIK 1.</p>
       </div>
+
       <div class="card">
-        <h3>مهارت‌ها</h3>
-        <p>شبکه (BGP, OSPF, VLAN)، امنیت، تحلیل ترافیک، لینوکس و ابزارهای SOC.</p>
+        <strong>ارتباط:</strong>
+        <p>ایمیل: your-email@example.com — تلگرام: t.me/PacketChaser026b</p>
       </div>
-      <div class="card">
-        <h3>گواهی‌ها</h3>
-        <p>CompTIA Network+, Cisco CCNA، ELPIK 1</p>
-      </div>
-      <div class="card">
-        <h3>لینک‌ها</h3>
-        <p>github.com/prodby026b — t.me/PacketChaser026b</p>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <footer>
-    <div>وضعیت شبکه: پایدار</div>
-    <div>ساخته شده توسط prodby026b — © <span id="year"></span></div>
+  <footer role="contentinfo">
+    <div>Network: stable</div>
+    <div>© prodby026b</div>
   </footer>
 
   <script>
+    /*
+      ساده‌ترین روش: یک فایل با نام مشخص (مثلاً profile.jpg) در ریشهٔ مخزن
+      prodby026b/prodby026b.github.io آپلود کن تا اینجا به‌صورت دایره‌ای نمایش داده شود.
+
+      اگر می‌خواهی اسم فایل را تغییر دهی، مقدار PROFILE_FILENAME را در پایین تغییر بده.
+    */
+
     const GITHUB_OWNER = 'prodby026b';
     const GITHUB_REPO = 'prodby026b.github.io';
-    const GITHUB_BRANCH = 'main';
-    const PROFILE_FILENAME = 'myprofile.png';
+    const GITHUB_BRANCH = 'main'; // اگر شاخهٔ شما master است این را به 'master' تغییر بده
+    const PROFILE_FILENAME = 'profile.jpg'; // <-- اسم فایل مخصوص که در ریشهٔ ریپو آپلود می‌کنی
 
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const profilePic = document.getElementById('profilePic');
+    const placeholder = document.getElementById('profilePlaceholder');
 
-    function updateNetwork() {
-      const online = navigator.onLine;
-      document.getElementById('networkStatus').textContent = online ? 'وضعیت شبکه: آنلاین' : 'وضعیت شبکه: آفلاین';
-    }
-    window.addEventListener('online', updateNetwork);
-    window.addEventListener('offline', updateNetwork);
-    updateNetwork();
-
-    async function loadProfileImage() {
-      const api = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${PROFILE_FILENAME}?ref=${GITHUB_BRANCH}`;
+    async function loadProfileFromRepo(){
+      const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${encodeURIComponent(PROFILE_FILENAME)}?ref=${encodeURIComponent(GITHUB_BRANCH)}`;
       try {
-        const res = await fetch(api);
-        if (!res.ok) return;
+        const res = await fetch(apiUrl);
+        if (!res.ok) {
+          // file not found or other error -> keep placeholder visible
+          console.warn('profile fetch status', res.status);
+          return;
+        }
         const json = await res.json();
         if (json && json.download_url) {
-          const img = document.getElementById('profilePic');
-          img.src = json.download_url;
-          img.style.display = 'block';
+          profilePic.src = json.download_url;
+          profilePic.alt = PROFILE_FILENAME;
+          profilePic.style.display = 'block';
+          placeholder.style.display = 'none';
         }
-      } catch (e) {
-        console.warn('خطا در بارگذاری عکس پروفایل:', e);
+      } catch (err) {
+        console.error('Error fetching profile image from repo:', err);
       }
     }
-    loadProfileImage();
-  </script>
 
+    // Run on load
+    loadProfileFromRepo();
+  </script>
 </body>
 </html>
