@@ -3,9 +3,131 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>نمونه‌سازان سد عمران — کاتالوگ محصولات</title>
-  <meta name="description" content="شرکت نمونه‌سازان سد عمران - تولید قطعات بتنی پیش‌ساخته، نیوجرسی، بلوک، جدول، آبراه و شن و ماسه استاندارد. دارای گواهی معتبر مرکز تحقیقات راه، مسکن و شهرسازی." />
-  <link rel="stylesheet" href="style.css" />
+  <title>نمونه‌سازان سد عمران</title>
+  <meta name="description" content="تولید قطعات بتنی پیش‌ساخته: نیوجرسی، بلوک، جدول، آبراه و شن و ماسه استاندارد. دارای گواهی معتبر از مرکز تحقیقات راه، مسکن و شهرسازی." />
+  <style>
+    :root{
+      --bg:#f5f6f7;
+      --text:#222;
+      --muted:#6d6d6d;
+      --primary:#3a5160;         /* blue-gray */
+      --accent:#f39c12;          /* orange */
+      --container:1200px;
+      --radius:12px;
+      --gap:1rem;
+      --shadow:0 10px 30px rgba(58,81,96,0.12);
+      --font:"Segoe UI", Tahoma, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;direction:rtl}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--container);margin:0 auto;padding:1rem}
+
+    /* Header */
+    .site-header{background:#fff;border-bottom:1px solid #e6e6e6;position:sticky;top:0;z-index:100}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--text)}
+    .logo{height:48px}
+    .brand-name{font-weight:700}
+    .nav{display:flex;gap:.75rem}
+    .nav a{text-decoration:none;color:var(--text);padding:.45rem .65rem;border-radius:8px}
+    .nav a:hover{background:rgba(58,81,96,0.06)}
+    .cta{background:var(--accent);color:#fff;padding:.5rem .9rem;border-radius:8px;text-decoration:none;font-weight:700}
+
+    /* Cards */
+    .card{
+      background:#fff;border-radius:var(--radius);padding:1.2rem;margin:1rem 0;box-shadow:var(--shadow);
+    }
+    .card-header{padding-top:1rem}
+    .card-sm{background:#fff;border-radius:10px;padding:1rem;box-shadow:0 6px 18px rgba(58,81,96,0.10)}
+
+    /* Hero */
+    .hero{padding:2rem 0;background:linear-gradient(180deg,rgba(58,81,96,0.07),transparent)}
+    .hero-card{padding:1.2rem}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1rem;align-items:center}
+    .hero-content h1{margin:0 0 .4rem;font-size:2rem;color:#1f2c35}
+    .lead{color:var(--muted);margin:.6rem 0}
+    .tag{font-size:.95rem;color:var(--primary);font-weight:600}
+    .hero-actions{margin-top:.8rem;display:flex;gap:.6rem}
+    .kpis{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem}
+    .kpi{background:#fff;border:1px dashed #e6e6e6;border-radius:10px;padding:.5rem .7rem}
+    .hero-media img{width:100%;height:320px;object-fit:cover;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+
+    /* Buttons */
+    .btn{display:inline-block;padding:.6rem 1rem;border-radius:8px;text-decoration:none;font-weight:700;transition:transform .15s ease, box-shadow .15s ease}
+    .btn.primary{background:var(--primary);color:#fff}
+    .btn.accent{background:var(--accent);color:#fff}
+    .btn.outline{background:transparent;border:1px solid rgba(58,81,96,0.20);color:var(--primary)}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.10)}
+
+    /* Sections */
+    section{padding:1rem 0}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+    .muted{color:var(--muted)}
+
+    /* Products */
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:.4rem}
+    .product img{width:100%;height:180px;object-fit:cover;border-radius:10px}
+    .product-body h3{margin:.6rem 0;color:#1f2c35}
+    .specs{list-style:none;padding:0;margin:.4rem 0}
+    .specs li{margin:.2rem 0;color:#444}
+    .product-actions{display:flex;gap:.5rem;margin-top:.6rem}
+    .hover-zoom:hover img{transform:scale(1.02);transition:transform .2s ease}
+
+    /* Certificate */
+    .glass{backdrop-filter:saturate(140%) blur(6px);background:rgba(255,255,255,0.8)}
+    .cert-meta{display:flex;gap:1rem;flex-wrap:wrap;margin:.6rem 0}
+    .meta-item{background:#fff;border:1px dashed #e6e6e6;border-radius:8px;padding:.4rem .6rem}
+    .cert-table{width:100%;border-collapse:collapse;margin-top:.6rem}
+    .cert-table th,.cert-table td{border:1px solid #e6e6e6;padding:.5rem;text-align:center}
+    .cert-table thead th{background:#f1f3f5;color:#1f2c35}
+    .actions{margin-top:.8rem}
+
+    /* Quality */
+    .quality-list{list-style:none;padding:0;margin:.2rem 0}
+    .quality-list li{margin:.3rem 0;color:#333}
+    .progress{margin-top:.6rem;background:#f0f2f4;border-radius:10px;overflow:hidden}
+    .bar{background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;padding:.35rem .6rem;font-size:.9rem}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.8rem;margin:.8rem 0}
+    .contact-card h4{margin:.2rem 0;color:#1f2c35}
+    .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.8rem}
+    .contact-form input,.contact-form textarea{
+      width:100%; padding:.6rem .7rem; border:1px solid #ddd; border-radius:10px; background:#fff;
+    }
+    .contact-form textarea{grid-column:1 / -1; min-height:120px; resize:vertical}
+    .map iframe{width:100%;height:260px;border:0;border-radius:10px}
+
+    /* Footer */
+    .site-footer{background:#212a31;color:#dfe6eb;margin-top:1rem}
+    .footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;padding:1rem 0}
+    .footer-links a,.footer-social a{color:#f7b24d;text-decoration:none;margin:0 .25rem}
+    .footer-links a:hover,.footer-social a:hover{opacity:.85}
+    .copy{text-align:center;border-top:1px solid rgba(255,255,255,.06);padding:.8rem 0}
+    .scroll-top{
+      position:fixed;bottom:18px;left:18px;background:var(--accent);color:#fff;border:none;border-radius:50%;
+      width:40px;height:40px;cursor:pointer;box-shadow:0 8px 22px rgba(243,156,18,.35);
+    }
+
+    /* Effects */
+    .fade-in{animation:fadeIn .5s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr}
+      .contact-form{grid-template-columns:1fr}
+      .footer-inner{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .nav{display:none}
+      .logo{height:42px}
+      .hero-media img{height:220px}
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -13,143 +135,279 @@
     <div class="container header-inner">
       <a class="brand" href="#">
         <img src="images/logo.png" alt="لوگو شرکت" class="logo">
+        <span class="brand-name">نمونه‌سازان سد عمران</span>
       </a>
       <nav class="nav">
         <a href="#about">درباره</a>
         <a href="#products">محصولات</a>
         <a href="#certificate">گواهی‌ها</a>
-        <a href="#quality">خط مشی کیفیت</a>
+        <a href="#quality">خط مشی</a>
         <a href="#contact">تماس</a>
       </nav>
       <a class="cta" href="#contact">درخواست پیش‌فاکتور</a>
     </div>
   </header>
 
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-media">
-          <img src="images/factory.jpg" alt="نمای کارخانه" loading="lazy">
-        </div>
-        <div class="hero-content">
-          <h1>شرکت نمونه‌سازان سد عمران</h1>
-          <p class="lead">تولید و توزیع قطعات بتنی پیش‌ساخته و مصالح استاندارد — نیوجرسی، جدول، بلوک، آبراه و انواع شن و ماسه.</p>
-          <p class="tag">دارای تمامی استانداردهای ملی و گواهی معتبر از مرکز تحقیقات راه، مسکن و شهرسازی</p>
-          <div class="hero-actions">
-            <a class="btn primary" href="#products">مشاهده محصولات</a>
-            <a class="btn outline" href="#contact">تماس با ما</a>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card card fade-in">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <h1>نمونه‌سازان سد عمران</h1>
+            <p class="lead">نیوجرسی، بلوک، جدول، آبراه و انواع شن و ماسه — تولید استاندارد با کنترل کیفی مداوم.</p>
+            <p class="tag">دارای گواهی معتبر مرکز تحقیقات راه، مسکن و شهرسازی</p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#products">مشاهده محصولات</a>
+              <a class="btn accent" href="#contact">تماس و سفارش</a>
+            </div>
+            <div class="kpis">
+              <div class="kpi"><strong>۲۰+</strong><span>سال تجربه</span></div>
+              <div class="kpi"><strong>۱۰۰٪</strong><span>مطابق استاندارد</span></div>
+            </div>
+          </div>
+          <div class="hero-media">
+            <img src="images/factory.jpg" alt="نمای کارخانه" loading="lazy">
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- About -->
-    <section id="about" class="about">
-      <div class="container">
-        <h2>درباره ما</h2>
-        <p>کارخانه نمونه‌سازان سد عمران در حوزه تولید و توزیع قطعات بتنی پیش‌ساخته و مصالح بتنی همچنین پروژه‌های بزرگ عمرانی و راهسازی فعالیت دارد. تولید با مواد اولیه درجه‌یک و دقت در فرآیند ساخت انجام می‌شود.</p>
+  <!-- About -->
+  <section id="about">
+    <div class="container">
+      <div class="card fade-in">
+        <h2>درباره شرکت</h2>
+        <p>شرکت نمونه‌سازان سد عمران تولیدکننده و توزیع‌کننده قطعات بتنی پیش‌ساخته و مصالح استاندارد برای پروژه‌های راهسازی، شهری و صنعتی است. تولید با مواد اولیه درجه‌یک، دستگاه‌های پرس صنعتی و کنترل کیفیت منظم انجام می‌شود.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Products -->
-    <section id="products" class="products">
-      <div class="container">
-        <h2>محصولات</h2>
+  <!-- Products -->
+  <section id="products">
+    <div class="container">
+      <div class="card card-header fade-in">
+        <div class="section-head">
+          <h2>محصولات</h2>
+          <p class="muted">کاتالوگ محصولات منتخب؛ همه تصاویر و نقشه‌ها با سایز وب بهینه شده‌اند.</p>
+        </div>
         <div class="product-grid">
-          <article class="card">
-            <img src="images/jersey/jersey-400.jpg" alt="نیوجرسی 400×100×70">
-            <h3>نیوجرسی 400×100×70</h3>
-            <p>وزن ۵۰۰۰ کیلوگرم • ارتفاع ۱۰۰ سانتی‌متر • طول ۴۰۰ سانتی‌متر • عرض پایه ۷۰ سانتی‌متر</p>
+          <!-- Jersey 400 -->
+          <article class="card product hover-zoom">
+            <img src="images/jersey/jersey-400.jpg" alt="نیوجرسی 400×100×70" loading="lazy">
+            <div class="product-body">
+              <h3>نیوجرسی 400×100×70</h3>
+              <ul class="specs">
+                <li><strong>وزن:</strong> ۵۰۰۰ کیلوگرم</li>
+                <li><strong>ارتفاع:</strong> ۱۰۰ سانتی‌متر</li>
+                <li><strong>طول:</strong> ۴۰۰ سانتی‌متر</li>
+                <li><strong>عرض پایه:</strong> ۷۰ سانتی‌متر</li>
+              </ul>
+              <div class="product-actions">
+                <a class="btn outline" href="images/jersey/drawings/drawing-front.png">نقشه فنی</a>
+                <a class="btn accent" href="#contact">استعلام قیمت</a>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <img src="images/jersey/jersey-600.jpg" alt="نیوجرسی 600×100×70">
-            <h3>نیوجرسی 600×100×70</h3>
-            <p>وزن ۳۰۰۰ کیلوگرم • ارتفاع ۱۰۰ سانتی‌متر • طول ۶۰۰ سانتی‌متر • عرض پایه ۷۰ سانتی‌متر</p>
+          <!-- Jersey 600 -->
+          <article class="card product hover-zoom">
+            <img src="images/jersey/jersey-600.jpg" alt="نیوجرسی 600×100×70" loading="lazy">
+            <div class="product-body">
+              <h3>نیوجرسی 600×100×70</h3>
+              <ul class="specs">
+                <li><strong>وزن:</strong> ۳۰۰۰ کیلوگرم</li>
+                <li><strong>ارتفاع:</strong> ۱۰۰ سانتی‌متر</li>
+                <li><strong>طول:</strong> ۶۰۰ سانتی‌متر</li>
+                <li><strong>عرض پایه:</strong> ۷۰ سانتی‌متر</li>
+              </ul>
+              <div class="product-actions">
+                <a class="btn outline" href="images/jersey/drawings/drawing-detail.png">نقشه جزئیات</a>
+                <a class="btn accent" href="#contact">استعلام قیمت</a>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <img src="images/blocks/block.jpg" alt="بلوک سیمانی">
-            <h3>بلوک سیمانی</h3>
-            <p>ابعاد متنوع (۲۰×۲۰×۷، ۲۰×۲۰×۱۰، ۲۰×۲۰×۱۵، ۲۰×۲۰×۲۰) • دوجداره و سه‌جداره</p>
+          <!-- Blocks -->
+          <article class="card product hover-zoom">
+            <img src="images/blocks/block.jpg" alt="بلوک سیمانی" loading="lazy">
+            <div class="product-body">
+              <h3>بلوک سیمانی</h3>
+              <p class="muted">ابعاد: ۲۰×۲۰×۷، ۲۰×۲۰×۱۰، ۲۰×۲۰×۱۵، ۲۰×۲۰×۲۰ — دوجداره و سه‌جداره</p>
+              <div class="product-actions">
+                <a class="btn accent" href="#contact">استعلام قیمت</a>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <img src="images/curbstones/curbstone-50x30.jpg" alt="جدول 50×30×15">
-            <h3>جدول 50×30×15</h3>
-            <p>جدول بتنی مخصوص معابر شهری با پرداخت مناسب و ابعاد دقیق.</p>
+          <!-- Curbstone 50x30 -->
+          <article class="card product hover-zoom">
+            <img src="images/curbstones/curbstone-50x30.jpg" alt="جدول 50×30×15" loading="lazy">
+            <div class="product-body">
+              <h3>جدول 50×30×15</h3>
+              <p class="muted">پرداخت دقیق؛ مناسب معابر شهری.</p>
+              <div class="product-actions">
+                <a class="btn accent" href="#contact">استعلام قیمت</a>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <img src="images/curbstones/curbstone-50x40.jpg" alt="جدول 50×40×15">
-            <h3>جدول 50×40×15</h3>
-            <p>جدول بزرگ‌تر برای مدیریت زهکشی.</p>
+          <!-- Curbstone 50x40 -->
+          <article class="card product hover-zoom">
+            <img src="images/curbstones/curbstone-50x40.jpg" alt="جدول 50×40×15" loading="lazy">
+            <div class="product-body">
+              <h3>جدول 50×40×15</h3>
+              <p class="muted">ابعاد بزرگ‌تر برای مدیریت زهکشی.</p>
+              <div class="product-actions">
+                <a class="btn accent" href="#contact">استعلام قیمت</a>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <img src="images/half-ditch.jpg" alt="آبراه بتنی">
-            <h3>آبراه بتنی (نیم‌جوی)</h3>
-            <p>قطعات پیش‌ساخته آبراه برای هدایت آب و مدیریت رواناب.</p>
+          <!-- Half-ditch -->
+          <article class="card product hover-zoom">
+            <img src="images/half-ditch.jpg" alt="آبراه بتنی نیم‌جوی" loading="lazy">
+            <div class="product-body">
+              <h3>آبراه بتنی (نیم‌جوی)</h3>
+              <p class="muted">قطعات پیش‌ساخته برای هدایت آب و رواناب.</p>
+              <div class="product-actions">
+                <a class="btn accent" href="#contact">استعلام قیمت</a>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <img src="images/sands/sand-mix.jpg" alt="مخلوط شن و ماسه">
-            <h3>مخلوط شن و ماسه</h3>
+          <!-- Sands -->
+          <article class="card product hover-zoom">
+            <img src="images/sands/sand-mix.jpg" alt="مخلوط شن و ماسه" loading="lazy">
+            <div class="product-body">
+              <h3>مخلوط شن و ماسه</h3>
+              <div class="product-actions">
+                <a class="btn accent" href="#contact">استعلام قیمت</a>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <img src="images/sands/sand-washed.jpg" alt="ماسه شسته">
-            <h3>ماسه شسته</h3>
+          <article class="card product hover-zoom">
+            <img src="images/sands/sand-washed.jpg" alt="ماسه شسته" loading="lazy">
+            <div class="product-body">
+              <h3>ماسه شسته</h3>
+              <div class="product-actions">
+                <a class="btn accent" href="#contact">استعلام قیمت</a>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <img src="images/sands/sand-crushed.jpg" alt="ماسه شکسته">
-            <h3>ماسه شکسته</h3>
+          <article class="card product hover-zoom">
+            <img src="images/sands/sand-crushed.jpg" alt="ماسه شکسته" loading="lazy">
+            <div class="product-body">
+              <h3>ماسه شکسته</h3>
+              <div class="product-actions">
+                <a class="btn accent" href="#contact">استعلام قیمت</a>
+              </div>
+            </div>
           </article>
-          <article class="card">
-            <img src="images/sands/base.jpg" alt="بیس استاندارد">
-            <h3>بیس استاندارد</h3>
+          <article class="card product hover-zoom">
+            <img src="images/sands/base.jpg" alt="بیس استاندارد" loading="lazy">
+            <div class="product-body">
+              <h3>بیس استاندارد</h3>
+              <div class="product-actions">
+                <a class="btn accent" href="#contact">استعلام قیمت</a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Certificate -->
-    <section id="certificate" class="certificate">
-      <div class="container">
-        <h2>گواهی‌ها</h2>
-        <img src="images/cert-cover.jpg" alt="گواهی معتبر" class="cert-img">
-        <p>دارای گواهی معتبر از مرکز تحقیقات راه، مسکن و شهرسازی برای حفاظ بتنی مفصلی (نیوجرسی).</p>
-        <table>
-          <tr>
-            <th>شرایط محیطی</th>
-            <th>Mi</th>
-            <th>CI</th>
-            <th>FT</th>
-          </tr>
-          <tr>
-            <td>قابلیت تأمین</td>
-            <td>✓</td>
-            <td>×</td>
-            <td>×</td>
-          </tr>
+  <!-- Certificate -->
+  <section id="certificate">
+    <div class="container">
+      <div class="card glass fade-in">
+        <h2>گواهی معتبر</h2>
+        <p>اعطا شده توسط مرکز تحقیقات راه، مسکن و شهرسازی — مطابق ضوابط فنی مصوب و نقشه‌های تفصیلی.</p>
+        <div class="cert-meta">
+          <div class="meta-item"><strong>شماره:</strong> 04 25 18484</div>
+          <div class="meta-item"><strong>صدور:</strong> 1404/08/07</div>
+          <div class="meta-item"><strong>اعتبار تا:</strong> 1405/08/06</div>
+        </div>
+        <table class="cert-table">
+          <thead>
+            <tr><th>شرایط محیطی</th><th>توضیح</th><th>قابلیت استفاده</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>M1</td><td>مناطق معتدل و مرطوب</td><td>✔</td></tr>
+            <tr><td>C1</td><td>مناطق خشک و نیمه‌خشک</td><td>✔</td></tr>
+            <tr><td>FT</td><td>مناطق بسیار سرد</td><td>✖</td></tr>
+          </tbody>
         </table>
+        <div class="actions">
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Quality Policy -->
-    <section id="quality" class="quality">
-      <div class="container">
+  <!-- Quality -->
+  <section id="quality">
+    <div class="container">
+      <div class="card fade-in">
         <h2>خط مشی کیفیت</h2>
-        <ul>
-          <li>دارای تمامی استانداردهای مورد نیاز</li>
+        <ul class="quality-list">
+          <li>دارای استانداردهای مورد نیاز</li>
           <li>مقاومت فشاری و دمایی بسیار بالا</li>
           <li>تولید با دستگاه پرس درجه ۱</li>
           <li>ایجاد محیط کاری سالم و ایمن</li>
-          <li>به حداقل رساندن آسیب‌های زیست‌محیطی</li>
           <li>رعایت الزامات بهداشت، ایمنی و محیط زیست</li>
         </ul>
+        <div class="progress">
+          <div class="bar" style="width: 78%;">تحقق اهداف: ۷۸٪</div>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact" class="contact">
-      <div class="container">
-        <h2>تماس با ما</h2>
-        <p>📍 دفتر مرکزی: قزوین، خیابان نوروزیان، حکمت ۵۷، پلاک ۳، واحد ۶</p>
-        <p>🏭 کارخانه: آزادراه قزوین–کرج، کیلومتر ۲۰، جاده انجیلاق</p>
-        <p>📞 تلفن: ۰۲۸-۳۳۶۶۲۸۶۶ | ۰۹۱۲۶۸۲۴۴۲۵ | ۰۹۱۲۲۶۲۳۳۹۲</p>
-        <p>📧 ایم
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="card fade-in">
+        <h2>تماس و سفارش</h2>
+        <div class="contact-grid">
+          <div class="contact-card card-sm">
+            <h4>دفتر مرکزی</h4>
+            <p>قزوین، خیابان نوروزیان، حکمت ۵۷، پلاک ۳، واحد ۶</p>
+          </div>
+          <div class="contact-card card-sm">
+            <h4>کارخانه</h4>
+            <p>آزادراه قزوین–کرج، کیلومتر ۲۰، جاده انجیلاق</p>
+          </div>
+          <div class="contact-card card-sm">
+            <h4>تلفن</h4>
+            <p>۰۲۸-۳۳۶۶۲۸۶۶ • ۰۹۱۲۶۸۲۴۴۲۵ • ۰۹۱۲۲۶۲۳۳۹۲</p>
+          </div>
+          <div class="contact-card card-sm">
+            <h4>ایمیل</h4>
+            <p>nemoonesazan.sadomran@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="map card-sm">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12948.123456789!2d50.2480784!3d36.2108243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfa!2sir!4v1700000000000" title="نقشه کارخانه"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>نمونه‌سازان سد عمران</strong>
+        <p class="muted">تولید قطعات بتنی پیش‌ساخته و مصالح استاندارد</p>
+      </div>
+      <div class="footer-links">
+        <a href="#products">محصولات</a>
+        <a href="#certificate">گواهی‌ها</a>
+        <a href="#contact">تماس</a>
+      </div>
+      <div class="footer-social">
+
+      </div>
+    </div>
+    <div class="copy">© 2025 نمونه‌سازان سد عمران | طراحی <a href="https://t.me/prodby026b" target="_blank">t.me/prodby026b</a></div>
+    <button class="scroll-top" title="بازگشت به بالا">↑</button>
+  </footer>
+</body>
+</html>
