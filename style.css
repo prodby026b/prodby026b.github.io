@@ -1,84 +1,111 @@
-body {
-  font-family: Tahoma, sans-serif;
-  direction: rtl;
-  background: #f9f9f9;
-  margin: 0;
-  padding: 0;
-  color: #333;
+/* رنگ‌ها و پایه */
+:root{
+  --bg:#0b1220;         /* پس‌زمینه تیره برای هدر/فوتر */
+  --primary:#0b5fa4;    /* آبی اصلی */
+  --primary-600:#0a4f8d;
+  --accent:#15c;        /* آبی روشن برای گرادیان */
+  --muted:#667085;      /* متن خنثی */
+  --card:#ffffff;       /* کارت‌ها */
+  --soft:#f7fafc;       /* پس‌زمینه نرم سکشن‌ها */
+  --border:#e5e7eb;
+}
+html{direction:rtl}
+*{box-sizing:border-box}
+body{
+  margin:0; font-family: Vazir, Tahoma, sans-serif; color:#1f2937; background:#f9fafb; line-height:1.75;
 }
 
-header {
-  background: #0b5fa4;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-}
+/* کانتینر و گرید */
+.pp-container{width:92%; max-width:1200px; margin:0 auto}
+.pp-grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.pp-grid-2{display:grid; gap:18px; grid-template-columns:1.2fr 1fr}
+@media(max-width:900px){ .pp-grid-2{grid-template-columns:1fr} }
 
-nav {
-  background: #083b6f;
-  padding: 10px;
-  text-align: center;
+/* هدر ثابت */
+.pp-header{
+  position:sticky; top:0; z-index:50;
+  background: linear-gradient(135deg,#0b5fa4 0%, #083b6f 60%, #0b1220 100%);
+  color:#fff; border-bottom:1px solid rgba(255,255,255,0.08);
 }
+.pp-header .pp-container{ display:flex; align-items:center; justify-content:space-between; padding:12px 0 }
+.pp-brand{display:flex; align-items:center; gap:10px; color:#e6f0ff; text-decoration:none; font-weight:700}
+.pp-logo{width:38px; height:38px; object-fit:contain}
+.pp-nav a{
+  color:#e6f0ff; text-decoration:none; font-weight:600; margin:0 8px; padding:8px 10px; border-radius:10px;
+}
+.pp-nav a:hover{ background: rgba(255,255,255,0.12) }
+.pp-btn-sm{ padding:8px 12px }
 
-nav a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 10px;
-  font-weight: bold;
+/* دکمه‌ها */
+.pp-btn{
+  display:inline-block; font-weight:700; text-decoration:none; border-radius:12px; padding:12px 18px;
+  transition:all .2s ease; border:1px solid transparent;
 }
+.pp-btn-full{ display:block; text-align:center }
+.pp-primary{ background:var(--primary); color:#fff; border-color:var(--primary) }
+.pp-primary:hover{ background:#0a4f8d }
+.pp-outline{ background:transparent; color:#e6f0ff; border-color:#e6f0ff }
+.pp-outline:hover{ background:rgba(255,255,255,0.12) }
+.pp-ghost{ background:#fff; color:var(--primary); border-color:#fff }
+.pp-ghost:hover{ background:#eef5ff }
 
-section {
-  padding: 30px;
-  border-bottom: 1px solid #ccc;
-  background: #fff;
-  margin: 20px;
-  border-radius: 8px;
+/* سکشن هیرو */
+.pp-hero{
+  background: linear-gradient(180deg,#081a34 0%, #0b1220 100%); color:#e6f0ff; padding:48px 0 36px;
+  border-bottom:1px solid rgba(255,255,255,0.06);
 }
+.pp-hero-grid{ display:grid; gap:24px; grid-template-columns:1.1fr .9fr; align-items:center }
+@media(max-width:900px){ .pp-hero-grid{ grid-template-columns:1fr } }
+.pp-hero h1{ margin:0 0 10px; font-size:32px }
+.pp-sub{ color:#cbd5e1; margin:0 0 18px }
+.pp-actions{ display:flex; gap:12px; flex-wrap:wrap }
+.pp-hero-img{ width:100%; height:320px; object-fit:cover; border-radius:16px; box-shadow: 0 10px 30px rgba(0,0,0,.25) }
 
-h2 {
-  color: #0b5fa4;
-}
+/* KPI ها */
+.pp-kpis{ display:flex; gap:18px; margin-top:18px; flex-wrap:wrap }
+.pp-kpis div{ background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); padding:10px 12px; border-radius:12px }
+.pp-kpis strong{ display:block; font-size:20px; color:#fff }
+.pp-kpis span{ color:#cbd5e1; font-size:13px }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
+/* سکشن‌ها */
+.pp-section{ padding:28px 0 }
+.pp-title{ margin:0 0 12px; font-size:22px; color:#0b4e8a }
 
-.card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fafafa;
-  text-align: center;
-  padding: 10px;
+/* کارت‌ها */
+.pp-card{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:16px; overflow:hidden; box-shadow:0 3px 16px rgba(16,24,40,.06);
 }
+.pp-card-soft{ background:var(--soft) }
+.pp-card-img{ width:100%; height:180px; object-fit:cover; background:#f0f3f7 }
+.pp-card-body{ padding:14px }
+.pp-card-actions{ padding:12px 14px; border-top:1px dashed var(--border) }
+.pp-meta{ color:var(--muted); font-size:14px }
 
-.card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
+/* جدول‌ها */
+.pp-table{ width:100%; border-collapse:collapse; margin-top:10px; font-size:14px; background:#fff; border:1px solid var(--border) }
+.pp-table th,.pp-table td{ padding:10px 12px; border-bottom:1px solid var(--border); text-align:right }
+.pp-table thead th{ background:#eef2f7; color:#0f172a }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
+/* لیست‌ها */
+.pp-list{ list-style:none; padding:0; margin:12px 0 0 }
+.pp-list li{ margin:8px 0; color:#111827 }
+.pp-muted{ color:#667085 }
 
-table, th, td {
-  border: 1px solid #ccc;
-}
+/* گالری */
+.pp-figure{ margin:0; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:#fff }
+.pp-figure-img{ width:100%; height:220px; object-fit:cover; background:#f0f3f7 }
+.pp-figure figcaption{ padding:10px 12px; font-size:13px; color:#667085 }
 
-th, td {
-  padding: 8px;
-  text-align: right;
+/* فوتر */
+.pp-footer{
+  margin-top:8px; background: linear-gradient(180deg,#0b1220 0%, #070c16 100%); color:#cbd5e1;
+  border-top:1px solid rgba(255,255,255,.06);
 }
-
-footer {
-  background: #083b6f;
-  color: #fff;
-  text-align: center;
-  padding: 15px;
-  margin-top: 20px;
-}
+.pp-footer-grid{ display:grid; gap:18px; grid-template-columns:2fr 1fr 1fr; padding:20px 0 }
+@media(max-width:900px){ .pp-footer-grid{ grid-template-columns:1fr } }
+.pp-links{ list-style:none; padding:0; margin:8px 0 0 }
+.pp-links li{ margin:6px 0 }
+.pp-links a{ color:#e6f0ff; text-decoration:none }
+.pp-links a:hover{ text-decoration:underline }
+.pp-copy{ text-align:center; padding:16px 0; border-top:1px solid rgba(255,255,255,.06) }
