@@ -1,47 +1,145 @@
-.ceo-card {
+:root{
+  --bg:#f5f6f7;
+  --text:#222;
+  --muted:#6d6d6d;
+  --primary:#3a5160;         /* blue-gray */
+  --accent:#f39c12;          /* orange */
+  --container:1200px;
+  --radius:12px;
+  --gap:1rem;
+  --shadow:0 10px 30px rgba(58,81,96,0.12);
+  --font:"Segoe UI", Tahoma, "Helvetica Neue", Arial, sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;direction:rtl}
+img{max-width:100%;display:block}
+.container{max-width:var(--container);margin:0 auto;padding:1rem}
+
+/* Header */
+.site-header{background:#fff;border-bottom:1px solid #e6e6e6;position:sticky;top:0;z-index:100}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--text)}
+.logo{height:48px}
+.brand-name{font-weight:700}
+.nav{display:flex;gap:.75rem}
+.nav a{text-decoration:none;color:var(--text);padding:.45rem .65rem;border-radius:8px}
+.nav a:hover{background:rgba(58,81,96,0.06)}
+.cta{background:var(--accent);color:#fff;padding:.5rem .9rem;border-radius:8px;text-decoration:none;font-weight:700}
+
+/* Cards */
+.card{background:#fff;border-radius:var(--radius);padding:1.2rem;margin:1rem 0;box-shadow:var(--shadow);}
+.card-header{padding-top:1rem}
+.card-sm{background:#fff;border-radius:10px;padding:1rem;box-shadow:0 6px 18px rgba(58,81,96,0.10)}
+
+/* Hero */
+.hero{padding:2rem 0;background:linear-gradient(180deg,rgba(58,81,96,0.07),transparent)}
+.hero-card{padding:1.2rem}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:1rem;align-items:center}
+.hero-content h1{margin:0 0 .4rem;font-size:2rem;color:#1f2c35}
+.lead{color:var(--muted);margin:.6rem 0}
+.tag{font-size:.95rem;color:var(--primary);font-weight:600}
+.hero-actions{margin-top:.8rem;display:flex;gap:.6rem}
+.kpis{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.8rem}
+.kpi{background:#fff;border:1px dashed #e6e6e6;border-radius:10px;padding:.5rem .7rem}
+.hero-media img{width:100%;height:320px;object-fit:cover;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+
+/* Buttons */
+.btn{display:inline-block;padding:.6rem 1rem;border-radius:8px;text-decoration:none;font-weight:700;transition:transform .15s ease, box-shadow .15s ease}
+.btn.primary{background:var(--primary);color:#fff}
+.btn.accent{background:var(--accent);color:#fff}
+.btn.outline{background:transparent;border:1px solid rgba(58,81,96,0.20);color:var(--primary)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.10)}
+
+/* Sections */
+section{padding:1rem 0}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+.muted{color:var(--muted)}
+
+/* Products */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:.4rem}
+.product img{width:100%;height:180px;object-fit:cover;border-radius:10px}
+.product-body h3{margin:.6rem 0;color:#1f2c35}
+.specs{list-style:none;padding:0;margin:.4rem 0}
+.specs li{margin:.2rem 0;color:#444}
+.product-actions{display:flex;gap:.5rem;margin-top:.6rem}
+.hover-zoom:hover img{transform:scale(1.02);transition:transform .2s ease}
+
+/* Certificate */
+.glass{backdrop-filter:saturate(140%) blur(6px);background:rgba(255,255,255,0.8)}
+.cert-meta{display:flex;gap:1rem;flex-wrap:wrap;margin:.6rem 0}
+.meta-item{background:#fff;border:1px dashed #e6e6e6;border-radius:8px;padding:.4rem .6rem}
+.cert-table{width:100%;border-collapse:collapse;margin-top:.6rem}
+.cert-table th,.cert-table td{border:1px solid #e6e6e6;padding:.5rem;text-align:center}
+.cert-table thead th{background:#f1f3f5;color:#1f2c35}
+.actions{margin-top:.8rem}
+
+/* Quality */
+.quality-list{list-style:none;padding:0;margin:.2rem 0}
+.quality-list li{margin:.3rem 0;color:#333}
+.progress{margin-top:.6rem;background:#f0f2f4;border-radius:10px;overflow:hidden}
+.bar{background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;padding:.35rem .6rem;font-size:.9rem}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.8rem;margin:.8rem 0}
+.contact-card h4{margin:.2rem 0;color:#1f2c35}
+.contact-form{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.8rem}
+.contact-form input,.contact-form textarea{
+  width:100%; padding:.6rem .7rem; border:1px solid #ddd; border-radius:10px; background:#fff;
+}
+.contact-form textarea{grid-column:1 / -1; min-height:120px; resize:vertical}
+.map iframe{width:100%;height:260px;border:0;border-radius:10px}
+
+/* Footer */
+.site-footer{background:#212a31;color:#dfe6eb;margin-top:1rem}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1rem;padding:1rem 0}
+.footer-links a,.footer-social a{color:#f7b24d;text-decoration:none;margin:0 .25rem}
+.footer-links a:hover,.footer-social a:hover{opacity:.85}
+.copy{text-align:center;border-top:1px solid rgba(255,255,255,.06);padding:.8rem 0}
+.scroll-top{
+  position:fixed;bottom:18px;left:18px;background:var(--accent);color:#fff;border:none;border-radius:50%;
+  width:40px;height:40px;cursor:pointer;box-shadow:0 8px 22px rgba(243,156,18,.35);
+}
+
+/* Effects */
+.fade-in{animation:fadeIn .5s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* Responsive */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .contact-form{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .nav{display:none}
+  .logo{height:42px}
+  .hero-media img{height:220px}
+}
+
+/* CEO Section - مستطیلی */
+.ceo-card{
   display: flex;
   gap: 1.5rem;
-  align-items: center; /* وسط‌چین عمودی */
+  align-items: flex-start;
   margin-top: 2rem;
   padding: 1.5rem;
-  border: 1px solid #e6e6e6;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border-top: 1px dashed rgba(58,81,96,0.10);
   background: #fff;
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
 }
-
-.ceo-image {
+.ceo-image{
   flex-shrink: 0;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  overflow: hidden; /* عکس داخل قاب دایره‌ای */
+  width: 220px;
+  height: 160px;
+  overflow: hidden;
   border: 4px solid var(--primary);
+  border-radius: 12px; /* مستطیل با گوشه گرد */
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
 }
-
-.ceo-image img {
+.ceo-image img{
   width: 100%;
   height: 100%;
-  object-fit: cover; /* عکس بدون کشیدگی */
-  display: block;
-}
-
-.ceo-details h3 {
-  margin-top: 0;
-  margin-bottom: 0.4rem;
-  color: var(--primary);
-  font-weight: 700;
-}
-
-.ceo-details .muted {
-  display: block;
-  margin-bottom: 0.8rem;
-  color: var(--muted);
-}
-
-.ceo-details p {
-  color: var(--text);
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
+  object-fit: cover;
