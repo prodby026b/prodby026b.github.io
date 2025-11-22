@@ -132,7 +132,7 @@ section{padding:1rem 0}
 }
 .ceo-image{
   flex-shrink: 0;
-  width: 220px;
+  width: 240px;
   height: 160px;
   overflow: hidden;
   border: 4px solid var(--primary);
@@ -143,3 +143,8 @@ section{padding:1rem 0}
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+}
+.ceo-details h3{
+  margin-top: 0;
+  margin-bottom: 0.
