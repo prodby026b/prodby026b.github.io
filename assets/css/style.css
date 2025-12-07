@@ -267,13 +267,54 @@ section{padding:3rem 0}
     box-shadow: 0 0 10px rgba(245, 158, 11, 0.1); 
 }
 .contact-card h3{margin-top:0;color:var(--accent-plain)}
+.contact-list{list-style:none;padding:0}
+.contact-list li{margin-bottom:.75rem}
+.contact-list a{color:var(--text);text-decoration:none;transition:color var(--transition)}
+.contact-list a:hover{color:var(--accent-plain)}
+
+/* --- Form Elements Styling (بهینه‌سازی شده برای تم گلاسمورفیسم) --- */
+form label {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: var(--muted); /* متن راهنما با رنگ ملایم */
+}
+form input[type="text"],
+form input[type="tel"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-top: 0.3rem;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    color: var(--text);
+    /* بک‌گراند شیشه‌ای برای ورودی‌ها */
+    background: rgba(255, 255, 255, 0.04); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    resize: vertical;
+    transition: all 300ms ease;
+    box-shadow: none;
+}
+form input:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--primary); /* خط دور آبی هنگام فوکوس */
+    /* جلوه درخشش آبی هنگام فوکوس */
+    box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.2); 
+    /* بک‌گراند کمی شفاف‌تر */
+    background: rgba(255, 255, 255, 0.06); 
+}
 .form-actions{display:flex;gap:.75rem;margin-top:1rem}
+
+/* Footer */
 .site-footer{padding:2rem 0;background:rgba(15, 23, 36, 0.8)}
 .footer-inner{display:grid;grid-template-columns:3fr 2fr 3fr;gap:2rem;align-items:flex-start}
 .footer-links{display:flex;flex-wrap:wrap;gap:1.5rem;padding:0;margin:0;list-style:none}
 .footer-links a{color:var(--muted);text-decoration:none}
+.footer-contact{text-align:left}
 
-/* Scroll Top Button */
+/* Scroll To Top Button */
 .scroll-top{
     position:fixed;bottom:2rem;right:2rem;width:40px;height:40px;
     background: var(--primary);
@@ -315,7 +356,7 @@ section{padding:3rem 0}
   .nav-list{gap:1.5rem}
 }
 
-/* Small devices */
+/* Small devices (بهینه‌سازی برای موبایل) */
 @media(max-width:719px){
   .nav-list{display:none}
   .nav.open{
@@ -329,7 +370,11 @@ section{padding:3rem 0}
   .nav-toggle{display:inline-flex}
   .hero-grid{grid-template-columns:1fr}
   .hero-media{display:none}
-  .contact-grid{grid-template-columns:1fr}
+  .contact-grid{
+    /* تنظیم برای چیدمان تک ستونی در موبایل */
+    grid-template-columns:1fr; 
+    gap: 1.5rem; /* کاهش فاصله بین کارت‌ها */
+  }
   .footer-inner{grid-template-columns:1fr}
 }
 
