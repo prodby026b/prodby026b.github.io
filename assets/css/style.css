@@ -290,8 +290,8 @@ form textarea {
     font-size: 1rem;
     color: var(--text);
     /* بک‌گراند شیشه‌ای برای ورودی‌ها */
-    background: rgba(255, 255, 255, 0.04); 
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08); 
+    border: 1px solid rgba(255, 255, 255, 0.15); /* مرز قوی‌تر */
     resize: vertical;
     transition: all 300ms ease;
     box-shadow: none;
@@ -301,11 +301,11 @@ form textarea:focus {
     outline: none;
     border-color: var(--primary); /* خط دور آبی هنگام فوکوس */
     /* جلوه درخشش آبی هنگام فوکوس */
-    box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.2); 
+    box-shadow: 0 0 0 4px var(--glow-primary); 
     /* بک‌گراند کمی شفاف‌تر */
-    background: rgba(255, 255, 255, 0.06); 
+    background: rgba(255, 255, 255, 0.1); 
 }
-.form-actions{display:flex;gap:.75rem;margin-top:1rem}
+.form-actions{display:flex;gap:.75rem;margin-top:1.5rem}
 
 /* Footer */
 .site-footer{padding:2rem 0;background:rgba(15, 23, 36, 0.8)}
@@ -354,28 +354,31 @@ form textarea:focus {
   .hero-card{padding:3rem}
   .nav-toggle{display:none}
   .nav-list{gap:1.5rem}
+  .ceo-layout{grid-template-columns:1fr 280px;} /* مطمئن شدن از چیدمان دو ستونی در دسکتاپ */
 }
 
 /* Small devices (بهینه‌سازی برای موبایل) */
 @media(max-width:719px){
-  .nav-list{display:none}
-  .nav.open{
-    display:block;position:fixed;right:0;top:var(--header-height);
-    width:86%;max-width:360px;
-    background:linear-gradient(180deg, rgba(15, 23, 36, 0.9), rgba(15, 23, 36, 0.9)); /* BG Darker */
-    backdrop-filter: blur(var(--glass-blur));
-    height:calc(100vh - var(--header-height));padding:1rem;
-    box-shadow:0 12px 40px rgba(2,6,23,0.9);overflow:auto
-  }
-  .nav-toggle{display:inline-flex}
-  .hero-grid{grid-template-columns:1fr}
-  .hero-media{display:none}
+  .hero-card{padding:2rem 1.5rem;} /* کاهش Padding در موبایل */
+  .hero-content h1{font-size:2.5rem;} /* کاهش سایز عنوان اصلی */
+  .hero-grid{grid-template-columns:1fr;} /* تک ستونی کردن Hero */
+  .hero-media{display:none;} /* پنهان کردن تصویر Hero */
+  .kpis.neumorphic{justify-content:space-around;gap:1rem;} /* مرتب کردن KPI ها */
+  
+  .ceo-layout{grid-template-columns:1fr; text-align:center;} /* تک ستونی کردن CEO */
+  .ceo-photo{order:-1; margin:0 auto 1.5rem;} /* انتقال عکس به بالا در موبایل */
+  
+  .product-grid{gap:1.5rem;} /* کاهش فاصله کارت‌های محصول */
+  
   .contact-grid{
     /* تنظیم برای چیدمان تک ستونی در موبایل */
     grid-template-columns:1fr; 
     gap: 1.5rem; /* کاهش فاصله بین کارت‌ها */
   }
-  .footer-inner{grid-template-columns:1fr}
+  .contact-card{padding:1.25rem;} /* کاهش Padding کارت تماس */
+  .footer-inner{grid-template-columns:1fr; text-align:center;} /* تک ستونی کردن Footer */
+  .footer-links{justify-content:center;}
+  .footer-contact{text-align:center;}
 }
 
 /* Reduced motion */
