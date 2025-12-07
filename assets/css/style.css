@@ -389,12 +389,12 @@ form textarea:focus {
       max-width: 360px;
       height: calc(100vh - var(--header-height)); /* Full height below header */
       z-index: 90; 
-      /* Glassmorphism sidebar style */
-      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      /* Glassmorphism sidebar style: شیشه ای و مات */
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
       backdrop-filter: blur(var(--glass-blur)); 
-      border-left: 1px solid rgba(255, 255, 255, 0.1); 
+      border-left: 1px solid rgba(255, 255, 255, 0.2); 
       padding: 1.5rem;
-      box-shadow: 0 12px 40px rgba(2,6,23,0.6);
+      box-shadow: 0 12px 40px rgba(2,6,23,0.8);
       /* Hide Off-Screen */
       transform: translateX(100%);
       visibility: hidden;
