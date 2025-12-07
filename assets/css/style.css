@@ -64,7 +64,7 @@ body{
   transition: background var(--transition);
 }
 
-/* Header */
+/* Header (FIXED for all devices) */
 .site-header{
   position:fixed;top:0;left:0;right:0;z-index:100;
   height:var(--header-height);
@@ -236,23 +236,6 @@ section{padding:3rem 0}
 .product-body h3{font-size:1.15rem;margin:0 0 .5rem 0}
 .product-actions{display:flex;gap:.75rem}
 
-/* Quality Progress Bar - Neon Style */
-.progress{
-    background:rgba(255,255,255,0.04);
-    height:12px;
-    border-radius:999px;
-    margin-top:1.5rem;
-    overflow:hidden;
-}
-.progress .bar.neon-bar{
-    background:var(--primary);
-    box-shadow: 0 0 15px var(--glow-primary); 
-    border-radius:999px;
-    transition:width 1.5s ease-out;
-    display:flex;align-items:center;justify-content:flex-end;
-    padding-inline-end:1rem;font-size:.75rem;font-weight:600;color:#fff;
-}
-
 /* CEO Section */
 .ceo-box{padding:2rem}
 .ceo-layout{display:grid;grid-template-columns:1fr 280px;gap:2rem;align-items:center}
@@ -394,6 +377,37 @@ form textarea:focus {
       grid-template-columns: 1fr !important; 
   }
   
+  /* Mobile Header & Navigation Fix: Menu is now a fixed sidebar */
+  .nav-list{
+    flex-direction: column;
+  }
+  .nav {
+      position: fixed;
+      top: var(--header-height); 
+      right: 0;
+      width: 86%; 
+      max-width: 360px;
+      height: calc(100vh - var(--header-height)); /* Full height below header */
+      z-index: 90; 
+      /* Glassmorphism sidebar style */
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      backdrop-filter: blur(var(--glass-blur)); 
+      border-left: 1px solid rgba(255, 255, 255, 0.1); 
+      padding: 1.5rem;
+      box-shadow: 0 12px 40px rgba(2,6,23,0.6);
+      /* Hide Off-Screen */
+      transform: translateX(100%);
+      visibility: hidden;
+      transition: transform var(--transition), visibility 0s linear var(--transition);
+      overflow-y: auto;
+  }
+  .nav.open {
+      transform: translateX(0);
+      visibility: visible;
+      transition: transform var(--transition), visibility 0s;
+  }
+  
+  /* Other Mobile Adjustments */
   .hero-card{padding:2rem 1.5rem;} 
   .hero-content h1{font-size:2.5rem;}
   .hero-media{display:none;} 
