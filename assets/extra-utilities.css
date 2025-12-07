@@ -1,0 +1,14 @@
+/* Extra utilities for styling */
+
+.text-center {
+    text-align: center;
+}
+
+.mt-1 {
+    margin-top: 0.25rem;
+}
+
+.mb-1 {
+    margin-bottom: 0.25rem;
+}
+/* Add more utility classes as needed */
