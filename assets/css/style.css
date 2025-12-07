@@ -13,7 +13,7 @@
   --accent: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
   --accent-plain: #f59e0b;
   
-  /* NEON/GLOW Colors - Blue and Yellow/Gold */
+  /* NEON/GLOW Colors - Blue and Gold */
   --glow-primary: rgba(30, 64, 175, 0.6);  /* Strong Blue Glow */
   --glow-accent: rgba(245, 158, 11, 0.6);   /* Strong Yellow/Gold Glow */
 
@@ -23,7 +23,7 @@
   --glass-blur: 12px; /* Increased blur for enhanced glass effect */
   font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color-scheme: dark;
-  --transition: 400ms cubic-bezier(.2,.9,.3,1);
+  --transition: 400ms cubic-bezier(.2,.9,.3,1); /* Slightly slower transition for smooth animations */
   --header-height: 72px;
 }
 
@@ -34,7 +34,7 @@
   --glass: rgba(255,255,255,0.7);
   --muted: #475569;
   --text: #071129;
-  --primary: #1e40af; /* Deep Blue */
+  --primary: #1e40af; 
   --accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   --glow-primary: rgba(30, 64, 175, 0.4);
   --glow-accent: rgba(245, 158, 11, 0.4);
@@ -46,11 +46,10 @@
 html,body{height:100%}
 body{
   margin:0;
-  /* --- اصلاح حیاتی: جلوگیری از اسکرول افقی در موبایل --- */
+  /* --- FIX: Prevents horizontal scroll on mobile --- */
   overflow-x: hidden; 
-  /* --------------------------------------------------- */
   
-  /* Applying the new Blue and Yellow/Gold glow to the background */
+  /* Applying the new Blue and Yellow/Gold glow to the background (Parallax Effect) */
   background:radial-gradient(1200px 600px at 10% 10%, var(--glow-primary), transparent 18%),
              radial-gradient(900px 400px at 90% 90%, var(--glow-accent), transparent 22%),
              var(--bg);
@@ -69,8 +68,7 @@ body{
 .site-header{
   position:fixed;top:0;left:0;right:0;z-index:100;
   height:var(--header-height);
-  /* Glassmorphism برای هدر */
-  background: rgba(15, 23, 36, 0.8); /* Darker semi-transparent BG */
+  background: rgba(15, 23, 36, 0.8); 
   backdrop-filter: blur(var(--glass-blur)); 
   border-bottom:1px solid rgba(255,255,255,0.08); 
   transition: background var(--transition), backdrop-filter var(--transition);
@@ -94,8 +92,8 @@ body{
 /* Navigation */
 .nav-list{display:flex;gap:1.5rem;list-style:none;padding:0;margin:0}
 .nav-list a{text-decoration:none;color:var(--text);opacity:.8;transition:opacity var(--transition);font-weight:500;padding:.5rem 0}
-.nav-list a:hover{opacity:1;color:var(--accent-plain); /* طلایی شدن لینک هنگام هاور */}
-.nav-list a[aria-current]{opacity:1;font-weight:700;border-bottom:2px solid var(--primary); /* تاکید آبی */}
+.nav-list a:hover{opacity:1;color:var(--accent-plain);}
+.nav-list a[aria-current]{opacity:1;font-weight:700;border-bottom:2px solid var(--primary);}
 
 /* Header Actions */
 .header-actions{display:flex;align-items:center;margin-right:auto;gap:1rem}
@@ -111,7 +109,7 @@ body{
 }
 .btn.primary{
     background:var(--primary);color:#fff;
-    box-shadow:0 0 20px rgba(30, 64, 175, 0.25); /* درخشش آبی */
+    box-shadow:0 0 20px rgba(30, 64, 175, 0.25);
 }
 .btn.primary:hover{background: #3b82f6; transform:translateY(-2px); box-shadow:0 8px 20px var(--glow-primary);}
 .btn.primary.glow-on-click:active{
@@ -120,12 +118,12 @@ body{
 }
 .btn.accent{
     background:var(--accent-plain);color:#071129;
-    box-shadow:0 0 10px rgba(245, 158, 11, 0.3); /* درخشش طلایی */
+    box-shadow:0 0 10px rgba(245, 158, 11, 0.3);
 }
 .btn.accent:hover{background:#fcd34d; transform:translateY(-2px)}
 .btn.outline{
     background:transparent;color:var(--text);
-    border:1px solid rgba(255,255,255,0.3); /* خط دور پررنگ‌تر */
+    border:1px solid rgba(255,255,255,0.3);
 }
 .btn.outline:hover{background:var(--card);transform:translateY(-2px)}
 
@@ -137,13 +135,13 @@ section{padding:3rem 0}
 /* Hero Section */
 .hero{padding-top:3rem}
 .hero-card{
-  /* Glassmorphism قوی‌تر */
   background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
   backdrop-filter: blur(var(--glass-blur)); 
   border-radius:24px; 
   padding:2.5rem; 
-  border:1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 16px 60px rgba(2,6,23,0.8); 
+  border: 1px solid transparent; 
+  border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%) 1;
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.9), 0 0 1px rgba(255, 255, 255, 0.05) inset;
 }
 .hero-grid{display:grid;grid-template-columns:1fr 400px;gap:2rem}
 .hero-content h1{font-size:3rem;margin-top:0;line-height:1.2;text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);}
@@ -156,7 +154,7 @@ section{padding:3rem 0}
   display:inline-block;
   padding:.3rem .8rem;
   border-radius:999px;
-  background: var(--glow-accent); /* بک‌گراند طلایی نئونی */
+  background: var(--glow-accent); 
   box-shadow: 0 0 10px var(--glow-accent);
   color: #071129;
   font-weight: 800;
@@ -177,31 +175,32 @@ section{padding:3rem 0}
     border-radius:16px;
     min-width:120px;
     text-align:center;
-    /* جلوه Neumorphism */
     box-shadow: 
         inset 5px 5px 10px rgba(0, 0, 0, 0.2), 
         inset -5px -5px 10px rgba(255, 255, 255, 0.05),
         0 4px 12px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
-.kpi strong{display:block;font-size:2rem;font-weight:800;color:var(--accent-plain); /* عدد طلایی */}
+.kpi strong{display:block;font-size:2rem;font-weight:800;color:var(--accent-plain);}
 .kpi span{display:block;font-size:.85rem;opacity:.7}
 
 
-/* Cards & Glass effect */
+/* Cards & Glass effect - Enhanced Glassy Borders */
 .card{
     background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
     border-radius:20px;
     padding:1.5rem;
-    border:1px solid rgba(255,255,255,0.05);
-    box-shadow: 0 8px 30px rgba(2,6,23,0.5);
+    /* Animated Glassy Border */
+    border: 1px solid transparent; 
+    border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%) 1;
+    box-shadow: 0 16px 40px rgba(2, 6, 23, 0.9), 0 0 1px rgba(255, 255, 255, 0.05) inset;
     transition: all var(--transition);
 }
 .card.glass{
-    /* Glassmorphism قوی‌تر */
     background:linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
     backdrop-filter: blur(var(--glass-blur));
-    border:1px solid rgba(255,255,255,0.12);
+    border: 1px solid transparent; 
+    border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%) 1;
 }
 
 /* Products */
@@ -228,7 +227,7 @@ section{padding:3rem 0}
 
 .product:hover .product-inner{
     transform:translateY(-8px);
-    box-shadow: 0 20px 60px rgba(2,6,23,0.7), 0 0 15px var(--glow-primary); /* اضافه شدن درخشش آبی هنگام هاور */
+    box-shadow: 0 20px 60px rgba(2,6,23,0.7), 0 0 15px var(--glow-primary); 
     border-color: var(--glow-primary);
 }
 .product-inner img{width:100%;height:auto;border-radius:12px;object-fit:cover;aspect-ratio:16/9;opacity:.9;transition:transform var(--transition)}
@@ -247,7 +246,7 @@ section{padding:3rem 0}
 }
 .progress .bar.neon-bar{
     background:var(--primary);
-    box-shadow: 0 0 15px var(--glow-primary); /* درخشش نئونی آبی */
+    box-shadow: 0 0 15px var(--glow-primary); 
     border-radius:999px;
     transition:width 1.5s ease-out;
     display:flex;align-items:center;justify-content:flex-end;
@@ -267,7 +266,7 @@ section{padding:3rem 0}
     transition: border var(--transition), box-shadow var(--transition);
 }
 .contact-card:hover{
-    border:1px solid var(--glow-accent); /* خط دور طلایی هنگام هاور */
+    border:1px solid var(--glow-accent); 
     box-shadow: 0 0 10px rgba(245, 158, 11, 0.1); 
 }
 .contact-card h3{margin-top:0;color:var(--accent-plain)}
@@ -276,12 +275,12 @@ section{padding:3rem 0}
 .contact-list a{color:var(--text);text-decoration:none;transition:color var(--transition)}
 .contact-list a:hover{color:var(--accent-plain)}
 
-/* --- Form Elements Styling (بهینه‌سازی شده برای تم گلاسمورفیسم) --- */
+/* Form Elements Styling (Focus Glow) */
 form label {
     display: block;
     margin-bottom: 1rem;
     font-size: 0.95rem;
-    color: var(--muted); /* متن راهنما با رنگ ملایم */
+    color: var(--muted); 
 }
 form input[type="text"],
 form input[type="tel"],
@@ -293,9 +292,8 @@ form textarea {
     border-radius: var(--radius);
     font-size: 1rem;
     color: var(--text);
-    /* بک‌گراند شیشه‌ای برای ورودی‌ها */
     background: rgba(255, 255, 255, 0.08); 
-    border: 1px solid rgba(255, 255, 255, 0.15); /* مرز قوی‌تر */
+    border: 1px solid rgba(255, 255, 255, 0.15); 
     resize: vertical;
     transition: all 300ms ease;
     box-shadow: none;
@@ -303,10 +301,8 @@ form textarea {
 form input:focus,
 form textarea:focus {
     outline: none;
-    border-color: var(--primary); /* خط دور آبی هنگام فوکوس */
-    /* جلوه درخشش آبی هنگام فوکوس */
+    border-color: var(--primary); 
     box-shadow: 0 0 0 4px var(--glow-primary); 
-    /* بک‌گراند کمی شفاف‌تر */
     background: rgba(255, 255, 255, 0.1); 
 }
 .form-actions{display:flex;gap:.75rem;margin-top:1.5rem}
@@ -330,15 +326,38 @@ form textarea:focus {
 }
 .scroll-top.visible{display:flex;opacity:1}
 
+/* Floating CTA Button (New Feature) */
+.floating-cta {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 99;
+    width: 56px;
+    height: 56px;
+    background: var(--accent-plain);
+    color: #071129;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.6);
+    transition: transform var(--transition);
+}
+.floating-cta:hover {
+    transform: scale(1.08) translateY(-2px);
+}
+
+
 /* Headings Decoration */
 .section-head{display:flex;flex-direction:column;gap:.25rem}
 .section-head h2{position:relative;padding-inline-end:1rem}
 .section-head h2::after{
     content:"";position:absolute;inset:auto 0 auto auto;
     width:160px;height:6px;border-radius:8px;
-    background:var(--accent); /* گرادینت طلایی */
+    background:var(--accent); 
     transform:translateY(6px);opacity:0.25; 
-    box-shadow: 0 0 8px var(--glow-accent); /* درخشش طلایی */
+    box-shadow: 0 0 8px var(--glow-accent); 
 }
 .muted{color:var(--muted);font-size:.95rem}
 
@@ -359,19 +378,21 @@ form textarea:focus {
   .nav-toggle{display:none}
   .nav-list{gap:1.5rem}
   .ceo-layout{grid-template-columns:1fr 280px;} 
+  .floating-cta {
+    display: none; /* Hide on desktop */
+  }
 }
 
-/* Small devices (بهینه‌سازی برای موبایل) */
+/* Small devices (Mobile Optimization FIXES) */
 @media(max-width:719px){
-  /* --- FIX: اطمینان از تک ستونی بودن تمامی گریدها در موبایل --- */
+  /* FIX: Force single column grid on mobile */
   .hero-grid,
   .product-grid,
   .contact-grid,
   .ceo-layout,
   .footer-inner {
-      grid-template-columns: 1fr !important; /* استفاده از !important برای رفع تداخل */
+      grid-template-columns: 1fr !important; 
   }
-  /* ------------------------------------------------------------- */
   
   .hero-card{padding:2rem 1.5rem;} 
   .hero-content h1{font-size:2.5rem;}
@@ -389,13 +410,13 @@ form textarea:focus {
   .footer-links{justify-content:center;}
   .footer-contact{text-align:center;}
   
-  /* تنظیمات هدر برای موبایل بسیار کوچک */
+  /* Header adjustments for very small mobiles */
   .header-inner {
-      padding: 0 1rem; /* کاهش Padding افقی */
-      gap: 0.75rem; /* کاهش فاصله بین عناصر */
+      padding: 0 1rem; 
+      gap: 0.75rem; 
   }
   .brand .brand-name {
-      font-size: 1.1rem; /* کوچک کردن اسم برند */
+      font-size: 1.1rem; 
   }
 }
 

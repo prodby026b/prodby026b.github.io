@@ -1,4 +1,4 @@
-// Enhanced UI interactions: nav toggle, theme, counters, lightbox, and AOS integration
+// Lightweight UI interactions: nav toggle, theme, reveal, counters, lightbox
 (() => {
   const root = document.documentElement;
   const navToggle = document.getElementById('navToggle');
@@ -6,31 +6,23 @@
   const themeToggle = document.getElementById('themeToggle');
   const scrollTopBtn = document.getElementById('scrollTop');
 
-  // --- 1. Nav Toggle for mobile ---
+  // 1. Nav toggle for mobile
   if (navToggle && primaryNav) {
-    const toggleNav = () => {
+    navToggle.addEventListener('click', () => {
       const expanded = navToggle.getAttribute('aria-expanded') === 'true';
       navToggle.setAttribute('aria-expanded', String(!expanded));
       primaryNav.classList.toggle('open');
-    };
-    navToggle.addEventListener('click', toggleNav);
-
-    // Close nav on outside click
+    });
+    // close nav on outside click
     document.addEventListener('click', (e) => {
       if (!primaryNav.contains(e.target) && !navToggle.contains(e.target) && primaryNav.classList.contains('open')) {
-        toggleNav();
+        primaryNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
       }
     });
-
-    // Accessibility: close mobile menu on link click
-    document.querySelectorAll('#primary-nav a').forEach(a => a.addEventListener('click', () => {
-      if (primaryNav.classList.contains('open')) {
-        toggleNav();
-      }
-    }));
   }
 
-  // --- 2. Theme handling ---
+  // Theme handling
   const applyTheme = (t) => {
     root.setAttribute('data-theme', t);
     try { localStorage.setItem('site-theme', t); } catch (e) {}
@@ -39,65 +31,28 @@
       themeToggle.textContent = t === 'dark' ? '☀️' : '🌙';
     }
   };
-  const savedTheme = (() => { try { return localStorage.getItem('site-theme'); } catch(e) { return null } })();
-  // Apply saved theme or default based on OS preference (prefers-color-scheme: light)
-  applyTheme(savedTheme || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
-  if (themeToggle) themeToggle.addEventListener('click', () => applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+  const saved = (() => { try { return localStorage.getItem('site-theme'); } catch(e) { return null } })();
+  applyTheme(saved === 'light' ? 'light' : 'dark');
 
-
-  // --- 3. Animate KPI numbers (شمارشگرهای آماری) با Easing پیشرفته ---
-  const animateNumber = (el, target, duration = 2000) => {
-    const start = 0;
-    const startTime = performance.now();
-    
-    // تابع Easing برای حرکت نرم‌تر و جذاب‌تر اعداد
-    const easeOutQuad = (t) => t * (2 - t); 
-    
-    const step = (now) => {
-      const timeElapsed = now - startTime;
-      const progress = Math.min(timeElapsed / duration, 1);
-      const easedProgress = easeOutQuad(progress); // استفاده از Easing
-      
-      // گرفتن پسوند در صورت وجود
-      const suffix = el.getAttribute('data-suffix') || '';
-
-      const value = Math.floor(easedProgress * (target - start) + start);
-      el.textContent = value + suffix;
-
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
-        // اطمینان از نمایش دقیق عدد نهایی
-        el.textContent = target + suffix; 
-      }
-    };
-    requestAnimationFrame(step);
-  };
-  
-  const kpis = document.querySelectorAll('.kpi strong[data-target]');
-  if (kpis.length && 'IntersectionObserver' in window) {
-    const kpiObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const el = e.target;
-          animateNumber(el, Number(el.getAttribute('data-target')) || 0);
-          kpiObs.unobserve(el);
-        }
-      });
-    }, {threshold: 0.4});
-    kpis.forEach(k => kpiObs.observe(k));
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
   }
-  
-  // --- 4. Scroll top ---
+
+  // 2. Scroll to top button
   if (scrollTopBtn) {
-    scrollTopBtn.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
     window.addEventListener('scroll', () => {
       if (window.scrollY > 320) scrollTopBtn.classList.add('visible');
       else scrollTopBtn.classList.remove('visible');
-    }, { passive: true }); // passive listener برای عملکرد بهتر اسکرول
+    });
   }
-  
-  // --- 5. Simple lightbox for product images (گالری تصاویر) ---
+
+  // 3. Simple lightbox for product images with class .product img
   const lbOverlay = document.createElement('div');
   lbOverlay.className = 'lb-overlay';
   lbOverlay.setAttribute('role', 'dialog');
@@ -107,43 +62,88 @@
   lbOverlay.appendChild(lbImg);
   document.body.appendChild(lbOverlay);
 
-  const closeLightbox = () => lbOverlay.classList.remove('open');
-  const openLightbox = (src) => {
-      lbImg.src = src;
-      lbOverlay.classList.add('open');
-      lbOverlay.focus();
-  };
-
   document.addEventListener('click', (e) => {
     const tgt = e.target;
-    // فقط روی تصاویری که داخل کارت محصول هستند، لایت باکس باز شود
+    // Note: If you want to show a full-resolution image, add data-full-src to your img tags in HTML
     if (tgt.matches('.product img')) {
-      openLightbox(tgt.src);
+      const fullSrc = tgt.getAttribute('data-full-src') || tgt.src; 
+      lbImg.src = fullSrc;
+      lbOverlay.classList.add('open');
+      lbOverlay.focus();
     } else if (tgt === lbOverlay) {
-      closeLightbox();
+      lbOverlay.classList.remove('open');
     }
   });
 
-  // --- 6. Escape key handler ---
+  // Close on Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       if (primaryNav && primaryNav.classList.contains('open')) {
         primaryNav.classList.remove('open');
         navToggle && navToggle.setAttribute('aria-expanded', 'false');
       }
-      closeLightbox();
+      lbOverlay.classList.remove('open');
     }
   });
 
-  // --- 7. AOS (Animate On Scroll) Initialization (جدید) ---
-  document.addEventListener('DOMContentLoaded', () => {
-      if (typeof AOS !== 'undefined') {
-        AOS.init({
-          duration: 1000,          // مدت زمان بیشتر برای انیمیشن نرم‌تر
-          once: true,              // انیمیشن فقط یک بار اجرا شود
-          easing: 'ease-out-back', // افکت جذاب‌تر برای ورود
-        });
+  // Accessibility: close mobile menu on link click
+  document.querySelectorAll('#primary-nav a').forEach(a => a.addEventListener('click', () => {
+    if (primaryNav && primaryNav.classList.contains('open')) {
+      primaryNav.classList.remove('open');
+      navToggle && navToggle.setAttribute('aria-expanded', 'false');
+    }
+  }));
+
+
+  // 4. *** FEATURE: Counting Animation for KPIs ***
+  const counters = document.querySelectorAll('.kpi strong[data-target]');
+  const speed = 200; // Total steps for the animation (controls animation duration)
+
+  const animateCounter = (el) => {
+    const target = +el.getAttribute('data-target');
+    const suffix = el.getAttribute('data-suffix') || '';
+    let count = 0;
+    const increment = target / speed;
+
+    const updateCount = () => {
+      if (count < target) {
+        count += increment;
+        el.textContent = Math.ceil(count) + suffix;
+        requestAnimationFrame(updateCount);
+      } else {
+        el.textContent = target + suffix;
       }
-  });
+    };
+    updateCount();
+  };
+
+  // Setup Intersection Observer to trigger counting animation on scroll
+  if (counters.length > 0 && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+          animateCounter(entry.target);
+          entry.target.classList.add('counted'); // Mark as counted to prevent re-triggering
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.7 // Trigger when 70% of the element is visible
+    });
+
+    counters.forEach(counter => observer.observe(counter));
+  } else if (counters.length > 0) {
+     // Fallback if IntersectionObserver is not supported (rare)
+     counters.forEach(animateCounter);
+  }
+  
+  // 5. Initialize AOS (Animation on Scroll)
+  if (window.AOS) {
+    AOS.init({
+        duration: 900, 
+        once: true, 
+        easing: 'ease-out-cubic', // Global easing function for a smooth and dramatic entry
+    });
+  }
 
 })();
