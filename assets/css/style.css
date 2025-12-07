@@ -1,32 +1,43 @@
 :root{
-  /* Palette */
-  --bg: #0f1724;
+  /* Palette - Now Blue and Gold/Yellow */
+  --bg: #0f1724; /* Dark background */
   --card: rgba(255,255,255,0.04);
   --glass: rgba(255,255,255,0.06);
   --muted: #9aa8bf;
   --text: #e6eef8;
-  --accent: linear-gradient(135deg,#ff7a18 0%,#af002d 50%,#320575 100%);
-  --primary: #4f46e5;
-  --accent-plain: #ff5a5f;
+  
+  /* PRIMARY: Deep Blue for buttons and main elements */
+  --primary: #1e40af; 
+  
+  /* ACCENT: Yellow/Gold gradient for highlights (the "khfan" element) */
+  --accent: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+  --accent-plain: #f59e0b;
+  
+  /* NEON/GLOW Colors - Blue and Yellow/Gold */
+  --glow-primary: rgba(30, 64, 175, 0.6);  /* Strong Blue Glow */
+  --glow-accent: rgba(245, 158, 11, 0.6);   /* Strong Yellow/Gold Glow */
+
   --radius: 14px;
   --container: 1200px;
   --gap: 1.25rem;
-  --glass-blur: 8px;
+  --glass-blur: 12px; /* Increased blur for enhanced glass effect */
   font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color-scheme: dark;
-  --transition: 320ms cubic-bezier(.2,.9,.3,1);
+  --transition: 400ms cubic-bezier(.2,.9,.3,1);
   --header-height: 72px;
 }
 
-/* Light theme overrides */
+/* Light theme overrides (Adjusted for Blue/Yellow theme) */
 :root[data-theme="light"]{
   --bg: #f7fbff;
   --card: rgba(7,18,34,0.03);
   --glass: rgba(255,255,255,0.7);
   --muted: #475569;
   --text: #071129;
-  --primary: #075985;
-  --accent: linear-gradient(135deg,#3b82f6 0%,#06b6d4 100%);
+  --primary: #1e40af; /* Deep Blue */
+  --accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  --glow-primary: rgba(30, 64, 175, 0.4);
+  --glow-accent: rgba(245, 158, 11, 0.4);
   color-scheme: light;
 }
 
@@ -35,156 +46,294 @@
 html,body{height:100%}
 body{
   margin:0;
-  background:radial-gradient(1200px 600px at 10% 10%, rgba(79,70,229,0.08), transparent 10%),
-             radial-gradient(900px 400px at 90% 90%, rgba(255,90,95,0.04), transparent 12%),
+  /* Applying the new Blue and Yellow/Gold glow to the background */
+  background:radial-gradient(1200px 600px at 10% 10%, var(--glow-primary), transparent 18%),
+             radial-gradient(900px 400px at 90% 90%, var(--glow-accent), transparent 22%),
              var(--bg);
+  background-attachment: fixed;
   color:var(--text);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   line-height:1.6;
-  direction: rtl; /* ensure RTL */
+  direction: rtl; 
   font-feature-settings: "liga" 1, "tnum" 1;
   padding-top: var(--header-height);
+  transition: background var(--transition);
 }
-
-/* Container */
-.container{max-width:var(--container);margin:0 auto;padding:1rem}
-
-/* Skip link */
-.skip-link{
-  position:fixed;left:1rem;top:0.6rem;background:var(--primary);color:white;padding:0.5rem 0.75rem;border-radius:8px;z-index:9999;
-  transform:translateY(-120%);transition:transform var(--transition);text-decoration:none;font-weight:600;
-}
-.skip-link:focus{transform:translateY(0);outline:3px solid rgba(255,255,255,0.12)}
 
 /* Header */
 .site-header{
-  position:fixed;inset:0 auto auto 0;right:0;left:0;height:var(--header-height);z-index:1200;
-  backdrop-filter: blur(var(--glass-blur));
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-  border-bottom:1px solid rgba(255,255,255,0.03);
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:var(--header-height);
+  /* Glassmorphism برای هدر */
+  background: rgba(15, 23, 36, 0.8); /* Darker semi-transparent BG */
+  backdrop-filter: blur(var(--glass-blur)); 
+  border-bottom:1px solid rgba(255,255,255,0.08); 
+  transition: background var(--transition), backdrop-filter var(--transition);
 }
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:100%}
-.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--text);font-weight:700}
-.logo{border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.25)}
-.brand-name{font-size:1.05rem;letter-spacing:0.1px}
+.header-inner{
+  max-width:var(--container);margin:0 auto;height:100%;
+  display:flex;align-items:center;padding:0 var(--gap);
+  gap:1.5rem;
+}
 
-/* Nav */
-.nav{display:flex;align-items:center;gap:1rem}
-.nav-list{display:flex;gap:0.5rem;list-style:none;margin:0;padding:0;align-items:center}
-.nav-list a{color:var(--text);text-decoration:none;padding:0.55rem 0.8rem;border-radius:10px;transition:all var(--transition);font-weight:600}
-.nav-list a:hover, .nav-list a:focus{transform:translateY(-3px);box-shadow:0 6px 18px rgba(79,70,229,0.08)}
-.nav-toggle{display:none;background:transparent;border:0;color:var(--text);font-size:1.45rem;padding:.5rem;border-radius:10px}
-.header-actions{display:flex;align-items:center;gap:.5rem}
+/* BRAND GLOW EFFECT */
+.brand{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text);font-weight:700}
+.brand .logo{width:36px;height:36px;border-radius:6px}
+.brand .brand-name{font-size:1.2rem;white-space:nowrap}
+.brand.glow-on-hover:hover{
+  text-shadow: 0 0 6px var(--glow-primary);
+  transform: translateY(-2px);
+  transition: var(--transition);
+}
+
+/* Navigation */
+.nav-list{display:flex;gap:1.5rem;list-style:none;padding:0;margin:0}
+.nav-list a{text-decoration:none;color:var(--text);opacity:.8;transition:opacity var(--transition);font-weight:500;padding:.5rem 0}
+.nav-list a:hover{opacity:1;color:var(--accent-plain); /* طلایی شدن لینک هنگام هاور */}
+.nav-list a[aria-current]{opacity:1;font-weight:700;border-bottom:2px solid var(--primary); /* تاکید آبی */}
+
+/* Header Actions */
+.header-actions{display:flex;align-items:center;margin-right:auto;gap:1rem}
+.theme-toggle{background:var(--card);border:1px solid rgba(255,255,255,0.1);color:var(--text);padding:.5rem;border-radius:var(--radius);cursor:pointer;font-size:1.2rem;transition:background var(--transition);line-height:1}
+.theme-toggle:hover{background:var(--glass)}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:0.6rem 1rem;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:all var(--transition)}
-.btn:focus{outline:3px solid rgba(99,102,241,0.16)}
-.btn.primary{background:var(--primary);color:#fff;box-shadow:0 8px 30px rgba(79,70,229,0.12)}
-.btn.accent{background:var(--accent-plain);color:white}
-.btn.outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)}
-
-/* Theme toggle button */
-.theme-toggle{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:10px;padding:.5rem;font-size:1rem;border:1px solid rgba(255,255,255,0.03)}
-
-/* Hero */
-.hero{padding:3.25rem 0 2rem}
-.hero-card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius:18px;padding:1.25rem;border:1px solid rgba(255,255,255,0.04);
-  box-shadow: 0 10px 40px rgba(2,6,23,0.6);
-  display:block;overflow:hidden;
+.btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:.75rem 1.25rem;border-radius:var(--radius);
+    text-decoration:none;font-weight:600;font-size:.95rem;
+    cursor:pointer;border:none;transition:all var(--transition);
 }
-.hero-grid{display:grid;grid-template-columns:1fr;gap:1rem;align-items:center}
-.hero-media img{width:100%;height:auto;border-radius:12px;object-fit:cover;box-shadow:0 8px 30px rgba(2,6,23,0.5)}
-.hero h1{font-size:2rem;margin:0 0 .5rem}
-.lead{color:var(--muted);max-width:60ch}
-.tag{display:inline-block;background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:.35rem .6rem;border-radius:999px;font-weight:700;color:var(--muted);margin-top:.6rem}
+.btn.primary{
+    background:var(--primary);color:#fff;
+    box-shadow:0 0 20px rgba(30, 64, 175, 0.25); /* درخشش آبی */
+}
+.btn.primary:hover{background: #3b82f6; transform:translateY(-2px); box-shadow:0 8px 20px var(--glow-primary);}
+.btn.primary.glow-on-click:active{
+    box-shadow: 0 0 40px var(--glow-primary);
+    transform: scale(0.98);
+}
+.btn.accent{
+    background:var(--accent-plain);color:#071129;
+    box-shadow:0 0 10px rgba(245, 158, 11, 0.3); /* درخشش طلایی */
+}
+.btn.accent:hover{background:#fcd34d; transform:translateY(-2px)}
+.btn.outline{
+    background:transparent;color:var(--text);
+    border:1px solid rgba(255,255,255,0.3); /* خط دور پررنگ‌تر */
+}
+.btn.outline:hover{background:var(--card);transform:translateY(-2px)}
 
-/* KPIs */
-.kpis{display:flex;gap:1rem;margin-top:1rem}
-.kpi{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:.6rem .9rem;border-radius:12px;text-align:center;min-width:95px}
-.kpi strong{display:block;font-size:1.25rem;color:var(--text)}
+/* Layout */
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--gap)}
+main{padding:2.5rem 0}
+section{padding:3rem 0}
 
-/* Cards & glass effect */
-.card{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:1rem;border:1px solid rgba(255,255,255,0.03)}
-.card.glass{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));backdrop-filter: blur(var(--glass-blur));border:1px solid rgba(255,255,255,0.06)}
+/* Hero Section */
+.hero{padding-top:3rem}
+.hero-card{
+  /* Glassmorphism قوی‌تر */
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  backdrop-filter: blur(var(--glass-blur)); 
+  border-radius:24px; 
+  padding:2.5rem; 
+  border:1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 16px 60px rgba(2,6,23,0.8); 
+}
+.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:2rem}
+.hero-content h1{font-size:3rem;margin-top:0;line-height:1.2;text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);}
+.hero-content .lead{font-size:1.25rem;opacity:.9;margin-bottom:1.5rem}
+.hero-actions{display:flex;gap:1.25rem;margin-top:2rem}
+.hero-media img{width:100%;height:auto;border-radius:18px;object-fit:cover;aspect-ratio:4/3;opacity:.9}
 
-/* Product grid */
-.product-grid{display:grid;grid-template-columns:repeat(1,1fr);gap:1rem;margin-top:1rem}
-.product{display:flex;flex-direction:column;gap:.75rem;overflow:hidden;position:relative;transition:transform var(--transition), box-shadow var(--transition)}
-.product img{width:100%;height:220px;object-fit:cover;border-radius:10px}
-.product:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(2,6,23,0.6)}
-.product-body h3{margin:.25rem 0;font-size:1.05rem}
-.specs{list-style:none;padding:0;margin:0;color:var(--muted);font-size:.95rem}
+/* BADGE NEON */
+.tag.badge-neon{
+  display:inline-block;
+  padding:.3rem .8rem;
+  border-radius:999px;
+  background: var(--glow-accent); /* بک‌گراند طلایی نئونی */
+  box-shadow: 0 0 10px var(--glow-accent);
+  color: #071129;
+  font-weight: 800;
+  animation: pulse 4s infinite alternate;
+}
+@keyframes pulse {
+  from {box-shadow: 0 0 8px var(--glow-accent);}
+  to {box-shadow: 0 0 16px var(--glow-accent);}
+}
 
-/* Hover zoom */
-.hover-zoom img{transition:transform 420ms cubic-bezier(.2,.9,.3,1)}
-.hover-zoom:hover img{transform:scale(1.06) translateY(-3px)}
+/* KPIs - Neumorphism Style */
+.kpis.neumorphic{
+    display:flex;gap:1.5rem;margin-top:2rem;
+}
+.kpi{
+    background: transparent;
+    padding:.75rem 1rem;
+    border-radius:16px;
+    min-width:120px;
+    text-align:center;
+    /* جلوه Neumorphism */
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.2), 
+        inset -5px -5px 10px rgba(255, 255, 255, 0.05),
+        0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.kpi strong{display:block;font-size:2rem;font-weight:800;color:var(--accent-plain); /* عدد طلایی */}
+.kpi span{display:block;font-size:.85rem;opacity:.7}
 
-/* Table */
-.cert-table{width:100%;border-collapse:collapse;margin-top:1rem;background:transparent}
-.cert-table th, .cert-table td{padding:.6rem .8rem;border-bottom:1px dashed rgba(255,255,255,0.03);text-align:center}
-.cert-table thead th{font-weight:800;color:var(--text)}
 
-/* Contact grid */
-.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
-.contact-card{padding:.9rem;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent)}
-.map iframe{width:100%;height:220px;border:0;border-radius:10px}
+/* Cards & Glass effect */
+.card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border-radius:20px;
+    padding:1.5rem;
+    border:1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 8px 30px rgba(2,6,23,0.5);
+    transition: all var(--transition);
+}
+.card.glass{
+    /* Glassmorphism قوی‌تر */
+    background:linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    backdrop-filter: blur(var(--glass-blur));
+    border:1px solid rgba(255,255,255,0.12);
+}
 
-/* Footer */
-.site-footer{padding:2rem 0 3rem;margin-top:2rem}
-.footer-inner{display:flex;gap:1rem;align-items:flex-start;justify-content:space-between}
-.footer-links a{display:inline-block;margin-inline-start:0.6rem;color:var(--muted);text-decoration:none}
-.copy{text-align:center;color:var(--muted);margin-top:1rem;font-size:.95rem}
+/* Products */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.product{
+    background: transparent;
+    padding: 0;
+    border: none;
+    transition: transform var(--transition);
+}
+.product-inner {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 30px rgba(2,6,23,0.4);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
 
-/* Scroll top */
-.scroll-top{position:fixed;left:1rem;bottom:1rem;background:var(--primary);color:white;border:0;padding:.6rem .8rem;border-radius:999px;box-shadow:0 8px 26px rgba(79,70,229,0.18);transform:translateY(8px);opacity:0;pointer-events:none;transition:all var(--transition)}
-.scroll-top.visible{transform:translateY(0);opacity:1;pointer-events:auto}
+.product:hover .product-inner{
+    transform:translateY(-8px);
+    box-shadow: 0 20px 60px rgba(2,6,23,0.7), 0 0 15px var(--glow-primary); /* اضافه شدن درخشش آبی هنگام هاور */
+    border-color: var(--glow-primary);
+}
+.product-inner img{width:100%;height:auto;border-radius:12px;object-fit:cover;aspect-ratio:16/9;opacity:.9;transition:transform var(--transition)}
+.product:hover img{transform:scale(1.04) translateY(-3px);}
+.product-body{padding:.5rem 0}
+.product-body h3{font-size:1.15rem;margin:0 0 .5rem 0}
+.product-actions{display:flex;gap:.75rem}
 
-/* Animations & reveal */
-.fade-in{opacity:0;transform:translateY(8px);transition:opacity 520ms var(--transition), transform 520ms var(--transition)}
-.fade-in.revealed{opacity:1;transform:none}
+/* Quality Progress Bar - Neon Style */
+.progress{
+    background:rgba(255,255,255,0.04);
+    height:12px;
+    border-radius:999px;
+    margin-top:1.5rem;
+    overflow:hidden;
+}
+.progress .bar.neon-bar{
+    background:var(--primary);
+    box-shadow: 0 0 15px var(--glow-primary); /* درخشش نئونی آبی */
+    border-radius:999px;
+    transition:width 1.5s ease-out;
+    display:flex;align-items:center;justify-content:flex-end;
+    padding-inline-end:1rem;font-size:.75rem;font-weight:600;color:#fff;
+}
 
-/* Focus visible */
-:focus-visible{outline:3px solid rgba(99,102,241,0.18);outline-offset:3px;border-radius:8px}
+/* CEO Section */
+.ceo-box{padding:2rem}
+.ceo-layout{display:grid;grid-template-columns:1fr 280px;gap:2rem;align-items:center}
+.ceo-photo img{width:100%;height:auto;border-radius:14px;object-fit:cover;aspect-ratio:1/1;filter: saturate(0.8) contrast(1.1);}
+
+/* Contact & Footer */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.contact-card{
+    background:var(--card);border-radius:var(--radius);padding:1.5rem;
+    border:1px solid rgba(255,255,255,0.05);
+    transition: border var(--transition), box-shadow var(--transition);
+}
+.contact-card:hover{
+    border:1px solid var(--glow-accent); /* خط دور طلایی هنگام هاور */
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.1); 
+}
+.contact-card h3{margin-top:0;color:var(--accent-plain)}
+.form-actions{display:flex;gap:.75rem;margin-top:1rem}
+.site-footer{padding:2rem 0;background:rgba(15, 23, 36, 0.8)}
+.footer-inner{display:grid;grid-template-columns:3fr 2fr 3fr;gap:2rem;align-items:flex-start}
+.footer-links{display:flex;flex-wrap:wrap;gap:1.5rem;padding:0;margin:0;list-style:none}
+.footer-links a{color:var(--muted);text-decoration:none}
+
+/* Scroll Top Button */
+.scroll-top{
+    position:fixed;bottom:2rem;right:2rem;width:40px;height:40px;
+    background: var(--primary);
+    color:#fff;border-radius:50%;border:none;cursor:pointer;
+    display:none;align-items:center;justify-content:center;
+    box-shadow:0 0 20px rgba(30, 64, 175, 0.3);
+    transition:opacity var(--transition), transform var(--transition);
+    opacity:0;
+}
+.scroll-top.visible{display:flex;opacity:1}
+
+/* Headings Decoration */
+.section-head{display:flex;flex-direction:column;gap:.25rem}
+.section-head h2{position:relative;padding-inline-end:1rem}
+.section-head h2::after{
+    content:"";position:absolute;inset:auto 0 auto auto;
+    width:160px;height:6px;border-radius:8px;
+    background:var(--accent); /* گرادینت طلایی */
+    transform:translateY(6px);opacity:0.25; 
+    box-shadow: 0 0 8px var(--glow-accent); /* درخشش طلایی */
+}
+.muted{color:var(--muted);font-size:.95rem}
+
+/* Simple Lightbox */
+.lb-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;
+    transition:opacity var(--transition);
+}
+.lb-overlay.open{opacity:1;pointer-events:auto;cursor:pointer}
+.lb-overlay img{max-width:90%;max-height:90vh;border-radius:12px;cursor:default}
 
 /* Responsive */
 @media(min-width:720px){
-  .hero-grid{grid-template-columns:1fr 520px;gap:1.5rem}
-  .product-grid{grid-template-columns:repeat(2,1fr)}
-  .contact-grid{grid-template-columns:repeat(4,1fr)}
-}
-@media(min-width:1100px){
-  .product-grid{grid-template-columns:repeat(3,1fr)}
+  .header-inner{gap:3rem}
+  .hero-card{padding:3rem}
   .nav-toggle{display:none}
-  .nav-list{gap:1rem}
+  .nav-list{gap:1.5rem}
 }
 
 /* Small devices */
 @media(max-width:719px){
   .nav-list{display:none}
-  .nav.open{display:block;position:fixed;right:0;top:var(--header-height);width:86%;max-width:360px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));height:calc(100vh - var(--header-height));padding:1rem;box-shadow:0 12px 40px rgba(2,6,23,0.6);overflow:auto}
+  .nav.open{
+    display:block;position:fixed;right:0;top:var(--header-height);
+    width:86%;max-width:360px;
+    background:linear-gradient(180deg, rgba(15, 23, 36, 0.9), rgba(15, 23, 36, 0.9)); /* BG Darker */
+    backdrop-filter: blur(var(--glass-blur));
+    height:calc(100vh - var(--header-height));padding:1rem;
+    box-shadow:0 12px 40px rgba(2,6,23,0.9);overflow:auto
+  }
   .nav-toggle{display:inline-flex}
+  .hero-grid{grid-template-columns:1fr}
   .hero-media{display:none}
   .contact-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
   *{transition:none!important;animation:none!important}
 }
-
-/* Light decorative gradients for headings */
-.section-head{display:flex;flex-direction:column;gap:.25rem}
-.section-head h2{position:relative;padding-inline-end:1rem}
-.section-head h2::after{content:"";position:absolute;inset:auto 0 auto auto;width:120px;height:6px;border-radius:8px;background:var(--accent);transform:translateY(6px);opacity:0.12}
-
-/* Utility */
-.text-muted{color:var(--muted)}
-.center{display:flex;align-items:center;justify-content:center}
-
-/* Lightbox overlay elements (JS will toggle .open) */
-.lb-overlay{position:fixed;inset:0;background:rgba(2,6,23,0.7);display:flex;align-items:center;justify-content:center;z-index:2000;opacity:0;pointer-events:none;transition:opacity 320ms}
-.lb-overlay.open{opacity:1;pointer-events:auto}
-.lb-overlay img{max-width:92vw;max-height:86vh;border-radius:8px;box-shadow:0 20px 60px rgba(2,6,23,0.6)}
