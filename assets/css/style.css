@@ -1,21 +1,21 @@
 :root{
-  /* Palette - Now Blue and Gold/Yellow */
-  --bg: #0f1724; /* Dark background */
-  --card: rgba(255,255,255,0.04);
-  --glass: rgba(255,255,255,0.06);
-  --muted: #9aa8bf;
-  --text: #e6eef8;
+  /* Palette - Now Pure Black and Neon Cyan/Yellow */
+  --bg: #000000; /* Pure Black Background */
+  --card: rgba(255,255,255,0.05); /* Transparent Card */
+  --glass: rgba(255,255,255,0.1); /* Glass effect on pure black */
+  --muted: #a0a0a0; /* Light Gray */
+  --text: #ffffff; /* Pure White Text */
   
-  /* PRIMARY: Deep Blue for buttons and main elements */
-  --primary: #1e40af; 
+  /* PRIMARY: Bright Cyan for buttons and main elements */
+  --primary: #00bcd4; 
   
-  /* ACCENT: Yellow/Gold gradient for highlights (the "khfan" element) */
-  --accent: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
-  --accent-plain: #f59e0b;
+  /* ACCENT: Neon Yellow/Gold for highlights */
+  --accent: linear-gradient(135deg, #ffeb3b 0%, #fbc02d 50%, #f57f17 100%);
+  --accent-plain: #ffeb3b;
   
-  /* NEON/GLOW Colors - Blue and Gold */
-  --glow-primary: rgba(30, 64, 175, 0.6);  /* Strong Blue Glow */
-  --glow-accent: rgba(245, 158, 11, 0.6);   /* Strong Yellow/Gold Glow */
+  /* NEON/GLOW Colors - Cyan and Neon Yellow */
+  --glow-primary: rgba(0, 188, 212, 0.6);  /* Cyan Glow */
+  --glow-accent: rgba(255, 235, 59, 0.6);   /* Yellow Glow */
 
   --radius: 14px;
   --container: 1200px;
@@ -27,18 +27,18 @@
   --header-height: 72px;
 }
 
-/* Light theme overrides (Adjusted for Blue/Yellow theme) */
+/* Light theme overrides (keeping it dark/black for consistency) */
 :root[data-theme="light"]{
-  --bg: #f7fbff;
-  --card: rgba(7,18,34,0.03);
-  --glass: rgba(255,255,255,0.7);
-  --muted: #475569;
-  --text: #071129;
-  --primary: #1e40af; 
-  --accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  --glow-primary: rgba(30, 64, 175, 0.4);
-  --glow-accent: rgba(245, 158, 11, 0.4);
-  color-scheme: light;
+  --bg: #111111; /* Very dark gray */
+  --card: rgba(255,255,255,0.08);
+  --glass: rgba(255,255,255,0.15);
+  --muted: #a0a0a0;
+  --text: #ffffff;
+  --primary: #00bcd4; 
+  --accent: linear-gradient(135deg, #ffeb3b 0%, #fbc02d 100%);
+  --glow-primary: rgba(0, 188, 212, 0.4);
+  --glow-accent: rgba(255, 235, 59, 0.4);
+  color-scheme: dark;
 }
 
 /* Basic reset */
@@ -49,7 +49,7 @@ body{
   /* --- FIX: Prevents horizontal scroll on mobile --- */
   overflow-x: hidden; 
   
-  /* Applying the new Blue and Yellow/Gold glow to the background (Parallax Effect) */
+  /* Applying the new Cyan and Neon Yellow glow to the background (Parallax Effect) */
   background:radial-gradient(1200px 600px at 10% 10%, var(--glow-primary), transparent 18%),
              radial-gradient(900px 400px at 90% 90%, var(--glow-accent), transparent 22%),
              var(--bg);
@@ -68,7 +68,7 @@ body{
 .site-header{
   position:fixed;top:0;left:0;right:0;z-index:100;
   height:var(--header-height);
-  background: rgba(15, 23, 36, 0.8); 
+  background: rgba(0, 0, 0, 0.9); /* Pure Black with high opacity */
   backdrop-filter: blur(var(--glass-blur)); 
   border-bottom:1px solid rgba(255,255,255,0.08); 
   transition: background var(--transition), backdrop-filter var(--transition);
@@ -108,19 +108,19 @@ body{
     cursor:pointer;border:none;transition:all var(--transition);
 }
 .btn.primary{
-    background:var(--primary);color:#fff;
-    box-shadow:0 0 20px rgba(30, 64, 175, 0.25);
+    background:var(--primary);color:#000; /* Black text on Cyan background */
+    box-shadow:0 0 20px rgba(0, 188, 212, 0.25);
 }
-.btn.primary:hover{background: #3b82f6; transform:translateY(-2px); box-shadow:0 8px 20px var(--glow-primary);}
+.btn.primary:hover{background: #26c6da; transform:translateY(-2px); box-shadow:0 8px 20px var(--glow-primary);}
 .btn.primary.glow-on-click:active{
     box-shadow: 0 0 40px var(--glow-primary);
     transform: scale(0.98);
 }
 .btn.accent{
-    background:var(--accent-plain);color:#071129;
-    box-shadow:0 0 10px rgba(245, 158, 11, 0.3);
+    background:var(--accent-plain);color:#000; /* Black text on Neon Yellow background */
+    box-shadow:0 0 10px rgba(255, 235, 59, 0.3);
 }
-.btn.accent:hover{background:#fcd34d; transform:translateY(-2px)}
+.btn.accent:hover{background:#ffee58; transform:translateY(-2px)}
 .btn.outline{
     background:transparent;color:var(--text);
     border:1px solid rgba(255,255,255,0.3);
@@ -141,7 +141,7 @@ section{padding:3rem 0}
   padding:2.5rem; 
   border: 1px solid transparent; 
   border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%) 1;
-  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.9), 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 1px rgba(255, 255, 255, 0.05) inset; /* Darker Shadow */
 }
 .hero-grid{display:grid;grid-template-columns:1fr 400px;gap:2rem}
 .hero-content h1{font-size:3rem;margin-top:0;line-height:1.2;text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);}
@@ -156,7 +156,7 @@ section{padding:3rem 0}
   border-radius:999px;
   background: var(--glow-accent); 
   box-shadow: 0 0 10px var(--glow-accent);
-  color: #071129;
+  color: #000; /* Black text on neon badge */
   font-weight: 800;
   animation: pulse 4s infinite alternate;
 }
@@ -176,9 +176,9 @@ section{padding:3rem 0}
     min-width:120px;
     text-align:center;
     box-shadow: 
-        inset 5px 5px 10px rgba(0, 0, 0, 0.2), 
-        inset -5px -5px 10px rgba(255, 255, 255, 0.05),
-        0 4px 12px rgba(0, 0, 0, 0.2);
+        inset 5px 5px 10px rgba(0, 0, 0, 0.4), /* Darker inset shadow */
+        inset -5px -5px 10px rgba(255, 255, 255, 0.08),
+        0 4px 12px rgba(0, 0, 0, 0.6); /* Darker outer shadow */
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 .kpi strong{display:block;font-size:2rem;font-weight:800;color:var(--accent-plain);}
@@ -193,7 +193,7 @@ section{padding:3rem 0}
     /* Animated Glassy Border */
     border: 1px solid transparent; 
     border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%) 1;
-    box-shadow: 0 16px 40px rgba(2, 6, 23, 0.9), 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 1px rgba(255, 255, 255, 0.05) inset;
     transition: all var(--transition);
 }
 .card.glass{
@@ -221,13 +221,13 @@ section{padding:3rem 0}
     border-radius: 18px;
     background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
     border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 8px 30px rgba(2,6,23,0.4);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
     transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .product:hover .product-inner{
     transform:translateY(-8px);
-    box-shadow: 0 20px 60px rgba(2,6,23,0.7), 0 0 15px var(--glow-primary); 
+    box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 15px var(--glow-primary); 
     border-color: var(--glow-primary);
 }
 .product-inner img{width:100%;height:auto;border-radius:12px;object-fit:cover;aspect-ratio:16/9;opacity:.9;transition:transform var(--transition)}
@@ -239,7 +239,7 @@ section{padding:3rem 0}
 /* CEO Section */
 .ceo-box{padding:2rem}
 .ceo-layout{display:grid;grid-template-columns:1fr 280px;gap:2rem;align-items:center}
-.ceo-photo img{width:100%;height:auto;border-radius:14px;object-fit:cover;aspect-ratio:1/1;filter: saturate(0.8) contrast(1.1);}
+.ceo-photo img{width:100%;height:auto;border-radius:14px;object-fit:cover;aspect-ratio:1/1;} /* Removed filter for cleaner black look */
 
 /* Contact & Footer */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
@@ -250,7 +250,7 @@ section{padding:3rem 0}
 }
 .contact-card:hover{
     border:1px solid var(--glow-accent); 
-    box-shadow: 0 0 10px rgba(245, 158, 11, 0.1); 
+    box-shadow: 0 0 10px rgba(255, 235, 59, 0.1); 
 }
 .contact-card h3{margin-top:0;color:var(--accent-plain)}
 .contact-list{list-style:none;padding:0}
@@ -286,12 +286,12 @@ form textarea:focus {
     outline: none;
     border-color: var(--primary); 
     box-shadow: 0 0 0 4px var(--glow-primary); 
-    background: rgba(255, 255, 255, 0.1); 
+    background: rgba(255, 255, 255, 0.12); 
 }
 .form-actions{display:flex;gap:.75rem;margin-top:1.5rem}
 
 /* Footer */
-.site-footer{padding:2rem 0;background:rgba(15, 23, 36, 0.8)}
+.site-footer{padding:2rem 0;background:rgba(0, 0, 0, 0.9)}
 .footer-inner{display:grid;grid-template-columns:3fr 2fr 3fr;gap:2rem;align-items:flex-start}
 .footer-links{display:flex;flex-wrap:wrap;gap:1.5rem;padding:0;margin:0;list-style:none}
 .footer-links a{color:var(--muted);text-decoration:none}
@@ -301,9 +301,9 @@ form textarea:focus {
 .scroll-top{
     position:fixed;bottom:2rem;right:2rem;width:40px;height:40px;
     background: var(--primary);
-    color:#fff;border-radius:50%;border:none;cursor:pointer;
+    color:#000;border-radius:50%;border:none;cursor:pointer;
     display:none;align-items:center;justify-content:center;
-    box-shadow:0 0 20px rgba(30, 64, 175, 0.3);
+    box-shadow:0 0 20px rgba(0, 188, 212, 0.3);
     transition:opacity var(--transition), transform var(--transition);
     opacity:0;
 }
@@ -318,13 +318,13 @@ form textarea:focus {
     width: 56px;
     height: 56px;
     background: var(--accent-plain);
-    color: #071129;
+    color: #000;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.6);
+    box-shadow: 0 4px 20px rgba(255, 235, 59, 0.6);
     transition: transform var(--transition);
 }
 .floating-cta:hover {
@@ -346,7 +346,7 @@ form textarea:focus {
 
 /* Simple Lightbox */
 .lb-overlay{
-    position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;
+    position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:9999;
     display:flex;align-items:center;justify-content:center;
     opacity:0;pointer-events:none;
     transition:opacity var(--transition);
@@ -390,11 +390,11 @@ form textarea:focus {
       height: calc(100vh - var(--header-height)); /* Full height below header */
       z-index: 90; 
       /* Glassmorphism sidebar style: شیشه ای و مات */
-      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+      background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
       backdrop-filter: blur(var(--glass-blur)); 
       border-left: 1px solid rgba(255, 255, 255, 0.2); 
       padding: 1.5rem;
-      box-shadow: 0 12px 40px rgba(2,6,23,0.8);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.9);
       /* Hide Off-Screen */
       transform: translateX(100%);
       visibility: hidden;
