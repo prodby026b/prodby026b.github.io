@@ -1,416 +1,95 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>پورتفولیوی سایبری | iOS Glass</title>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>PRODBY026B | MOBILE_OPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        /* --- متغیرهای رنگی (تم نئون iOS Glass) --- */
-        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
-        :root {
-            --neon: #00BFFF; /* آبی سرد و درخشان */
-            --glass-bg: rgba(255, 255, 255, 0.08); /* پس زمینه شفاف شیشه */
-            --glass-border: rgba(255, 255, 255, 0.15); /* حاشیه شیشه */
-            --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-            --success-neon: #39FF14;
-            --error-neon: #FF5F56;
-            --warning-neon: #FFD700;
-        }
-        
-        /* --- استایل‌های اصلی و پس زمینه (سایبری با نویز) --- */
-        html, body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Share Tech Mono', monospace;
-            /* حذف image و استفاده از رنگ تیره با افکت Noise برای تم سایبری */
-            background: #0d1117; 
-            background-image: radial-gradient(circle at center, rgba(0, 191, 255, 0.1) 0%, transparent 70%), 
-                              repeating-linear-gradient(0deg, #000 0, #000 1px, transparent 1px, transparent 3px),
-                              repeating-linear-gradient(90deg, #000 0, #000 1px, transparent 1px, transparent 3px);
-            background-size: 100% 100%, 2px 2px, 2px 2px;
-            color: var(--neon);
-            height: 100%;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            text-align: center;
-            padding-bottom: 60px;
-            box-sizing: border-box;
-            background-attachment: fixed;
-        }
-
-        /* --- نوار وضعیت بالا (Glass Header) --- */
-        .status-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 70px;
-            
-            /* Glassmorphism Effect */
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 2px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            
-            color: var(--neon);
-            z-index: 100;
-            overflow: hidden;
-            display: block;
-        }
-        .dir-text {
-            color: var(--neon);
-            text-shadow: 0 0 8px var(--neon), 0 0 32px rgba(0, 191, 255, 0.5); /* کمی ملایم تر شد */
-            opacity: 0.95;
-            /* بقیه استایل‌های dir-text ثابت می‌مانند */
-            white-space: nowrap;
-            font-size: 1.08em;
-            padding-left: 22px;
-            letter-spacing: 0.12em;
-            filter: blur(0.1px);
-            user-select: none;
-            display: inline-block;
-        }
-        /* ... (استایل‌های cmd-dir-scroll و @keyframes dirScrollLoop ثابت می‌مانند) ... */
-        .cmd-dir-scroll {
-            position: absolute; top: 0; left: 0; width: 100vw; height: 70px; z-index: 1; pointer-events: none;
-            display: flex; align-items: center; overflow: hidden;
-        }
-        .dir-text-loop {
-            display: flex; align-items: center; white-space: nowrap; animation: dirScrollLoop 70s linear infinite;
-        }
-        @keyframes dirScrollLoop { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-
-        /* --- عنوان اصلی (Typing Effect) --- */
-        h1 {
-            font-size: 3.5em;
-            margin-top: 90px;
-            
-            /* Glass Overlay for Title */
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-
-            padding: 12px 24px;
-            border-radius: 10px;
-            border-right: 2px solid var(--neon);
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 3s steps(25, end), blink 0.7s step-end infinite;
-            box-sizing: border-box;
-            width: fit-content;
-            max-width: 97vw;
-            box-shadow: var(--glass-shadow);
-        }
-        /* ... (@keyframes typing و @keyframes blink ثابت می‌مانند) ... */
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink { 50% { border-color: transparent } }
-
-        /* --- کارت ها و ماژول‌ها (Glass Components) --- */
-        .card-container {
-            margin-top: 50px;
-            margin-bottom: 100px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            width: 90vw;
-            max-width: 900px;
-            box-sizing: border-box;
-        }
-
-        .card, .status-module, .about-me {
-            /* Glassmorphism Base Styles */
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            border-radius: 12px;
-            
-            padding: 20px;
-            color: var(--neon);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-sizing: border-box;
-            width: 100%;
-            animation: fadeInUp 1s ease forwards;
-        }
-        .card {
-            cursor: pointer;
-            font-size: 1.4em;
-        }
-        .card:hover {
-            transform: scale(1.03); /* تغییر به Scale برای حس شیشه شناور */
-            box-shadow: 0 8px 50px rgba(0, 191, 255, 0.3); /* درخشش آبی قوی تر */
-            animation: none; /* خاموش کردن انیمیشن Glitch در Glass Mode */
-        }
-
-        /* --- بخش About Me و ماژول‌ها --- */
-        .about-me {
-            grid-column: 1 / -1; 
-            margin: 0 auto 20px auto; 
-            width: 98%;
-            max-width: none; 
-            text-align: left;
-            direction: ltr;
-            font-size: 1.2em;
-        }
-        .about-title {
-            color: var(--neon);
-            border-bottom: 1px solid var(--glass-border);
-        }
-        .status-module {
-            cursor: default;
-            font-size: 1em;
-            padding: 15px;
-            text-align: left;
-            line-height: 1.5;
-        }
-        .status-module h3 {
-            color: var(--success-neon);
-            text-shadow: 0 0 5px var(--success-neon);
-        }
-        .data-line {
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-        }
-        .status-ok { text-shadow: 0 0 3px rgba(57, 255, 20, 0.5); }
-        .status-warn { color: var(--warning-neon); text-shadow: 0 0 3px rgba(255, 215, 0, 0.5); }
-        .status-crit { color: var(--error-neon); text-shadow: 0 0 3px rgba(255, 95, 86, 0.5); }
-
-        /* --- فوتر (Glass Footer) --- */
-        footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100vw;
-            
-            /* Glassmorphism Effect */
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 2px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            
-            font-size: 1em;
-            color: var(--neon);
-            padding: 8px 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 999;
-            animation: fadeIn 1s ease-in-out;
-            box-sizing: border-box;
-            line-height: 1.5;
-        }
-        /* ... (@keyframes fadeInUp و @keyframes fadeIn ثابت می‌مانند) ... */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px) } to { opacity: 1; transform: translateY(0) } }
-        @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
-        
-        /* --- Phone optimization (بروزرسانی شده) --- */
-        @media (max-width: 600px) {
-            .status-bar { height: 38px; }
-            .cmd-dir-scroll { height: 38px; }
-            .dir-text { font-size: 0.73em; padding-left: 8px; }
-            h1 { font-size: 1.5em !important; padding: 8px 10px !important; margin-top: 50px !important; }
-            .card-container { grid-template-columns: 1fr; max-width: 94vw !important; width: 94vw !important; gap: 10px; }
-            .status-module { grid-column: 1 / -1; font-size: 0.9em; padding: 15px; }
-            .about-me { padding: 10px; font-size: 1em; margin-bottom: 10px; }
-            footer { font-size: 0.9em !important; padding: 4px 6px !important; flex-direction: column; align-items: flex-start; }
-            footer div { margin: 0 5px 2px 0; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="cyber-scanlines">
 
-    <div class="status-bar">
-        <div class="cmd-dir-scroll" id="cmdDirScroll">
-            <div class="dir-text-loop" id="dirTextLoop">
-                <span class="dir-text" id="dirTextA"></span>
-                <span class="dir-text" id="dirTextB"></span>
+    <div class="cyber-grid"></div>
+
+    <div class="status-bar glass">
+        <div class="dir-text-loop">
+            <span class="dir-text" id="dirTextA"></span>
+            <span class="dir-text" id="dirTextB"></span>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header data-aos="fade-down">
+            <h1 class="glitch" data-text="PRODBY026B">PRODBY026B</h1>
+            <div class="header-stats">
+                <span>[ID: 026B]</span>
+                <span>[NET: CCNA]</span>
+                <span>[OS: LPIC]</span>
+            </div>
+            <div class="cyber-line"></div>
+        </header>
+
+        <div class="analytics-row glass" data-aos="fade-up">
+            <div class="stat-box">
+                <span class="label">CPU</span>
+                <span class="value neon-text" id="cpuLoad">0.0%</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">MEM</span>
+                <span class="value neon-text" id="memUsage">0.0G</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">UPTIME</span>
+                <span class="value neon-text" id="sysUptime">00:00</span>
             </div>
         </div>
-    </div>
 
-    <h1 data-aos="zoom-in" data-aos-duration="1500">cipher net</h1>
+        <div class="matrix-stack">
+            <div class="module glass cyber-border" data-aos="fade-right">
+                <div class="module-header">:: LINUX_CORE ::</div>
+                <div class="data-block">
+                    <div class="data-line"><span>Kernel:</span> <span class="neon-text">Hardened</span></div>
+                    <div class="data-line"><span>Automation:</span> <span class="neon-text">Ansible</span></div>
+                    <div class="data-line"><span>Shell:</span> <span class="neon-text">Bash/Zsh</span></div>
+                </div>
+            </div>
 
-    <div class="about-me" id="aboutMe" data-aos="fade-up" data-aos-delay="500">
-        <div class="about-title">About Me</div>
-        <div>CipherNet VPN | Fast, secure, borderless internet.</div>
-        <br>
-        <div class="about-title">Technical Expertise (Certifications)</div>
-        <div class="status-ok">CCNA 200-301: Routing, Switching, IP Services</div>
-        <div class="status-ok">CompTIA Network+: Troubleshooting, Network Security</div>
-        <div class="status-ok">LPIC-1: Linux Command Line, System Management</div>
-    </div>
+            <div class="module glass cyber-border" data-aos="fade-left">
+                <div class="module-header">:: NETWORK_OPS ::</div>
+                <div class="data-block">
+                    <div class="data-line"><span>Routing:</span> <span class="neon-text">BGP/OSPF</span></div>
+                    <div class="data-line"><span>Security:</span> <span class="neon-text">IPsec/ASA</span></div>
+                    <div class="data-line"><span>Monitoring:</span> <span class="neon-text">SNMPv3</span></div>
+                </div>
+            </div>
 
-    <div class="card-container">
-        
-        <div class="status-module" data-aos="fade-right" data-aos-delay="800">
-            <h3>:: NETWORK LINK STATUS ::</h3>
-            <div class="data-line"><span>Interface:</span> <span class="status-value">GigabitEthernet0/1</span></div>
-            <div class="data-line"><span>Status:</span> <span id="linkStatus" class="status-value status-ok">UP/UP</span></div>
-            <div class="data-line"><span>Traffic IN:</span> <span id="trafficIn" class="status-value">2.45 Mbps</span></div>
-            <div class="data-line"><span>Errors/Discards:</span> <span id="errors" class="status-value status-ok">0.0%</span></div>
+            <div class="module glass cyber-border" data-aos="fade-right">
+                <div class="module-header">:: SEC_AUDIT ::</div>
+                <div class="data-block">
+                    <div class="data-line"><span>Firewall:</span> <span class="neon-text">Nftables</span></div>
+                    <div class="data-line"><span>IPS:</span> <span class="neon-text">Suricata</span></div>
+                    <div class="data-line"><span>Enc:</span> <span class="neon-text">AES-256</span></div>
+                </div>
+            </div>
         </div>
 
-        <div class="status-module" data-aos="fade-left" data-aos-delay="800">
-            <h3>:: LINUX SYSTEM HEALTH ::</h3>
-            <div class="data-line"><span>Uptime:</span> <span id="systemUptime" class="status-value">45 days, 12:34:01</span></div>
-            <div class="data-line"><span>CPU Load Avg (1m):</span> <span id="loadAvg1" class="status-value status-ok">0.15</span></div>
-            <div class="data-line"><span>RAM Usage:</span> <span id="ramUsage" class="status-value status-warn">78%</span></div>
-            <div class="data-line"><span>Active Sessions:</span> <span id="activeSessions" class="status-value">4 (SSH)</span></div>
+        <div class="cta-wrapper">
+            <div class="cta-card glass" onclick="window.open('https://t.me/prodby026b')">
+                <div class="cta-glitch">INIT_HANDSHAKE</div>
+                <div class="cta-sub">PRODBY026B // SECURE_COMM</div>
+            </div>
         </div>
-
-        <div class="card" onclick="window.open('https://speed.cloudflare.com','_blank')" data-aos="fade-up" data-aos-delay="1000">speed test</div>
-        <div class="card" onclick="window.open('https://t.me/cipher_net','_blank')" data-aos="fade-up" data-aos-delay="1200">official channel</div>
-        
-    </div>
+    </main>
 
     <footer>
-        <div id="networkStatusText">Network: stable</div>
-        <div>Packet log: active</div>
-        <div>Protocol: BGP/OSPF Ready</div>
-        <div id="currentTime"></div>
-        <div>© prodby026b</div>
+        <div class="footer-stats">
+            <div><span class="blink">●</span> ONLINE</div>
+            <div id="utcTime">00:00:00</div>
+        </div>
     </footer>
 
-    <script>
-        AOS.init({ once: true, duration: 800 }); // AOS Initialization
-
-        // --- Logic: Time and Network Status ---
-        function updateFooter() {
-            const now = new Date();
-            const timeStr = now.toLocaleTimeString('en-US');
-            document.getElementById('currentTime').textContent = 'Time: ' + timeStr;
-            
-            const networkStatusEl = document.getElementById('networkStatusText');
-            if (networkStatusEl) {
-                const isOnline = navigator.onLine;
-                networkStatusEl.textContent = isOnline ? "Network: stable" : "Network: offline (CRITICAL)";
-                networkStatusEl.className = isOnline ? 'status-ok' : 'status-crit';
-            }
-        }
-        setInterval(updateFooter, 1000);
-        updateFooter(); 
-
-        // --- Logic: System Health (LPIC-1 Focus) ---
-        function updateSystemHealth() {
-            let seconds = parseInt(localStorage.getItem('uptimeSeconds') || '3900000') + 2; 
-            localStorage.setItem('uptimeSeconds', seconds);
-
-            const days = Math.floor(seconds / (3600 * 24));
-            seconds %= (3600 * 24);
-            const hours = Math.floor(seconds / 3600);
-            seconds %= 3600;
-            const minutes = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-
-            const uptimeStr = `${days} days, ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-            document.getElementById('systemUptime').textContent = uptimeStr;
-            
-            const load1 = (0.1 + Math.random() * 0.3).toFixed(2);
-            document.getElementById('loadAvg1').textContent = load1;
-            document.getElementById('loadAvg1').className = (load1 > 0.35) ? 'status-warn' : 'status-ok';
-
-            const ram = (Math.random() * 20 + 70).toFixed(0); 
-            document.getElementById('ramUsage').textContent = `${ram}%`;
-            document.getElementById('ramUsage').className = (ram > 85) ? 'status-crit' : 'status-warn';
-
-            document.getElementById('activeSessions').textContent = `${Math.floor(Math.random() * 5) + 3} (SSH)`;
-        }
-        setInterval(updateSystemHealth, 2000); 
-        updateSystemHealth();
-
-        // --- Logic: Network Monitoring (CCNA Focus) ---
-        function updateNetworkMonitor() {
-             const trafficIn = (Math.random() * 10 + 1).toFixed(2);
-             document.getElementById('trafficIn').textContent = `${trafficIn} Mbps`;
-
-             const errors = (Math.random() * 0.5).toFixed(1);
-             document.getElementById('errors').textContent = `${errors}%`;
-             document.getElementById('errors').className = (errors > 0.3) ? 'status-warn' : 'status-ok';
-             
-             const linkStatusEl = document.getElementById('linkStatus');
-             if (Math.random() > 0.95) { 
-                 linkStatusEl.textContent = 'DOWN/DOWN (CRIT)';
-                 linkStatusEl.className = 'status-crit';
-             } else {
-                 linkStatusEl.textContent = 'UP/UP';
-                 linkStatusEl.className = 'status-ok';
-             }
-        }
-        setInterval(updateNetworkMonitor, 3500);
-        updateNetworkMonitor();
-        
-
-        // --- Logic: Dir Scroll (Finalized) ---
-        function getNetworkStatusText() { return navigator.onLine ? "Network: ONLINE" : "Network: OFFLINE"; }
-        function getLastActivityText() { 
-            let last = localStorage.getItem('lastVisit026b');
-            return last ? 'Last activity: ' + last : 'Last activity: NOW';
-        }
-        let nowDir = new Date();
-        let dateStrDir = nowDir.toLocaleDateString('en-US') + ' - ' + nowDir.toLocaleTimeString('en-US');
-        localStorage.setItem('lastVisit026b', dateStrDir);
-
-        function getStatusInfo() {
-            return [
-                'Cyber Nexus Status', '------------------', 'User: prodby026b', 
-                getNetworkStatusText(), getLastActivityText(), ' '
-            ].join('   ');
-        }
-        function randomDirOutput() {
-            const folders = [
-                'C:\\CyberNexus\\network\\', 'C:\\CyberNexus\\security\\', 'C:\\CyberNexus\\packets\\', 
-                'C:\\CyberNexus\\certs\\CCNA\\', 'C:\\CyberNexus\\os\\LPIC-1\\', 'C:\\CyberNexus\\logs\\Firewall\\',
-            ];
-            const files = [
-                'init.bat', 'config.sys', 'packet.log', 'netstat.txt', 'firewall.db',
-                'secure.key', 'auth.json', 'data.csv', 'driver.sys', 'matrix.py'
-            ];
-            const lines = [];
-            lines.push(getStatusInfo());
-            for(let i=0; i<folders.length; i++) {
-                lines.push(' Directory of ' + folders[i]);
-                let count = Math.floor(Math.random()*3) + 4;
-                for(let j=0; j<count; j++) {
-                    let date = '2025-07-' + (Math.floor(Math.random()*20)+1).toString().padStart(2,'0');
-                    let time = (Math.floor(Math.random()*12)+10) + ':' + (Math.floor(Math.random()*60)).toString().padStart(2,'0');
-                    let isFolder = Math.random() > 0.8;
-                    let name = isFolder ? '<DIR> ' + folders[Math.floor(Math.random()*folders.length)].split('\\').slice(-2,-1)[0] : files[Math.floor(Math.random()*files.length)];
-                    lines.push(' ' + date + '  ' + time + '   ' + name);
-                }
-                lines.push(' ');
-            }
-            return lines.join('   ');
-        }
-
-        const dirTextA = document.getElementById('dirTextA');
-        const dirTextB = document.getElementById('dirTextB');
-        function updateDirTextLoop() {
-            const text = randomDirOutput();
-            dirTextA.textContent = text;
-            dirTextB.textContent = text;
-        }
-        updateDirTextLoop();
-        setInterval(updateDirTextLoop, 170000);
-
-        window.addEventListener('online', updateDirTextLoop);
-        window.addEventListener('offline', updateDirTextLoop);
-
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>

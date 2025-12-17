@@ -1,251 +1,71 @@
-/* --- متغیرهای رنگی (تم نئون iOS Glass) --- */
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono:wght@400;700&display=swap');
-
 :root {
-    --neon: #00BFFF; /* آبی سرد و درخشان */
-    --glass-bg: rgba(255, 255, 255, 0.08); /* پس زمینه شفاف شیشه */
-    --glass-border: rgba(255, 255, 255, 0.15); /* حاشیه شیشه */
-    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    --success-neon: #39FF14;
-    --error-neon: #FF5F56;
-    --warning-neon: #FFD700;
+    --neon: #00BFFF;
+    --gold: #FFD700;
+    --glass: rgba(2, 8, 18, 0.95);
+    --border: rgba(0, 191, 255, 0.3);
 }
 
-/* --- استایل‌های اصلی و پس زمینه (سایبری با نویز) --- */
-html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Share Tech Mono', monospace;
-    /* پس زمینه تیره با افکت Noise و درخشش مرکزی */
-    background: #0d1117; 
-    background-image: radial-gradient(circle at center, rgba(0, 191, 255, 0.1) 0%, transparent 70%), 
-                      repeating-linear-gradient(0deg, #000 0, #000 1px, transparent 1px, transparent 3px),
-                      repeating-linear-gradient(90deg, #000 0, #000 1px, transparent 1px, transparent 3px);
-    background-size: 100% 100%, 2px 2px, 2px 2px;
-    color: var(--neon);
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-}
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-    padding-bottom: 60px;
-    box-sizing: border-box;
-    background-attachment: fixed;
+    margin: 0; background: #000; color: var(--neon);
+    font-family: 'Share Tech Mono', monospace;
+    overflow-x: hidden; -webkit-tap-highlight-color: transparent;
 }
 
-/* --- نوار وضعیت بالا (Glass Header) --- */
-.status-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 70px;
-    
-    /* Glassmorphism Effect */
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px); 
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 2px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    
-    color: var(--neon);
-    z-index: 100;
-    overflow: hidden;
-    display: block;
-}
-.cmd-dir-scroll {
-    position: absolute; top: 0; left: 0; width: 100vw; height: 70px; z-index: 1; pointer-events: none;
-    display: flex; align-items: center; overflow: hidden;
-}
-.dir-text-loop {
-    display: flex; align-items: center; white-space: nowrap; animation: dirScrollLoop 70s linear infinite;
-}
-.dir-text {
-    white-space: nowrap;
-    font-size: 1.08em;
-    color: var(--neon);
-    text-shadow: 0 0 8px var(--neon), 0 0 32px rgba(0, 191, 255, 0.5); 
-    opacity: 0.95;
-    padding-left: 22px;
-    letter-spacing: 0.12em;
-    filter: blur(0.1px);
-    user-select: none;
-    display: inline-block;
-}
-@keyframes dirScrollLoop { 
-    0% { transform: translateX(0); } 
-    100% { transform: translateX(-50%); } 
+/* UI Optimization for Mobile Screens */
+.main-content { padding: 70px 15px 100px 15px; }
+
+header { text-align: center; margin-bottom: 30px; }
+.glitch { font-size: 2.2rem; letter-spacing: 4px; font-weight: bold; margin: 0; }
+.header-stats { display: flex; justify-content: center; gap: 10px; font-size: 0.7rem; margin-top: 5px; opacity: 0.8; }
+.cyber-line { width: 100%; height: 1px; background: var(--gold); margin: 15px 0; box-shadow: 0 0 10px var(--gold); }
+
+/* Matrix Stack (Single Column for Mobile) */
+.matrix-stack { display: flex; flex-direction: column; gap: 15px; }
+
+.glass {
+    background: var(--glass); backdrop-filter: blur(10px);
+    border: 1px solid var(--border); padding: 15px;
 }
 
-/* --- عنوان اصلی (Typing Effect) --- */
-h1 {
-    font-size: 3.5em;
-    margin-top: 90px;
-    
-    /* Glass Overlay for Title */
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-
-    padding: 12px 24px;
-    border-radius: 10px;
-    border-right: 2px solid var(--neon);
-    white-space: nowrap;
-    overflow: hidden;
-    animation: typing 3s steps(25, end), blink 0.7s step-end infinite;
-    box-sizing: border-box;
-    width: fit-content;
-    max-width: 97vw;
-    box-shadow: var(--glass-shadow);
-}
-@keyframes typing { 
-    from { width: 0 } 
-    to { width: 100% } 
-}
-@keyframes blink { 
-    50% { border-color: transparent } 
+.module-header {
+    background: var(--neon); color: #000; font-size: 0.8rem;
+    padding: 4px 10px; margin-bottom: 12px; font-weight: bold;
 }
 
-/* --- کارت ها و کانتینر اصلی (Grid) --- */
-.card-container {
-    margin-top: 50px;
-    margin-bottom: 100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    width: 90vw;
-    max-width: 900px;
-    box-sizing: border-box;
+.data-line { 
+    display: flex; justify-content: space-between; 
+    font-size: 0.75rem; margin-bottom: 8px; border-bottom: 1px solid rgba(0, 191, 255, 0.1); 
 }
 
-.card, .status-module, .about-me {
-    /* Glassmorphism Base Styles */
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    border-radius: 12px;
-    
-    padding: 20px;
-    color: var(--neon);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box;
-    width: 100%;
-    animation: fadeInUp 1s ease forwards;
+/* Metrics Bar (Compact) */
+.analytics-row {
+    display: flex; justify-content: space-between;
+    margin-bottom: 25px; padding: 10px; border-left: 3px solid var(--gold);
 }
-.card {
-    cursor: pointer;
-    font-size: 1.4em;
+.stat-box { text-align: center; }
+.stat-box .label { font-size: 0.6rem; color: var(--gold); display: block; }
+.stat-box .value { font-size: 0.9rem; font-weight: bold; }
+
+/* Call to Action (Big Touch Area) */
+.cta-card {
+    margin-top: 40px; padding: 25px; text-align: center;
+    border: 1px solid var(--gold); color: var(--gold);
+    background: rgba(255, 215, 0, 0.05);
 }
-.card:hover {
-    transform: scale(1.03); 
-    box-shadow: 0 8px 50px rgba(0, 191, 255, 0.3); 
-    animation: none;
+.cta-card:active { background: var(--gold); color: #000; }
+
+/* Fixed Elements */
+.status-bar { position: fixed; top: 0; width: 100%; height: 40px; z-index: 1000; border-bottom: 1px solid var(--border); display: flex; align-items: center; }
+.dir-text { font-size: 0.8rem; white-space: nowrap; margin-right: 40px; }
+
+footer { position: fixed; bottom: 0; width: 100%; padding: 10px 0; background: #000; border-top: 1px solid var(--gold); z-index: 1000; }
+.footer-stats { display: flex; justify-content: space-around; font-size: 0.7rem; color: var(--gold); }
+
+/* Background Grid (Fixed for Performance) */
+.cyber-grid {
+    position: fixed; inset: 0; z-index: -1;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px; opacity: 0.1;
 }
 
-/* --- بخش About Me و ماژول‌ها --- */
-.about-me {
-    grid-column: 1 / -1; 
-    margin: 0 auto 20px auto; 
-    width: 98%;
-    max-width: none; 
-    text-align: left;
-    direction: ltr;
-    font-size: 1.2em;
-}
-.about-title {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: var(--neon);
-    border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 8px;
-    text-align: left;
-    direction: ltr;
-}
-.status-module {
-    cursor: default;
-    font-size: 1em;
-    padding: 15px;
-    text-align: left;
-    line-height: 1.5;
-}
-.status-module h3 {
-    font-size: 1.2em;
-    margin: 0 0 10px 0;
-    color: var(--success-neon);
-    text-shadow: 0 0 5px var(--success-neon);
-}
-.status-module .data-line {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-    padding: 4px 0;
-}
-.status-value {
-    font-weight: 700;
-}
-.status-ok { color: var(--success-neon); text-shadow: 0 0 3px rgba(57, 255, 20, 0.5); }
-.status-warn { color: var(--warning-neon); text-shadow: 0 0 3px rgba(255, 215, 0, 0.5); }
-.status-crit { color: var(--error-neon); text-shadow: 0 0 3px rgba(255, 95, 86, 0.5); }
-
-/* --- فوتر (Glass Footer) --- */
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100vw;
-    
-    /* Glassmorphism Effect */
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px); 
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 2px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-    
-    font-size: 1em;
-    color: var(--neon);
-    padding: 8px 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 999;
-    animation: fadeIn 1s ease-in-out;
-    box-sizing: border-box;
-    line-height: 1.5;
-}
-footer div {
-    margin: 0 15px;
-    padding: 0;
-}
-
-/* --- انیمیشن ها --- */
-@keyframes fadeInUp { 
-    from { opacity: 0; transform: translateY(30px) } 
-    to { opacity: 1; transform: translateY(0) } 
-}
-@keyframes fadeIn { 
-    from { opacity: 0 } 
-    to { opacity: 1 } 
-}
-
-/* --- Phone optimization (پاسخگویی) --- */
-@media (max-width: 600px) {
-    .status-bar { height: 38px; }
-    .cmd-dir-scroll { height: 38px; }
-    .dir-text { font-size: 0.73em; padding-left: 8px; }
-    h1 { font-size: 1.5em !important; padding: 8px 10px !important; margin-top: 50px !important; }
-    .card-container { grid-template-columns: 1fr; max-width: 94vw !important; width: 94vw !important; gap: 10px; }
-    .status-module { grid-column: 1 / -1; font-size: 0.9em; padding: 15px; }
-    .about-me { padding: 10px; font-size: 1em; margin-bottom: 10px; }
-    footer { font-size: 0.9em !important; padding: 4px 6px !important; flex-direction: column; align-items: flex-start; }
-    footer div { margin: 0 5px 2px 0; }
-}
+@keyframes glitch { 0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 100% { transform: translate(0); } }
