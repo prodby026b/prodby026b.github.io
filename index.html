@@ -2,94 +2,266 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>PRODBY026B | MOBILE_OPS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prodby026b | Systems Architect</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        :root {
+            --bg-deep: #050a15;
+            --glass-blue: rgba(10, 25, 47, 0.7);
+            --accent-gold: #ffcc33;
+            --gold-glow: 0 0 20px rgba(255, 204, 51, 0.5);
+            --text-silver: #e6f1ff;
+            --border-gold: rgba(255, 204, 51, 0.25);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-silver);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Matrix Overlay Effect */
+        .matrix-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; opacity: 0.1;
+            background: linear-gradient(rgba(5, 10, 21, 0.92), rgba(5, 10, 21, 0.92)), 
+                        url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+        }
+
+        /* AI Research Banner */
+        .ai-banner {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(5, 10, 21, 0.95);
+            border-bottom: 2px solid var(--accent-gold);
+            backdrop-filter: blur(12px); padding: 12px 0;
+            font-family: 'Fira Code', monospace;
+            box-shadow: var(--gold-glow);
+        }
+
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding-top: 100px;
+            background: radial-gradient(circle at 50% 50%, #0a192f 0%, #050a15 100%);
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        .glass-card {
+            background: var(--glass-blue);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-gold);
+            border-radius: 16px;
+            padding: 35px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            box-shadow: var(--gold-glow);
+        }
+
+        .gold-text { color: var(--accent-gold); text-shadow: var(--gold-glow); }
+
+        /* Terminal */
+        .terminal {
+            background: #011627; border-radius: 12px; overflow: hidden;
+            border: 1px solid var(--border-gold); box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+        .terminal-header { background: #1a1a1a; padding: 12px; display: flex; gap: 10px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .terminal-body { padding: 25px; font-family: 'Fira Code', monospace; font-size: 14px; min-height: 250px; }
+
+        /* VPN Specialized Box */
+        .vpn-special-box {
+            background: linear-gradient(145deg, rgba(255, 204, 51, 0.15) 0%, rgba(10, 25, 47, 0.9) 100%);
+            border: 2px solid var(--accent-gold);
+            padding: 50px; border-radius: 24px; margin: 80px 0;
+            position: relative; overflow: hidden;
+            box-shadow: var(--gold-glow);
+        }
+        .vpn-badge {
+            position: absolute; top: 30px; right: -40px;
+            background: var(--accent-gold); color: var(--bg-deep);
+            padding: 8px 50px; transform: rotate(45deg); font-weight: 800;
+            letter-spacing: 1px; font-size: 0.9rem;
+        }
+
+        .grid-skills {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;
+        }
+
+        .skill-category h3 { 
+            border-bottom: 2px solid var(--accent-gold); 
+            padding-bottom: 12px; margin-bottom: 20px;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        /* Skills Progress */
+        .chart-item { margin-bottom: 25px; }
+        .chart-bar { height: 10px; background: rgba(255,255,255,0.05); border-radius: 5px; overflow: hidden; }
+        .chart-fill { height: 100%; background: linear-gradient(90deg, #b8860b, var(--accent-gold)); width: 0; transition: 2.5s ease-out; }
+
+        footer { text-align: center; padding: 50px; border-top: 1px solid var(--border-gold); background: rgba(5, 10, 21, 0.8); }
+    </style>
 </head>
-<body class="cyber-scanlines">
+<body>
 
-    <div class="cyber-grid"></div>
+    <div class="matrix-bg"></div>
 
-    <div class="status-bar glass">
-        <div class="dir-text-loop">
-            <span class="dir-text" id="dirTextA"></span>
-            <span class="dir-text" id="dirTextB"></span>
+    <div class="ai-banner">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="gold-text">●</span> 
+                <span style="letter-spacing: 2px;">CORE_ARCHITECT: t.me/prodby026b</span>
+            </div>
+            <span style="font-size: 0.8rem; opacity: 0.7;">ENCRYPTED_SESSION_ACTIVE</span>
         </div>
     </div>
 
-    <main class="main-content">
-        <header data-aos="fade-down">
-            <h1 class="glitch" data-text="PRODBY026B">PRODBY026B</h1>
-            <div class="header-stats">
-                <span>[ID: 026B]</span>
-                <span>[NET: CCNA]</span>
-                <span>[OS: LPIC]</span>
-            </div>
-            <div class="cyber-line"></div>
-        </header>
-
-        <div class="analytics-row glass" data-aos="fade-up">
-            <div class="stat-box">
-                <span class="label">CPU</span>
-                <span class="value neon-text" id="cpuLoad">0.0%</span>
-            </div>
-            <div class="stat-box">
-                <span class="label">MEM</span>
-                <span class="value neon-text" id="memUsage">0.0G</span>
-            </div>
-            <div class="stat-box">
-                <span class="label">UPTIME</span>
-                <span class="value neon-text" id="sysUptime">00:00</span>
-            </div>
-        </div>
-
-        <div class="matrix-stack">
-            <div class="module glass cyber-border" data-aos="fade-right">
-                <div class="module-header">:: LINUX_CORE ::</div>
-                <div class="data-block">
-                    <div class="data-line"><span>Kernel:</span> <span class="neon-text">Hardened</span></div>
-                    <div class="data-line"><span>Automation:</span> <span class="neon-text">Ansible</span></div>
-                    <div class="data-line"><span>Shell:</span> <span class="neon-text">Bash/Zsh</span></div>
+    <section class="hero">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center;">
+                <div data-aos="fade-right">
+                    <h1 style="font-size: 4.5rem; line-height: 1;" class="gold-text">prodby026b</h1>
+                    <h2 style="font-size: 1.6rem; color: #8892b0; margin: 15px 0;">CipherNet VPN | Fast, secure, borderless internet.</h2>
+                    <p style="font-size: 1.1rem; max-width: 550px;">معمار فنی و مدیر سیستم‌های توزیع‌شده با تخصص در اتوماسیون لینوکس، مهندسی شبکه و توسعه راهکارهای نوین عبور از فیلترینگ.</p>
+                    
+                    <div style="margin-top: 40px;" class="language-chart">
+                        <div class="chart-item">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Core Networking (Standard CCNA)</span>
+                                <b class="gold-text">95%</b>
+                            </div>
+                            <div class="chart-bar"><div class="chart-fill" data-width="95%"></div></div>
+                        </div>
+                        <div class="chart-item">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <span>Linux OS Management (Standard LPIC)</span>
+                                <b class="gold-text">92%</b>
+                            </div>
+                            <div class="chart-bar"><div class="chart-fill" data-width="92%"></div></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="module glass cyber-border" data-aos="fade-left">
-                <div class="module-header">:: NETWORK_OPS ::</div>
-                <div class="data-block">
-                    <div class="data-line"><span>Routing:</span> <span class="neon-text">BGP/OSPF</span></div>
-                    <div class="data-line"><span>Security:</span> <span class="neon-text">IPsec/ASA</span></div>
-                    <div class="data-line"><span>Monitoring:</span> <span class="neon-text">SNMPv3</span></div>
-                </div>
-            </div>
-
-            <div class="module glass cyber-border" data-aos="fade-right">
-                <div class="module-header">:: SEC_AUDIT ::</div>
-                <div class="data-block">
-                    <div class="data-line"><span>Firewall:</span> <span class="neon-text">Nftables</span></div>
-                    <div class="data-line"><span>IPS:</span> <span class="neon-text">Suricata</span></div>
-                    <div class="data-line"><span>Enc:</span> <span class="neon-text">AES-256</span></div>
+                <div class="terminal" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="terminal-header">
+                        <div class="dot" style="background: #ff5f56;"></div>
+                        <div class="dot" style="background: #ffbd2e;"></div>
+                        <div class="dot" style="background: #27ca3f;"></div>
+                    </div>
+                    <div class="terminal-body">
+                        <p><span class="gold-text">prodby026b@infra:~$</span> whoami</p>
+                        <p style="color: #addb67;">> Technical Architect & CipherNet Founder</p>
+                        <p><span class="gold-text">prodby026b@infra:~$</span> cat credentials.txt</p>
+                        <p style="color: #61afef;">- Network+ (CompTIA)</p>
+                        <p style="color: #61afef;">- CCNA (Cisco Certified)</p>
+                        <p style="color: #61afef;">- LPIC-1 (Linux Professional)</p>
+                        <p><span class="gold-text">prodby026b@infra:~$</span> <span id="typed"></span></p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="cta-wrapper">
-            <div class="cta-card glass" onclick="window.open('https://t.me/prodby026b')">
-                <div class="cta-glitch">INIT_HANDSHAKE</div>
-                <div class="cta-sub">PRODBY026B // SECURE_COMM</div>
+    <section class="container" style="padding: 100px 0;">
+        <div class="vpn-special-box" data-aos="fade-up">
+            <div class="vpn-badge">EXCLUSIVE</div>
+            <h2 class="gold-text" style="font-size: 3rem; margin-bottom: 15px;">CipherNet Solutions</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 35px; color: #ccd6f6;">فراتر از سیستم‌های تانلینگ معمولی. پیاده‌سازی سرویس‌های Native و Direct با تمرکز بر رمزنگاری سطح بالا (Cipher Net) جهت تضمین سرعت حداکثری و امنیت بی‌مرز.</p>
+            
+            <div class="grid-skills">
+                <div class="glass-card" style="padding: 25px;">
+                    <h4 class="gold-text"><i class="fas fa-bolt"></i> High-Speed Delivery</h4>
+                    <p>حذف تأخیرهای ناشی از تانلینگ‌های سنگین و استفاده از مسیریابی بهینه دیتاسنتر.</p>
+                </div>
+                <div class="glass-card" style="padding: 25px;">
+                    <h4 class="gold-text"><i class="fas fa-user-tie"></i> Enterprise Deploy</h4>
+                    <p>قابلیت راه‌اندازی و مدیریت زیرساخت VPN اختصاصی برای بیزینس‌ها و سازمان‌ها.</p>
+                </div>
             </div>
         </div>
-    </main>
+
+        <h2 class="gold-text" style="text-align: center; font-size: 2.8rem; margin-bottom: 70px;">Technical Expertise</h2>
+        
+        <div class="grid-skills">
+            <div class="glass-card skill-category" data-aos="fade-right">
+                <h3><i class="fas fa-network-wired gold-text"></i> Network Engineering</h3>
+                <ul style="list-style: none; padding-left: 10px;">
+                    <li>● Switching & Routing (VLAN, STP, OSPF)</li>
+                    <li>● Layer 2/3 Multi-layer Troubleshooting</li>
+                    <li>● Firewall & Security Port Management</li>
+                    <li>● Postfix / Dovecot Infrastructure</li>
+                </ul>
+            </div>
+
+            <div class="glass-card skill-category" data-aos="fade-up">
+                <h3><i class="fab fa-linux gold-text"></i> Systems Administration</h3>
+                <ul style="list-style: none; padding-left: 10px;">
+                    <li>● AlmaLinux 10 & Arch Linux Specialist</li>
+                    <li>● Kernel Tuning & Driver Optimization</li>
+                    <li>● Advanced Disk Mgmt (LVM, GRUB Booting)</li>
+                    <li>● Automation with Clean Architecture</li>
+                </ul>
+            </div>
+
+            <div class="glass-card skill-category" data-aos="fade-left">
+                <h3><i class="fas fa-mobile-alt gold-text"></i> Mobile & Hardware</h3>
+                <ul style="list-style: none; padding-left: 10px;">
+                    <li>● Custom ROM & Kernel Deployment</li>
+                    <li>● Bootloader & TWRP Operations</li>
+                    <li>● Wireless Hardware Troubleshooting</li>
+                    <li>● Fallback Internet Configurations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <div class="footer-stats">
-            <div><span class="blink">●</span> ONLINE</div>
-            <div id="utcTime">00:00:00</div>
-        </div>
+        <p class="gold-text" style="font-family: 'Fira Code';">© 2025 prodby026b | Designed by prodby026b</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Terminal Typing Effect
+        new Typed('#typed', {
+            strings: [
+                'cipher-net --deploy --secure', 
+                'network-diagnostic --layer-3', 
+                'arch-install --wireless-fix',
+                'systemctl status prodby026b'
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true
+        });
+
+        // Skills Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fills = entry.target.querySelectorAll('.chart-fill');
+                    fills.forEach(fill => {
+                        fill.style.width = fill.getAttribute('data-width');
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.querySelector('.language-chart'));
+    </script>
 </body>
 </html>
