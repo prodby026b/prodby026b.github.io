@@ -25,7 +25,7 @@
             font-family: 'Space Grotesk', sans-serif;
             background: var(--bg-deep);
             color: var(--text-silver);
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
             line-height: 1.6;
         }
 
@@ -71,7 +71,7 @@
             border-radius: 16px;
             padding: 35px;
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            height: 100%; /* Equal height in grid */
+            height: 100%;
         }
 
         .glass-card:hover {
@@ -82,15 +82,27 @@
 
         .gold-text { color: var(--accent-gold); text-shadow: var(--gold-glow); }
 
-        /* Terminal */
+        /* --- TERMINAL FIX --- */
         .terminal {
             background: #011627; border-radius: 12px; overflow: hidden;
             border: 1px solid var(--border-gold); box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             width: 100%;
+            /* حذف ارتفاع خودکار برای جلوگیری از پرش */
+            display: flex;
+            flex-direction: column;
         }
-        .terminal-header { background: #1a1a1a; padding: 12px; display: flex; gap: 10px; }
+        .terminal-header { background: #1a1a1a; padding: 12px; display: flex; gap: 10px; flex-shrink: 0; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
-        .terminal-body { padding: 25px; font-family: 'Fira Code', monospace; font-size: 14px; min-height: 250px; }
+        
+        /* فیکس کردن ارتفاع بدنه ترمینال */
+        .terminal-body { 
+            padding: 25px; 
+            font-family: 'Fira Code', monospace; 
+            font-size: 14px; 
+            height: 300px; /* ارتفاع ثابت */
+            overflow-y: auto; /* اگر متن زیاد شد اسکرول داخلی بخورد نه صفحه */
+        }
+        /* -------------------- */
 
         /* VPN Specialized Box */
         .vpn-special-box {
@@ -125,55 +137,31 @@
 
         footer { text-align: center; padding: 50px; border-top: 1px solid var(--border-gold); background: rgba(5, 10, 21, 0.8); }
 
-        /* =========================================
-           MOBILE OPTIMIZATION (MEDIA QUERIES)
-           ========================================= */
+        /* MOBILE OPTIMIZATION */
         @media screen and (max-width: 992px) {
             .hero-grid {
-                grid-template-columns: 1fr; /* Stack vertically on tablets */
+                grid-template-columns: 1fr;
                 text-align: center;
                 gap: 40px;
             }
-            .hero p {
-                margin: 0 auto; /* Center paragraph */
-            }
+            .hero p { margin: 0 auto; }
         }
 
         @media screen and (max-width: 768px) {
-            /* Typography Tweaks */
             h1 { font-size: 3rem !important; }
             h2 { font-size: 1.3rem !important; }
             
-            /* Banner Adjustments */
-            .banner-content {
-                flex-direction: column;
-                gap: 5px;
-                text-align: center;
-            }
+            .banner-content { flex-direction: column; gap: 5px; text-align: center; }
+            .hero { padding-top: 130px; }
             
-            /* Hero Adjustments */
-            .hero { padding-top: 130px; } /* More space for double-line banner */
-            
-            /* VPN Box Mobile */
-            .vpn-special-box {
-                padding: 30px 20px;
-                margin: 50px 0;
-            }
-            .vpn-badge {
-                font-size: 0.7rem;
-                padding: 5px 40px;
-                top: 20px;
-                right: -35px;
-            }
+            .vpn-special-box { padding: 30px 20px; margin: 50px 0; }
+            .vpn-badge { font-size: 0.7rem; padding: 5px 40px; top: 20px; right: -35px; }
 
-            /* Skills Grid Mobile */
-            .grid-skills {
-                grid-template-columns: 1fr; /* Force single column on mobile */
-            }
+            .grid-skills { grid-template-columns: 1fr; }
+            .glass-card { padding: 25px; }
             
-            .glass-card {
-                padding: 25px;
-            }
+            /* تنظیم ارتفاع ترمینال برای موبایل */
+            .terminal-body { height: 260px; }
         }
     </style>
 </head>
@@ -300,7 +288,7 @@
         AOS.init({ 
             duration: 1000, 
             once: true,
-            disable: 'mobile' // Optional: Disables animation on mobile if it lags
+            disable: 'mobile' 
         });
 
         // Terminal Typing Effect
@@ -316,7 +304,6 @@
             loop: true
         });
 
-        // Skills Animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
