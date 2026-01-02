@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prodby026b | Systems Architect</title>
+    <title>prodby026b | Network & Systems Admin</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -82,29 +82,25 @@
 
         .gold-text { color: var(--accent-gold); text-shadow: var(--gold-glow); }
 
-        /* --- TERMINAL FIX --- */
+        /* Terminal Fixed Height */
         .terminal {
             background: #011627; border-radius: 12px; overflow: hidden;
             border: 1px solid var(--border-gold); box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             width: 100%;
-            /* حذف ارتفاع خودکار برای جلوگیری از پرش */
-            display: flex;
-            flex-direction: column;
+            display: flex; flex-direction: column;
         }
         .terminal-header { background: #1a1a1a; padding: 12px; display: flex; gap: 10px; flex-shrink: 0; }
         .dot { width: 12px; height: 12px; border-radius: 50%; }
         
-        /* فیکس کردن ارتفاع بدنه ترمینال */
         .terminal-body { 
             padding: 25px; 
             font-family: 'Fira Code', monospace; 
             font-size: 14px; 
-            height: 300px; /* ارتفاع ثابت */
-            overflow-y: auto; /* اگر متن زیاد شد اسکرول داخلی بخورد نه صفحه */
+            height: 300px; 
+            overflow-y: auto; 
         }
-        /* -------------------- */
 
-        /* VPN Specialized Box */
+        /* VPN Specialized Box (UNTOUCHED) */
         .vpn-special-box {
             background: linear-gradient(145deg, rgba(255, 204, 51, 0.15) 0%, rgba(10, 25, 47, 0.9) 100%);
             border: 2px solid var(--accent-gold);
@@ -139,28 +135,19 @@
 
         /* MOBILE OPTIMIZATION */
         @media screen and (max-width: 992px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 40px;
-            }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .hero p { margin: 0 auto; }
         }
 
         @media screen and (max-width: 768px) {
             h1 { font-size: 3rem !important; }
             h2 { font-size: 1.3rem !important; }
-            
             .banner-content { flex-direction: column; gap: 5px; text-align: center; }
             .hero { padding-top: 130px; }
-            
             .vpn-special-box { padding: 30px 20px; margin: 50px 0; }
             .vpn-badge { font-size: 0.7rem; padding: 5px 40px; top: 20px; right: -35px; }
-
             .grid-skills { grid-template-columns: 1fr; }
             .glass-card { padding: 25px; }
-            
-            /* تنظیم ارتفاع ترمینال برای موبایل */
             .terminal-body { height: 260px; }
         }
     </style>
@@ -184,23 +171,23 @@
             <div class="hero-grid">
                 <div data-aos="fade-right">
                     <h1 style="font-size: 4.5rem; line-height: 1.1;" class="gold-text">prodby026b</h1>
-                    <h2 style="font-size: 1.6rem; color: #8892b0; margin: 15px 0;">CipherNet VPN | Fast, secure, borderless internet.</h2>
-                    <p style="font-size: 1.1rem; max-width: 550px;">معمار فنی و مدیر سیستم‌های توزیع‌شده با تخصص در اتوماسیون لینوکس، مهندسی شبکه و توسعه راهکارهای نوین عبور از فیلترینگ.</p>
+                    <h2 style="font-size: 1.6rem; color: #8892b0; margin: 15px 0;">Network & Linux System Administrator</h2>
+                    <p style="font-size: 1.1rem; max-width: 550px;">متخصص در طراحی، پیاده‌سازی و عیب‌یابی زیرساخت‌های شبکه (Cisco) و مدیریت سرورهای لینوکسی. تمرکز بر پایداری سرویس‌ها، امنیت ارتباطات و بهینه‌سازی عملکرد سیستم.</p>
                     
                     <div style="margin-top: 40px; text-align: left;" class="language-chart">
                         <div class="chart-item">
                             <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                                <span>Core Networking (Standard CCNA)</span>
-                                <b class="gold-text">95%</b>
+                                <span>Cisco Networking (CCNA)</span>
+                                <b class="gold-text">100%</b>
                             </div>
-                            <div class="chart-bar"><div class="chart-fill" data-width="95%"></div></div>
+                            <div class="chart-bar"><div class="chart-fill" data-width="100%"></div></div>
                         </div>
                         <div class="chart-item">
                             <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                                <span>Linux OS Management (Standard LPIC)</span>
-                                <b class="gold-text">92%</b>
+                                <span>Linux Administration (LPIC-1)</span>
+                                <b class="gold-text">95%</b>
                             </div>
-                            <div class="chart-bar"><div class="chart-fill" data-width="92%"></div></div>
+                            <div class="chart-bar"><div class="chart-fill" data-width="95%"></div></div>
                         </div>
                     </div>
                 </div>
@@ -212,13 +199,12 @@
                         <div class="dot" style="background: #27ca3f;"></div>
                     </div>
                     <div class="terminal-body" style="text-align: left;">
-                        <p><span class="gold-text">prodby026b@infra:~$</span> whoami</p>
-                        <p style="color: #addb67;">> Technical Architect & CipherNet Founder</p>
-                        <p><span class="gold-text">prodby026b@infra:~$</span> cat credentials.txt</p>
-                        <p style="color: #61afef;">- Network+ (CompTIA)</p>
-                        <p style="color: #61afef;">- CCNA (Cisco Certified)</p>
-                        <p style="color: #61afef;">- LPIC-1 (Linux Professional)</p>
-                        <p><span class="gold-text">prodby026b@infra:~$</span> <span id="typed"></span></p>
+                        <p><span class="gold-text">prodby026b@server:~$</span> whoami</p>
+                        <p style="color: #addb67;">> Network & SysAdmin</p>
+                        <p><span class="gold-text">prodby026b@server:~$</span> ip a | grep inet</p>
+                        <p style="color: #61afef;">inet 192.168.1.10/24 brd 192.168.1.255 scope global eth0</p>
+                        <p style="color: #61afef;">inet6 fe80::a00:27ff:fe4e:66a1/64 scope link</p>
+                        <p><span class="gold-text">prodby026b@server:~$</span> <span id="typed"></span></p>
                     </div>
                 </div>
             </div>
@@ -249,37 +235,30 @@
             <div class="glass-card skill-category" data-aos="fade-right">
                 <h3><i class="fas fa-network-wired gold-text"></i> Network Engineering</h3>
                 <ul style="list-style: none; padding-left: 10px;">
-                    <li>● Switching & Routing (VLAN, STP, OSPF)</li>
-                    <li>● Layer 2/3 Multi-layer Troubleshooting</li>
-                    <li>● Firewall & Security Port Management</li>
-                    <li>● Postfix / Dovecot Infrastructure</li>
-                </ul>
-            </div>
-
-            <div class="glass-card skill-category" data-aos="fade-up">
-                <h3><i class="fab fa-linux gold-text"></i> Systems Administration</h3>
-                <ul style="list-style: none; padding-left: 10px;">
-                    <li>● AlmaLinux 10 & Arch Linux Specialist</li>
-                    <li>● Kernel Tuning & Driver Optimization</li>
-                    <li>● Advanced Disk Mgmt (LVM, GRUB Booting)</li>
-                    <li>● Automation with Clean Architecture</li>
+                    <li>● Cisco IOS Configuration & Mgmt</li>
+                    <li>● Routing Protocols (OSPF, EIGRP, Static)</li>
+                    <li>● Switching, VLANs, Trunking & STP</li>
+                    <li>● Network Security (ACLs, NAT, Port Security)</li>
+                    <li>● TCP/IP & OSI Model Troubleshooting</li>
                 </ul>
             </div>
 
             <div class="glass-card skill-category" data-aos="fade-left">
-                <h3><i class="fas fa-mobile-alt gold-text"></i> Mobile & Hardware</h3>
+                <h3><i class="fab fa-linux gold-text"></i> Linux Administration</h3>
                 <ul style="list-style: none; padding-left: 10px;">
-                    <li>● Custom ROM & Kernel Deployment</li>
-                    <li>● Bootloader & TWRP Operations</li>
-                    <li>● Wireless Hardware Troubleshooting</li>
-                    <li>● Fallback Internet Configurations</li>
+                    <li>● Command Line Interface (CLI) Mastery</li>
+                    <li>● User & Group Management / Permissions</li>
+                    <li>● Package Management (RPM, YUM, APT)</li>
+                    <li>● Process Management & Systemd Services</li>
+                    <li>● Bash Scripting & Automation</li>
                 </ul>
             </div>
-        </div>
+            
+            </div>
     </section>
 
     <footer>
-        <p class="gold-text" style="font-family: 'Fira Code'; font-size: 0.9rem;">© 2025 prodby026b | Designed by prodby026b</p>
+        <p class="gold-text" style="font-family: 'Fira Code'; font-size: 0.9rem;">© 2025 prodby026b | All Rights Reserved</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -291,13 +270,13 @@
             disable: 'mobile' 
         });
 
-        // Terminal Typing Effect
+        // Terminal Typing Effect - Updated for General Networking/Linux
         new Typed('#typed', {
             strings: [
-                'cipher-net --deploy --secure', 
-                'network-diagnostic --layer-3', 
-                'arch-install --wireless-fix',
-                'systemctl status prodby026b'
+                'ping -c 4 8.8.8.8', 
+                'sudo systemctl status networking', 
+                'show ip interface brief',
+                'tail -f /var/log/syslog'
             ],
             typeSpeed: 50,
             backSpeed: 30,
