@@ -32,5 +32,6 @@ setInterval(() => {
   secs++;
   const m = Math.floor(secs / 60);
   const s = secs % 60;
-  document.getElementById('sysUptime').textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+  document.getElementById('sysUptime').textContent =
+    `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
 }, 1000);
