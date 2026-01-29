@@ -1,3 +1,29 @@
+// AOS init
+AOS.init({
+    duration: 800,
+    once: true
+});
+
+// Telemetry content – dedicated to Iran & Reza Pahlavi
+const logs = [
+    "[IRAN] REZA_PAHLAVI_POPULAR_SUPPORT",
+    "[VOICE] MILLIONS_CHANT_HIS_NAME",
+    "[HOPE] CALL_FOR_HIS_RETURN",
+    "[UNITY] IRANIANS_STAND_TOGETHER",
+    "[FREEDOM] زن_زندگی_آزادی"
+];
+
+const fullLog = logs.join(" // ") + " // ";
+
+const dirA = document.getElementById('dirTextA');
+const dirB = document.getElementById('dirTextB');
+
+if (dirA && dirB) {
+    dirA.textContent = fullLog;
+    dirB.textContent = fullLog;
+}
+
+// Metrics (MAX LEVEL)
 function updateSystem() {
     const cpuEl = document.getElementById('cpuLoad');
     const memEl = document.getElementById('memUsage');
@@ -37,25 +63,3 @@ setInterval(() => {
             `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
     }
 }, 1000);
-
-.max-pulse {
-    color: #ffd66b !important;
-    text-shadow: 0 0 12px rgba(255, 214, 107, 0.9),
-                 0 0 22px rgba(255, 214, 107, 0.7);
-    animation: pulseGlow 1.6s ease-in-out infinite;
-}
-
-@keyframes pulseGlow {
-    0% {
-        transform: scale(1);
-        text-shadow: 0 0 10px rgba(255, 214, 107, 0.7);
-    }
-    50% {
-        transform: scale(1.08);
-        text-shadow: 0 0 22px rgba(255, 214, 107, 1);
-    }
-    100% {
-        transform: scale(1);
-        text-shadow: 0 0 10px rgba(255, 214, 107, 0.7);
-    }
-}
