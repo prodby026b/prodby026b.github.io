@@ -1,161 +1,107 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>ایران آزاد // رضا پهلوی</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-    <!-- AOS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ایران آزاد // رضا پهلوی</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="bg-gradient"></div>
+  <div class="bg-blur-layer"></div>
 
-    <!-- Background -->
-    <div class="bg-gradient"></div>
-    <div class="bg-blur-layer"></div>
-
-    <!-- Status Bar -->
-    <div class="status-bar glass">
-        <div class="status-left">
-            <span class="status-dot"></span>
-            <span class="status-label">IRAN_FREEDOM_NODE</span>
-        </div>
-        <div class="status-marquee">
-            <span id="dirTextA" class="dir-text"></span>
-            <span id="dirTextB" class="dir-text"></span>
-        </div>
+  <div class="status-bar glass">
+    <div class="status-left">
+      <span class="status-dot"></span>
+      <span class="status-label">IRAN_FREEDOM_NODE</span>
     </div>
+    <div class="status-marquee">
+      <span id="dirTextA" class="dir-text"></span>
+      <span id="dirTextB" class="dir-text"></span>
+    </div>
+  </div>
 
-    <!-- Main -->
-    <main class="main-content">
+  <main class="main-content">
+    <header class="header glass">
+      <div class="header-title-block">
+        <h1 class="brand-title">رضا پهلوی</h1>
+        <p class="brand-sub">ایران، آزادی، آینده</p>
+      </div>
+      <div class="header-stats">
+        <span>[ مردم: ایران ]</span>
+        <span>[ امید: بازگشت شاهزاده ]</span>
+        <span>[ آینده: ایران آزاد ]</span>
+      </div>
+    </header>
 
-        <!-- Header -->
-        <header class="header glass" data-aos="fade-down">
-            <div class="header-title-block">
-                <h1 class="brand-title">رضا پهلوی</h1>
-                <p className="brand-sub">ایران، آزادی، آینده</p>
-            </div>
-            <div class="header-stats">
-                <span>[ مردم: ایران ]</span>
-                <span>[ امید: بازگشت شاهزاده ]</span>
-                <span>[ آینده: ایران آزاد ]</span>
-            </div>
-        </header>
+    <section class="metrics glass">
+      <div class="metric-box">
+        <span class="metric-label">صدای مردم</span>
+        <span class="metric-value" id="cpuLoad">0.0%</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-label">امید ملی</span>
+        <span class="metric-value" id="memUsage">0.0G</span>
+      </div>
+      <div class="metric-box">
+        <span class="metric-label">پایداری</span>
+        <span class="metric-value" id="sysUptime">00:00</span>
+      </div>
+    </section>
 
-        <!-- Metrics -->
-        <section class="metrics glass" data-aos="fade-up">
-            <div class="metric-box">
-                <span class="metric-label">صدای مردم</span>
-                <span class="metric-value" id="cpuLoad">0.0%</span>
-            </div>
-            <div class="metric-box">
-                <span class="metric-label">امید ملی</span>
-                <span class="metric-value" id="memUsage">0.0G</span>
-            </div>
-            <div class="metric-box">
-                <span class="metric-label">پایداری</span>
-                <span class="metric-value" id="sysUptime">00:00</span>
-            </div>
-        </section>
+    <section class="content glass">
+      <h2 class="section-title">مانیفست آزادی ایران</h2>
+      <p>این صفحه تقدیم شده به مردم ایران؛ به نسلی که در سخت‌ترین سال‌ها، زیر فشار سانسور، سرکوب و ناامنی، باز هم تصمیم گرفت تسلیم نشود. نسلی که در خیابان، در خانه، در تبعید و در تبعیدِ درون، یک جمله را تکرار می‌کند: <strong>ایران باید آزاد شود.</strong></p>
+      <p>در میان تمام نام‌ها، چهره‌ها و روایت‌ها، نامی که بارها از دل شعارها، از دل ویدیوها، از دل جمعیت‌های خسته اما امیدوار شنیده می‌شود، <strong>شاهزاده رضا پهلوی</strong> است؛ نمادی از پیوند میان گذشتهٔ منظم و آیندهٔ مدرن، میان هویت ملی و آزادی فردی.</p>
 
-        <!-- Main Manifest Block -->
-        <section class="content glass" data-aos="fade-up">
-            <h2 class="section-title">مانیفست آزادی ایران</h2>
-            <p>
-                این صفحه تقدیم شده به مردم ایران؛ به نسلی که در سخت‌ترین سال‌ها، زیر فشار سانسور، سرکوب و ناامنی،
-                باز هم تصمیم گرفت تسلیم نشود. نسلی که در خیابان، در خانه، در تبعید و در تبعیدِ درون، یک جمله را
-                تکرار می‌کند: <strong>ایران باید آزاد شود.</strong>
-            </p>
-            <p>
-                در میان تمام نام‌ها، چهره‌ها و روایت‌ها، نامی که بارها از دل شعارها، از دل ویدیوها، از دل
-                جمعیت‌های خسته اما امیدوار شنیده می‌شود، <strong>شاهزاده رضا پهلوی</strong> است؛ نمادی از پیوند
-                میان گذشتهٔ منظم و آیندهٔ مدرن، میان هویت ملی و آزادی فردی.
-            </p>
+      <h3 class="section-subtitle">صدای خیابان</h3>
+      <p>شعارهایی که در خیابان‌های ایران شنیده می‌شود، بازتاب یک خواست جمعی‌اند:</p>
+      <ul class="bullet-list">
+        <li>رضا شاه روحت شاد</li>
+        <li>رضا پهلوی، امید ملت</li>
+        <li>ایران که شاه نداره، حساب کتاب نداره</li>
+        <li>شاهزاده برگرد به وطن</li>
+        <li>زن، زندگی، آزادی</li>
+      </ul>
 
-            <h3 class="section-subtitle">صدای خیابان</h3>
-            <p>
-                سال‌هاست که خیابان‌های ایران، از شهرهای کوچک تا کلان‌شهرها، شاهد شعارهایی است که از دل مردم
-                برآمده، نه از اتاق‌های فکر. این شعارها، بازتاب یک خواست جمعی‌اند:
-            </p>
-            <ul class="bullet-list">
-                <li>«رضا شاه روحت شاد»</li>
-                <li>«رضا پهلوی، امید ملت»</li>
-                <li>«ایران که شاه نداره، حساب کتاب نداره»</li>
-                <li>«شاهزاده برگرد به وطن»</li>
-                <li>«زن، زندگی، آزادی»</li>
-            </ul>
-            <p>
-                این‌ها فقط کلمات نیستند؛ این‌ها کُدهای یک حافظهٔ جمعی‌اند. حافظه‌ای که نظم، قانون، توسعه و
-                آینده‌سازی را فراموش نکرده است.
-            </p>
+      <h3 class="section-subtitle">بازگشت به ریشه‌ها، حرکت به‌سوی آینده</h3>
+      <p>شاهزاده رضا پهلوی تنها یک چهرهٔ تاریخی یا سیاسی نیست؛ او حامل یک امکان است: امکانی برای بازگشت به ثبات، قانون، شفافیت و احترام به کرامت انسان، در قالب یک ساختار مدرن، سکولار و مبتنی بر رأی مردم.</p>
+      <p>امید به بازگشت او به ایران، امید به بازگشت یک دوران است: دورانی که در آن، ایران می‌تواند دوباره روی پای خود بایستد، با جهان گفت‌وگو کند، و به جای بقا، به شکوفایی فکر کند.</p>
 
-            <h3 class="section-subtitle">بازگشت به ریشه‌ها، حرکت به‌سوی آینده</h3>
-            <p>
-                برای بسیاری از ایرانیان، شاهزاده رضا پهلوی تنها یک چهرهٔ تاریخی یا سیاسی نیست؛ او حامل یک
-                امکان است: امکانی برای بازگشت به ثبات، قانون، شفافیت و احترام به کرامت انسان، در قالب یک
-                ساختار مدرن، سکولار و مبتنی بر رأی مردم.
-            </p>
-            <p>
-                امید به بازگشت او به ایران، امید به بازگشت یک فرد به‌تنهایی نیست؛ امید به بازگشت یک
-                <strong>دوران</strong> است: دورانی که در آن، ایران می‌تواند دوباره روی پای خود بایستد، با جهان
-                گفت‌وگو کند، و به جای بقا، به شکوفایی فکر کند.
-            </p>
+      <h3 class="section-subtitle">آیندهٔ ایران</h3>
+      <p>آیندهٔ ایران را نسلی خواهد ساخت که امروز در خیابان‌ها، در شبکه‌های اجتماعی، در دانشگاه‌ها و در تبعید، در حال نوشتن روایت تازه‌ای از این سرزمین است. آینده‌ای که در آن:</p>
+      <ul class="bullet-list">
+        <li>آزادی بیان، حق است نه امتیاز</li>
+        <li>کرامت انسانی، خط قرمز است</li>
+        <li>ایران، خانهٔ همهٔ ایرانیان است</li>
+        <li>قانون، جایگزین سلیقه می‌شود</li>
+        <li>بازگشت شاهزاده، بازگشت امید و نظم است</li>
+      </ul>
 
-            <h3 class="section-subtitle">آیندهٔ ایران</h3>
-            <p>
-                آیندهٔ ایران را نسلی خواهد ساخت که امروز در خیابان‌ها، در شبکه‌های اجتماعی، در دانشگاه‌ها و
-                در تبعید، در حال نوشتن روایت تازه‌ای از این سرزمین است. آینده‌ای که در آن:
-            </p>
-            <ul class="bullet-list">
-                <li>آزادی بیان، حق است نه امتیاز</li>
-                <li>کرامت انسانی، خط قرمز است</li>
-                <li>ایران، خانهٔ همهٔ ایرانیان است</li>
-                <li>قانون، جایگزین سلیقه می‌شود</li>
-                <li>بازگشت شاهزاده، بازگشت امید و نظم است</li>
-            </ul>
-            <p>
-                این مانیفست، یک بیانیهٔ حزبی یا سازمانی نیست؛ یک <strong>یادداشت جمعی</strong> است از دل نسلی
-                که هنوز باور دارد ایران می‌تواند دوباره بلند شود.
-            </p>
+      <div class="divider"></div>
+      <h2 class="section-title center">ایران آزاد خواهد شد</h2>
+      <p class="center">و این بار، آینده را نسلی می‌سازد که طعم بی‌عدالتی را چشیده، اما تصمیم گرفته در آن نماند.</p>
+    </section>
 
-            <div class="divider"></div>
+    <section class="cta-wrapper">
+      <div class="cta-card glass" onclick="window.open('https://t.me/prodby026b')">
+        <div class="cta-title">CONNECT_WITH_IRAN</div>
+        <div class="cta-sub">صدای مردم ایران // امید به بازگشت شاهزاده</div>
+      </div>
+    </section>
+  </main>
 
-            <h2 class="section-title center">ایران آزاد خواهد شد</h2>
-            <p class="center">
-                و این بار، آینده را نسلی می‌سازد که طعم بی‌عدالتی را چشیده، اما تصمیم گرفته در آن نماند.
-            </p>
-        </section>
-
-        <!-- CTA -->
-        <section class="cta-wrapper" data-aos="fade-up">
-            <div class="cta-card glass" onclick="window.open('https://t.me/prodby026b')">
-                <div class="cta-title">CONNECT_WITH_IRAN</div>
-                <div class="cta-sub">صدای مردم ایران // امید به بازگشت شاهزاده</div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer glass">
-        <div class="footer-left">
-            <span class="status-dot"></span>
-            <span>ONLINE // IRANIANS_WAITING_FOR_REZA_PAHLAVI</span>
-        </div>
-        <div class="footer-right">
-            <span id="utcTime">00:00:00</span>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
+  <footer class="footer glass">
+    <div class="footer-left">
+      <span class="status-dot"></span>
+      <span>ONLINE // IRANIANS_WAITING_FOR_REZA_PAHLAVI</span>
+    </div>
+    <div class="footer-right">
+      <span id="utcTime">00:00:00</span>
+    </div>
+  </footer>
 </body>
 </html>
