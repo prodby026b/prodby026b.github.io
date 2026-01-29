@@ -21,7 +21,8 @@ function updateSystem() {
   document.getElementById('memUsage').classList.add("max-pulse");
 
   const d = new Date();
-  document.getElementById('utcTime').textContent = d.toLocaleTimeString('en-GB', { hour12: false });
+  document.getElementById('utcTime').textContent =
+    d.toLocaleTimeString('en-GB', { hour12: false });
 }
 
 setInterval(updateSystem, 2000);
