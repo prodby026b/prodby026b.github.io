@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>PRODBY026B | MOBILE_OPS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cyber-scanlines">
+
+    <div class="cyber-grid"></div>
+
+    <div class="status-bar glass">
+        <div class="dir-text-loop">
+            <span class="dir-text" id="dirTextA"></span>
+            <span class="dir-text" id="dirTextB"></span>
+        </div>
+    </div>
+
+    <main class="main-content">
+        <header data-aos="fade-down">
+            <h1 class="glitch" data-text="PRODBY026B">PRODBY026B</h1>
+            <div class="header-stats">
+                <span>[ID: 026B]</span>
+                <span>[NET: CCNA]</span>
+                <span>[OS: LPIC]</span>
+            </div>
+            <div class="cyber-line"></div>
+        </header>
+
+        <div class="analytics-row glass" data-aos="fade-up">
+            <div class="stat-box">
+                <span class="label">CPU</span>
+                <span class="value neon-text" id="cpuLoad">0.0%</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">MEM</span>
+                <span class="value neon-text" id="memUsage">0.0G</span>
+            </div>
+            <div class="stat-box">
+                <span class="label">UPTIME</span>
+                <span class="value neon-text" id="sysUptime">00:00</span>
+            </div>
+        </div>
+
+        <div class="matrix-stack">
+            <div class="module glass cyber-border" data-aos="fade-right">
+                <div class="module-header">:: LINUX_CORE ::</div>
+                <div class="data-block">
+                    <div class="data-line"><span>Kernel:</span> <span class="neon-text">Hardened</span></div>
+                    <div class="data-line"><span>Automation:</span> <span class="neon-text">Ansible</span></div>
+                    <div class="data-line"><span>Shell:</span> <span class="neon-text">Bash/Zsh</span></div>
+                </div>
+            </div>
+
+            <div class="module glass cyber-border" data-aos="fade-left">
+                <div class="module-header">:: NETWORK_OPS ::</div>
+                <div class="data-block">
+                    <div class="data-line"><span>Routing:</span> <span class="neon-text">BGP/OSPF</span></div>
+                    <div class="data-line"><span>Security:</span> <span class="neon-text">IPsec/ASA</span></div>
+                    <div class="data-line"><span>Monitoring:</span> <span class="neon-text">SNMPv3</span></div>
+                </div>
+            </div>
+
+            <div class="module glass cyber-border" data-aos="fade-right">
+                <div class="module-header">:: SEC_AUDIT ::</div>
+                <div class="data-block">
+                    <div class="data-line"><span>Firewall:</span> <span class="neon-text">Nftables</span></div>
+                    <div class="data-line"><span>IPS:</span> <span class="neon-text">Suricata</span></div>
+                    <div class="data-line"><span>Enc:</span> <span class="neon-text">AES-256</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-wrapper">
+            <div class="cta-card glass" onclick="window.open('https://t.me/prodby026b')">
+                <div class="cta-glitch">INIT_HANDSHAKE</div>
+                <div class="cta-sub">PRODBY026B // SECURE_COMM</div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-stats">
+            <div><span class="blink">●</span> ONLINE</div>
+            <div id="utcTime">00:00:00</div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
