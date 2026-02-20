@@ -3,94 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدمات | PRODBY026B</title>
+    <meta name="description" content="PRODBY026B - Network & Linux Specialist | CCNA | LPIC-1 | Network+">
+    <meta name="keywords" content="Network, Linux, CCNA, LPIC, Security, PRODBY026B">
+    <meta name="author" content="PRODBY026B">
+    <title>PRODBY026B | Network & Linux Specialist</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* استایل‌های خاص صفحه خدمات */
-        .service-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        .service-item {
-            background: rgba(0, 170, 255, 0.05);
-            border: 1px solid rgba(0, 170, 255, 0.2);
-            padding: 25px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .service-item:hover {
-            border-color: var(--ios-gold);
-            background: rgba(255, 215, 0, 0.05);
-            transform: translateY(-5px);
-        }
-        .service-icon {
-            font-size: 2rem;
-            color: var(--kali-blue);
-            margin-bottom: 15px;
-        }
-        .service-item:hover .service-icon {
-            color: var(--ios-gold);
-        }
-        .service-title {
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        .service-desc {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        .tech-stack {
-            margin-top: 15px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .tech-badge {
-            font-size: 0.75rem;
-            background: rgba(39, 201, 63, 0.1);
-            color: var(--kali-green);
-            padding: 4px 10px;
-            border-radius: 12px;
-            border: 1px solid rgba(39, 201, 63, 0.3);
-            font-family: 'Courier New', monospace;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- ذرات معلق -->
+    <!-- پس‌زمینه متحرک -->
     <div class="particles" id="particles"></div>
-    <!-- گرید سایبری -->
     <div class="cyber-grid"></div>
-
-    <!-- نوار ناوبری -->
+    
+    <!-- ناوبری -->
     <nav class="navbar">
         <div class="logo">
             <span class="logo-text">PRODBY<span class="highlight">026B</span></span>
             <span class="logo-sub">root@026b:~#</span>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">خانه</a></li>
-            <li><a href="about.html">درباره من</a></li>
-            <li><a href="services.html" class="active">خدمات</a></li>
-            <li><a href="contact.html">تماس</a></li>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> خانه</a></li>
+            <li><a href="about.html"><i class="fas fa-user"></i> درباره من</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> خدمات</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> تماس</a></li>
         </ul>
-        <div class="menu-toggle">
+        <div class="menu-toggle" id="menuToggle">
             <span></span>
             <span></span>
             <span></span>
         </div>
     </nav>
 
-    <!-- کانتینر اصلی -->
-    <div class="glass-container">
+    <!-- محتوای اصلی -->
+    <main class="glass-container">
         <!-- هدر ترمینال -->
         <div class="terminal-header">
             <div class="terminal-dots">
@@ -98,85 +44,150 @@
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
             </div>
-            <div class="terminal-title">services.sh --execute</div>
+            <span class="terminal-title">ENCRYPTED_UPLINK_026B</span>
             <div class="terminal-status">
                 <span class="status-dot"></span>
-                <span>SYSTEM_SERVICES_LOADED</span>
+                <span>ONLINE</span>
             </div>
         </div>
 
-        <!-- محتوا -->
+        <!-- بخش پروفایل -->
         <div class="profile-section">
-            <h1 class="section-title">خدمات تخصصی</h1>
-            <p class="section-subtitle">راهکارهای زیرساختی و امنیتی با استاندارد Enterprise</p>
+            <div class="profile-image-container">
+                <div class="profile-ring"></div>
+                <!-- عکس پروفایل خود را اینجا قرار دهید -->
+                <img src="assets/profile.jpg" alt="PRODBY026B Profile" class="profile-image" onerror="this.src='https://via.placeholder.com/180x180/0d0d0d/ffd700?text=026B'">
+            </div>
+            <h1 class="profile-name">PRODBY026B</h1>
+            <p class="profile-title">Network Architect & Linux Specialist</p>
+            <p class="profile-bio">
+                متخصص شبکه و سیستم‌های لینوکس با تمرکز بر زیرساخت‌های سازمانی، 
+                امنیت شبکه و اتوماسیون. متعهد به ارائه راهکارهای پایدار و مقیاس‌پذیر 
+                برای محیط‌های Enterprise.
+            </p>
         </div>
 
-        <div class="service-list">
-            <!-- سرویس ۱ -->
-            <div class="service-item" data-tilt>
-                <i class="fas fa-network-wired service-icon"></i>
-                <h3 class="service-title">طراحی و پیاده‌سازی شبکه</h3>
-                <p class="service-desc">
-                    طراحی توپولوژی شبکه‌های سازمانی، پیکربندی روتر و سوییچ‌های Cisco و پیاده‌سازی VLAN‌بندی پیشرفته بر اساس استاندارد CCNA.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-badge">Cisco</span>
-                    <span class="tech-badge">OSPF</span>
-                    <span class="tech-badge">VLAN</span>
-                </div>
+        <!-- آمار -->
+        <div class="profile-stats">
+            <div class="stat-box">
+                <span class="stat-number" data-target="50">0</span>
+                <span class="stat-label">پروژه موفق</span>
             </div>
-
-            <!-- سرویس ۲ -->
-            <div class="service-item" data-tilt>
-                <i class="fab fa-linux service-icon"></i>
-                <h3 class="service-title">مدیریت سرورهای لینوکس</h3>
-                <p class="service-desc">
-                    نصب، پیکربندی و نگهداری سرورهای Linux، مدیریت سرویس‌ها، کاربران و مجوزها با تمرکز بر پایداری سیستم (LPIC-1).
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-badge">Ubuntu</span>
-                    <span class="tech-badge">CentOS</span>
-                    <span class="tech-badge">Bash</span>
-                </div>
+            <div class="stat-box">
+                <span class="stat-number" data-target="100">0</span>
+                <span class="stat-label">ساعت کدنویسی</span>
             </div>
-
-            <!-- سرویس ۳ -->
-            <div class="service-item" data-tilt>
-                <i class="fas fa-shield-alt service-icon"></i>
-                <h3 class="service-title">امنیت و سخت‌سازی شبکه</h3>
-                <p class="service-desc">
-                    پیکربندی فایروال‌ها، مانیتورینگ ترافیک شبکه، تشخیص نفوذ و ایمن‌سازی زیرساخت‌ها بر اساس پروتکل‌های Network+.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-badge">Firewall</span>
-                    <span class="tech-badge">Security</span>
-                    <span class="tech-badge">Monitoring</span>
-                </div>
-            </div>
-
-            <!-- سرویس ۴ -->
-            <div class="service-item" data-tilt>
-                <i class="fas fa-robot service-icon"></i>
-                <h3 class="service-title">اتوماسیون و اسکریپت‌نویسی</h3>
-                <p class="service-desc">
-                    خودکارسازی وظایف تکراری سیستم و شبکه با استفاده از Bash Scripting و ابزارهای خط فرمان لینوکس.
-                </p>
-                <div class="tech-stack">
-                    <span class="tech-badge">Bash</span>
-                    <span class="tech-badge">Automation</span>
-                    <span class="tech-badge">Scripting</span>
-                </div>
+            <div class="stat-box">
+                <span class="stat-number" data-target="3">0</span>
+                <span class="stat-label">مدرک معتبر</span>
             </div>
         </div>
 
-        <!-- دکمه اقدام -->
-        <div class="cta-section" style="margin-top: 50px;">
+        <!-- مهارت‌ها -->
+        <h2 class="section-title">مهارت‌های تخصصی</h2>
+        <p class="section-subtitle">تخصص‌های فنی و حوزه‌های فعالیت</p>
+
+        <div class="skills-grid">
+            <!-- کارت CCNA -->
+            <div class="skill-card" data-tilt>
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3>CCNA</h3>
+                        <p class="skill-code">NET_INFRA_026B</p>
+                    </div>
+                </div>
+                <ul>
+                    <li>مسیریابی Cisco و پروتکل OSPF</li>
+                    <li>سوییچینگ سازمانی و VLAN</li>
+                    <li>طراحی شبکه Enterprise</li>
+                    <li>عیب‌یابی پیشرفته شبکه</li>
+                </ul>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="width: 95%"></div>
+                </div>
+            </div>
+
+            <!-- کارت LPIC-1 -->
+            <div class="skill-card" data-tilt>
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3>LPIC-1</h3>
+                        <p class="skill-code">LINUX_OPS_PROD</p>
+                    </div>
+                </div>
+                <ul>
+                    <li>مدیریت سیستم لینوکس</li>
+                    <li>اتوماسیون با Bash Scripting</li>
+                    <li>امنیت و سخت‌سازی سیستم</li>
+                    <li>مدیریت سرور و سرویس‌ها</li>
+                </ul>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="width: 90%"></div>
+                </div>
+            </div>
+
+            <!-- کارت Network+ -->
+            <div class="skill-card" data-tilt>
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3>Network+</h3>
+                        <p class="skill-code">NET_FUND_026B</p>
+                    </div>
+                </div>
+                <ul>
+                    <li>مفاهیم پایه شبکه</li>
+                    <li>پروتکل‌های TCP/IP</li>
+                    <li>زیرساخت شبکه و کابل‌کشی</li>
+                    <li>امنیت شبکه و فایروال</li>
+                </ul>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="width: 92%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- مدارک -->
+        <div class="certifications-section">
+            <h2 class="section-title">مدارک معتبر</h2>
+            <p class="section-subtitle">گواهینامه‌های بین‌المللی دریافت شده</p>
+            
+            <div class="cert-grid">
+                <div class="cert-badge">
+                    <i class="fas fa-network-wired"></i>
+                    <span>CCNA</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fab fa-linux"></i>
+                    <span>LPIC-1</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-globe"></i>
+                    <span>Network+</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- دکمه تماس -->
+        <div class="cta-section">
             <a href="contact.html" class="contact-btn">
                 <i class="fas fa-paper-plane"></i>
-                سفارش پروژه
+                برقراری ارتباط
+            </a>
+            <a href="https://t.me/cipher_net_manager" class="contact-btn telegram" target="_blank">
+                <i class="fab fa-telegram-plane"></i>
+                Telegram
             </a>
         </div>
-    </div>
+    </main>
 
     <!-- فوتر -->
     <footer class="footer">
@@ -191,12 +202,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // فعال‌سازی انیمیشن‌ها برای این صفحه
-        document.addEventListener('DOMContentLoaded', () => {
-            initAnimations();
-            initTiltEffect();
-        });
-    </script>
 </body>
 </html>

@@ -13,34 +13,19 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 20px;
         }
         .secure-channel {
-            background: rgba(0, 136, 204, 0.1);
+            background: rgba(0, 136, 204, 0.08);
             border: 1px solid rgba(0, 136, 204, 0.3);
             padding: 40px;
             border-radius: 24px;
             text-align: center;
             max-width: 500px;
             width: 100%;
-            margin-bottom: 30px;
+            margin: 30px auto;
             position: relative;
             overflow: hidden;
-        }
-        .secure-channel::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(0, 136, 204, 0.1), transparent);
-            animation: scan 3s infinite linear;
-            pointer-events: none;
-        }
-        @keyframes scan {
-            0% { transform: translateY(-50%); }
-            100% { transform: translateY(50%); }
         }
         .contact-avatar {
             width: 100px;
@@ -90,6 +75,7 @@
             margin-top: 20px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
         }
     </style>
@@ -137,35 +123,40 @@
 
         <!-- محتوا -->
         <div class="contact-wrapper">
-            <h1 class="section-title">کانال ارتباطی امن</h1>
-            <p class="section-subtitle">برای شروع همکاری از طریق کانال رمزنگاری شده اقدام کنید</p>
+            <div class="profile-section">
+                <div class="profile-image-container">
+                    <!-- عکس پروفایل خود را اینجا قرار دهید -->
+                    <img src="profile.jpg" alt="PRODBY026B" class="profile-image">
+                    <div class="profile-ring"></div>
+                </div>
+                <h1 class="profile-name">کانال ارتباطی امن</h1>
+                <p class="profile-title">Secure Communication Channel</p>
+            </div>
 
-            <div class="secure-card animate-in">
-                <div class="secure-channel">
-                    <div class="contact-avatar">
-                        <i class="fab fa-telegram-plane"></i>
-                    </div>
-                    
-                    <div class="contact-status">
-                        <span class="status-indicator"></span>
-                        <span>ONLINE & VERIFIED</span>
-                    </div>
+            <div class="secure-channel animate-in">
+                <div class="contact-avatar">
+                    <i class="fab fa-telegram-plane"></i>
+                </div>
+                
+                <div class="contact-status">
+                    <span class="status-indicator"></span>
+                    <span>ONLINE & VERIFIED</span>
+                </div>
 
-                    <h3 style="color: var(--text-primary); margin-bottom: 10px;">Telegram Messenger</h3>
-                    <p class="contact-info">
-                        تنها راه ارتباطی رسمی من پیام‌رسان تلگرام است. 
-                        تمام پروژه‌ها و مشاوره‌ها از این طریق مدیریت می‌شوند.
-                    </p>
+                <h3 style="color: var(--text-primary); margin-bottom: 10px; font-size: 1.5rem;">Telegram Messenger</h3>
+                <p class="contact-info">
+                    تنها راه ارتباطی رسمی من پیام‌رسان تلگرام است.<br>
+                    تمام پروژه‌ها و مشاوره‌ها از این طریق مدیریت می‌شوند.
+                </p>
 
-                    <a href="https://t.me/cipher_net_manager" class="contact-btn telegram" target="_blank">
-                        <i class="fab fa-telegram-plane"></i>
-                        شروع گفتگو امن
-                    </a>
+                <a href="https://t.me/cipher_net_manager" class="contact-btn telegram" target="_blank">
+                    <i class="fab fa-telegram-plane"></i>
+                    شروع گفتگو امن
+                </a>
 
-                    <div class="warning-box">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <span>توجه: ایمیل و تماس تلفنی پشتیبانی نمی‌شود.</span>
-                    </div>
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>توجه: ایمیل و تماس تلفنی پشتیبانی نمی‌شود.</span>
                 </div>
             </div>
         </div>
@@ -184,10 +175,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            initAnimations();
-        });
-    </script>
 </body>
 </html>
