@@ -1,50 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRODBY026B | Gateway</title>
-    
-    <meta name="description" content="Official Gateway for PRODBY026B. Follow the link to enter the main system.">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>PRODBY026B | Network & Linux Specialist</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- پس‌زمینه متحرک -->
+    <div class="particles" id="particles"></div>
+    <div class="grid-overlay"></div>
+    
+    <!-- منوی ناوبری -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-text">PRODBY<span class="highlight">026B</span></span>
+            <span class="logo-sub">SYSTEM_ROOT_ACCESS</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> خانه</a></li>
+            <li><a href="about.html"><i class="fas fa-user"></i> درباره من</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> خدمات</a></li>
+            <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> نمونه کارها</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> تماس</a></li>
+        </ul>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-    <div class="glass-container" data-aos="zoom-in">
-        <header>
-            <div class="status-indicator">
-                <span class="dot"></span> SYSTEM_READY
+    <!-- محتوای اصلی -->
+    <main class="glass-container">
+        <div class="terminal-header">
+            <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
             </div>
-            <h1 class="glow-text">PRODBY026B</h1>
-        </header>
+            <span class="terminal-title">ENCRYPTED_UPLINK_026B</span>
+        </div>
 
-        <section class="gateway-box">
-            <div class="loader-bar"></div>
-            <p class="terminal-text">> SECURE_CONNECTION_ESTABLISHED</p>
-            <p class="terminal-text">> TARGET: PRODBY026B.SBS</p>
-            
-            <div class="action-section" data-aos="fade-up" data-aos-delay="400">
-                <a href="https://prodby026b.sbs" class="main-site-btn">
-                    ENTER SYSTEM
-                </a>
-            </div>
-        </section>
+        <h1 class="glow-text typing-effect" data-text="PRODBY026B">PRODBY026B</h1>
+        <p class="subtitle">Network & Linux Specialist</p>
         
-        <footer>
-            <p class="footer-copy">ACCESS_LEVEL: ROOT | 2026</p>
-        </footer>
-    </div>
+        <div class="status-bar">
+            <span class="status-indicator online"></span>
+            <span>سیستم آنلاین | دسترسی سطح روت فعال</span>
+        </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ 
-            easing: 'ease-out-back', 
-            once: true,
-            duration: 1000 
-        });
-    </script>
+        <div class="skills-grid">
+            <div class="skill-card" data-tilt>
+                <div class="skill-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>CCNA</h3>
+                <p class="skill-code">NET_INFRA_026B</p>
+                <ul>
+                    <li>مسیریابی Cisco و پروتکل OSPF</li>
+                    <li>سوییچینگ سازمانی</li>
+                    <li>طراحی شبکه enterprise</li>
+                    <li>عیب‌یابی پیشرفته</li>
+                </ul>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="width: 95%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card" data-tilt>
+                <div class="skill-icon">
+                    <i class="fab fa-linux"></i>
+                </div>
+                <h3>LPIC-1</h3>
+                <p class="skill-code">LINUX_OPS_PROD</p>
+                <ul>
+                    <li>مدیریت سیستم لینوکس</li>
+                    <li>اتوماسیون Bash</li>
+                    <li>امنیت و سخت‌سازی</li>
+                    <li>مدیریت سرور</li>
+                </ul>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="width: 90%"></div>
+                </div>
+            </div>
+
+            <div class="skill-card" data-tilt>
+                <div class="skill-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Security</h3>
+                <p class="skill-code">SEC_OPS_026B</p>
+                <ul>
+                    <li>فایروال و امنیت شبکه</li>
+                    <li>نفوذ و تست نفوذ</li>
+                    <li>رمزنگاری داده‌ها</li>
+                    <li>مانیتورینگ امنیتی</li>
+                </ul>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="contact.html" class="contact-btn pulse-effect">
+                <i class="fas fa-link"></i> ESTABLISH CONNECTION
+            </a>
+            <a href="https://t.me/cipher_net_manager" class="contact-btn secondary-btn" target="_blank">
+                <i class="fab fa-telegram"></i> Telegram
+            </a>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number" data-target="50">0</span>
+                <span class="stat-label">پروژه موفق</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="100">0</span>
+                <span class="stat-label">ساعت کدنویسی</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="24">0</span>
+                <span class="stat-label">پشتیبانی 7/24</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- فوتر -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2026 PROD026B (026b). SYSTEM_ROOT_ACCESS.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://t.me/cipher_net_manager"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
