@@ -9,21 +9,20 @@
 </head>
 <body>
     <div class="particles" id="particles"></div>
-    <div class="grid-overlay"></div>
+    <div class="cyber-grid"></div>
     
     <nav class="navbar">
         <div class="logo">
             <span class="logo-text">PRODBY<span class="highlight">026B</span></span>
-            <span class="logo-sub">SYSTEM_ROOT_ACCESS</span>
+            <span class="logo-sub">root@026b:~#</span>
         </div>
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html"><i class="fas fa-home"></i> خانه</a></li>
             <li><a href="about.html" class="active"><i class="fas fa-user"></i> درباره من</a></li>
             <li><a href="services.html"><i class="fas fa-cogs"></i> خدمات</a></li>
-            <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> نمونه کارها</a></li>
             <li><a href="contact.html"><i class="fas fa-envelope"></i> تماس</a></li>
         </ul>
-        <div class="menu-toggle">
+        <div class="menu-toggle" id="menuToggle">
             <span></span>
             <span></span>
             <span></span>
@@ -38,74 +37,163 @@
                 <span class="dot green"></span>
             </div>
             <span class="terminal-title">USER_PROFILE_026B</span>
+            <div class="terminal-status">
+                <span class="status-dot"></span>
+                <span>VERIFIED</span>
+            </div>
         </div>
 
-        <h1 class="glow-text">درباره PRODBY026B</h1>
-        <p class="subtitle">Network Architect & Linux Specialist</p>
+        <h1 class="profile-name">درباره PRODBY026B</h1>
+        <p class="profile-title">Network Architect & Linux Specialist</p>
 
-        <div class="about-content">
-            <div class="about-text">
-                <p class="lead-text">
-                    متخصص شبکه و لینوکس با بیش از 5 سال تجربه در طراحی و پیاده‌سازی 
-                    زیرساخت‌های سازمانی و امنیتی.
-                </p>
-                
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-year">2026</div>
-                        <div class="timeline-content">
-                            <h4>Network Architect</h4>
-                            <p>طراحی شبکه‌های enterprise با تمرکز بر امنیت و مقیاس‌پذیری</p>
+        <div class="about-content" style="text-align: right; margin-top: 40px;">
+            <p class="profile-bio" style="text-align: right; margin-bottom: 30px;">
+                من PRODBY026B هستم، متخصص شبکه و سیستم‌های لینوکس با بیش از ۵ سال تجربه 
+                در طراحی و پیاده‌سازی زیرساخت‌های سازمانی. تمرکز اصلی من بر روی ایجاد 
+                شبکه‌های پایدار، امن و مقیاس‌پذیر برای محیط‌های Enterprise است.
+            </p>
+
+            <h2 class="section-title" style="font-size: 1.5rem; margin: 40px 0 20px;">مسیر حرفه‌ای</h2>
+            
+            <div class="timeline" style="margin: 30px 0;">
+                <div class="skill-card" style="margin-bottom: 20px; text-align: right;">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="width: 45px; height: 45px; font-size: 1.4rem;">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="skill-info">
+                            <h3 style="font-size: 1.2rem;">2026 - حال حاضر</h3>
+                            <p class="skill-code">Network Architect</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2024</div>
-                        <div class="timeline-content">
-                            <h4>Linux System Admin</h4>
-                            <p>مدیریت سرورهای لینوکس و اتوماسیون فرآیندها</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-year">2022</div>
-                        <div class="timeline-content">
-                            <h4>CCNA Certified</h4>
-                            <p>دریافت مدرک CCNA و شروع فعالیت حرفه‌ای</p>
-                        </div>
-                    </div>
+                    <p style="color: var(--text-secondary); line-height: 1.8;">
+                        طراحی و پیاده‌سازی شبکه‌های سازمانی با تمرکز بر امنیت و مقیاس‌پذیری. 
+                        مدیریت زیرساخت‌های لینوکس و اتوماسیون فرآیندها.
+                    </p>
                 </div>
 
-                <div class="certifications">
-                    <h3><i class="fas fa-certificate"></i> گواهینامه‌ها</h3>
-                    <div class="cert-grid">
-                        <div class="cert-badge">
-                            <i class="fas fa-network-wired"></i>
-                            <span>CCNA</span>
+                <div class="skill-card" style="margin-bottom: 20px; text-align: right;">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="width: 45px; height: 45px; font-size: 1.4rem;">
+                            <i class="fas fa-certificate"></i>
                         </div>
-                        <div class="cert-badge">
-                            <i class="fab fa-linux"></i>
-                            <span>LPIC-1</span>
-                        </div>
-                        <div class="cert-badge">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>Security+</span>
-                        </div>
-                        <div class="cert-badge">
-                            <i class="fas fa-server"></i>
-                            <span>RHCSA</span>
+                        <div class="skill-info">
+                            <h3 style="font-size: 1.2rem;">2024 - 2025</h3>
+                            <p class="skill-code">Certifications Period</p>
                         </div>
                     </div>
+                    <p style="color: var(--text-secondary); line-height: 1.8;">
+                        دریافت مدارک CCNA، LPIC-1 و Network+. تکمیل دوره‌های تخصصی 
+                        در زمینه امنیت شبکه و مدیریت سیستم.
+                    </p>
+                </div>
+
+                <div class="skill-card" style="text-align: right;">
+                    <div class="skill-header">
+                        <div class="skill-icon" style="width: 45px; height: 45px; font-size: 1.4rem;">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="skill-info">
+                            <h3 style="font-size: 1.2rem;">2022 - 2024</h3>
+                            <p class="skill-code">Learning & Development</p>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary); line-height: 1.8;">
+                        شروع مسیر حرفه‌ای در زمینه شبکه و لینوکس. شرکت در دوره‌های 
+                        تخصصی و کسب تجربه عملی در پروژه‌های واقعی.
+                    </p>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="font-size: 1.5rem; margin: 40px 0 20px;">مدارک و گواهینامه‌ها</h2>
+            
+            <div class="cert-grid">
+                <div class="cert-badge">
+                    <i class="fas fa-network-wired"></i>
+                    <span>CCNA</span>
+                    <small style="color: var(--text-secondary); font-size: 0.75rem;">Cisco Certified</small>
+                </div>
+                <div class="cert-badge">
+                    <i class="fab fa-linux"></i>
+                    <span>LPIC-1</span>
+                    <small style="color: var(--text-secondary); font-size: 0.75rem;">Linux Professional</small>
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-globe"></i>
+                    <span>Network+</span>
+                    <small style="color: var(--text-secondary); font-size: 0.75rem;">CompTIA Certified</small>
+                </div>
+            </div>
+
+            <h2 class="section-title" style="font-size: 1.5rem; margin: 40px 0 20px;">تخصص‌ها</h2>
+            
+            <div class="skills-grid" style="margin-top: 30px;">
+                <div class="skill-card" style="text-align: right;">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="skill-info">
+                            <h3>زیرساخت شبکه</h3>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>طراحی شبکه Enterprise</li>
+                        <li>پیکربندی روتر و سوییچ Cisco</li>
+                        <li>مدیریت VLAN و Routing</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" style="text-align: right;">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fab fa-linux"></i>
+                        </div>
+                        <div class="skill-info">
+                            <h3>سیستم‌های لینوکس</h3>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>مدیریت سرورهای Linux</li>
+                        <li>Bash Scripting</li>
+                        <li>امنیت و Hardening</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card" style="text-align: right;">
+                    <div class="skill-header">
+                        <div class="skill-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="skill-info">
+                            <h3>امنیت شبکه</h3>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>پیکربندی Firewall</li>
+                        <li>مانیتورینگ شبکه</li>
+                        <li>تشخیص نفوذ</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <a href="contact.html" class="contact-btn">
-            <i class="fas fa-paper-plane"></i> تماس با من
-        </a>
+        <div class="cta-section" style="margin-top: 50px;">
+            <a href="contact.html" class="contact-btn">
+                <i class="fas fa-paper-plane"></i>
+                تماس با من
+            </a>
+        </div>
     </main>
 
     <footer class="footer">
         <div class="footer-content">
             <p>© 2026 PROD026B (026b). SYSTEM_ROOT_ACCESS.</p>
+            <div class="social-links">
+                <a href="https://t.me/cipher_net_manager" class="telegram" target="_blank">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
