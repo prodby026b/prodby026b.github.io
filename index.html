@@ -1,50 +1,206 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRODBY026B | Gateway</title>
-    
-    <meta name="description" content="Official Gateway for PRODBY026B. Follow the link to enter the main system.">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="description" content="PRODBY026B - Network & Linux Specialist | CCNA | LPIC-1 | Network+">
+    <meta name="keywords" content="Network, Linux, CCNA, LPIC, Security, PRODBY026B">
+    <meta name="author" content="PRODBY026B">
+    <title>PRODBY026B | Network & Linux Specialist</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- پس‌زمینه متحرک -->
+    <div class="particles" id="particles"></div>
+    <div class="cyber-grid"></div>
+    
+    <!-- ناوبری -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-text">PRODBY<span class="highlight">026B</span></span>
+            <span class="logo-sub">root@026b:~#</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> خانه</a></li>
+            <li><a href="about.html"><i class="fas fa-user"></i> درباره من</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> خدمات</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> تماس</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-    <div class="glass-container" data-aos="zoom-in">
-        <header>
-            <div class="status-indicator">
-                <span class="dot"></span> SYSTEM_READY
+    <!-- محتوای اصلی -->
+    <main class="glass-container">
+        <!-- هدر ترمینال -->
+        <div class="terminal-header">
+            <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
             </div>
-            <h1 class="glow-text">PRODBY026B</h1>
-        </header>
+            <span class="terminal-title">ENCRYPTED_UPLINK_026B</span>
+            <div class="terminal-status">
+                <span class="status-dot"></span>
+                <span>ONLINE</span>
+            </div>
+        </div>
 
-        <section class="gateway-box">
-            <div class="loader-bar"></div>
-            <p class="terminal-text">> SECURE_CONNECTION_ESTABLISHED</p>
-            <p class="terminal-text">> TARGET: PRODBY026B.SBS</p>
+        <!-- بخش پروفایل -->
+        <div class="profile-section">
+            <div class="profile-image-container">
+                <div class="profile-ring"></div>
+                <!-- عکس پروفایل خود را اینجا قرار دهید -->
+                <img src="assets/profile.jpg" alt="PRODBY026B Profile" class="profile-image" onerror="this.src='https://via.placeholder.com/180x180/0d0d0d/ffd700?text=026B'">
+            </div>
+            <h1 class="profile-name">PRODBY026B</h1>
+            <p class="profile-title">Network Architect & Linux Specialist</p>
+            <p class="profile-bio">
+                متخصص شبکه و سیستم‌های لینوکس با تمرکز بر زیرساخت‌های سازمانی، 
+                امنیت شبکه و اتوماسیون. متعهد به ارائه راهکارهای پایدار و مقیاس‌پذیر 
+                برای محیط‌های Enterprise.
+            </p>
+        </div>
+
+        <!-- آمار -->
+        <div class="profile-stats">
+            <div class="stat-box">
+                <span class="stat-number" data-target="50">36</span>
+                <span class="stat-label">پروژه موفق</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" data-target="100">5</span>
+                <span class="stat-label">سال سابقه</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" data-target="3">3</span>
+                <span class="stat-label">مدرک معتبر</span>
+            </div>
+        </div>
+
+        <!-- مهارت‌ها -->
+        <h2 class="section-title">مهارت‌های تخصصی</h2>
+        <p class="section-subtitle">تخصص‌های فنی و حوزه‌های فعالیت</p>
+
+        <div class="skills-grid">
+            <!-- کارت CCNA -->
+            <div class="skill-card" data-tilt>
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3>CCNA</h3>
+                        <p class="skill-code">NET_INFRA_026B</p>
+                    </div>
+                </div>
+                <ul>
+                    <li>مسیریابی Cisco و پروتکل OSPF</li>
+                    <li>سوییچینگ سازمانی و VLAN</li>
+                    <li>طراحی شبکه Enterprise</li>
+                    <li>عیب‌یابی پیشرفته شبکه</li>
+                </ul>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="width: 95%"></div>
+                </div>
+            </div>
+
+            <!-- کارت LPIC-1 -->
+            <div class="skill-card" data-tilt>
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3>LPIC-1</h3>
+                        <p class="skill-code">LINUX_OPS_PROD</p>
+                    </div>
+                </div>
+                <ul>
+                    <li>مدیریت سیستم لینوکس</li>
+                    <li>اتوماسیون با Bash Scripting</li>
+                    <li>امنیت و سخت‌سازی سیستم</li>
+                    <li>مدیریت سرور و سرویس‌ها</li>
+                </ul>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="width: 90%"></div>
+                </div>
+            </div>
+
+            <!-- کارت Network+ -->
+            <div class="skill-card" data-tilt>
+                <div class="skill-header">
+                    <div class="skill-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h3>Network+</h3>
+                        <p class="skill-code">NET_FUND_026B</p>
+                    </div>
+                </div>
+                <ul>
+                    <li>مفاهیم پایه شبکه</li>
+                    <li>پروتکل‌های TCP/IP</li>
+                    <li>زیرساخت شبکه و کابل‌کشی</li>
+                    <li>امنیت شبکه و فایروال</li>
+                </ul>
+                <div class="skill-progress">
+                    <div class="progress-bar" style="width: 92%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- مدارک -->
+        <div class="certifications-section">
+            <h2 class="section-title">مدارک معتبر</h2>
+            <p class="section-subtitle">گواهینامه‌های بین‌المللی دریافت شده</p>
             
-            <div class="action-section" data-aos="fade-up" data-aos-delay="400">
-                <a href="https://prodby026b.sbs" class="main-site-btn">
-                    ENTER SYSTEM
+            <div class="cert-grid">
+                <div class="cert-badge">
+                    <i class="fas fa-network-wired"></i>
+                    <span>CCNA</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fab fa-linux"></i>
+                    <span>LPIC-1</span>
+                </div>
+                <div class="cert-badge">
+                    <i class="fas fa-globe"></i>
+                    <span>Network+</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- دکمه تماس -->
+        <div class="cta-section">
+            <a href="contact.html" class="contact-btn">
+                <i class="fas fa-paper-plane"></i>
+                برقراری ارتباط
+            </a>
+            <a href="https://t.me/cipher_net_manager" class="contact-btn telegram" target="_blank">
+                <i class="fab fa-telegram-plane"></i>
+                Telegram
+            </a>
+        </div>
+    </main>
+
+    <!-- فوتر -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2026 PROD026B (026b). SYSTEM_ROOT_ACCESS.</p>
+            <div class="social-links">
+                <a href="https://t.me/cipher_net_manager" class="telegram" target="_blank">
+                    <i class="fab fa-telegram-plane"></i>
                 </a>
             </div>
-        </section>
-        
-        <footer>
-            <p class="footer-copy">ACCESS_LEVEL: ROOT | 2026</p>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ 
-            easing: 'ease-out-back', 
-            once: true,
-            duration: 1000 
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
