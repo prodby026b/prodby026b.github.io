@@ -1,50 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRODBY026B | Gateway</title>
-    
-    <meta name="description" content="Official Gateway for PRODBY026B. Follow the link to enter the main system.">
-    
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cyber Nexus 026b</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+    :root {
+      --neon: #00FFFF;
+      --bg-blur: rgba(0, 0, 0, 0.6);
+      --theme-bg: url('bg.jpg');
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Vazirmatn', Tahoma, sans-serif;
+      background-image: var(--theme-bg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: var(--neon);
+      height: 100%;
+      width: 100%;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding-bottom: 60px;
+    }
+    @media (max-width: 600px) {
+      body {
+        background-image: url('mobile-bg.jpg');
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 2em !important;
+        padding: 8px 16px !important;
+      }
+      .card {
+        font-size: 1.1em;
+        padding: 14px;
+      }
+    }
+    .status-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background-color: var(--bg-blur);
+      backdrop-filter: blur(6px);
+      color: var(--neon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      font-weight: bold;
+      box-shadow: 0 0 8px #00FFFF55;
+      z-index: 100;
+    }
+    .hamburger {
+      position: fixed;
+      top: 10px;
+      right: 15px;
+      font-size: 2em;
+      color: var(--neon);
+      cursor: pointer;
+      z-index: 1001;
+      user-select: none;
+      transition: transform 0.3s;
+    }
+    .hamburger:hover {
+      transform: scale(1.1);
+    }
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -220px;
+      width: 200px;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      border-left: 2px solid var(--neon);
+      box-shadow: -4px 0 20px #00FFFF55;
+      transition: right 0.4s ease;
+      z-index: 1000;
+      padding-top: 60px;
+    }
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .side-menu ul li {
+      padding: 14px 20px;
+      color: var(--neon);
+      font-size: 1.1em;
+      border-bottom: 1px solid #00FFFF33;
+      cursor: pointer;
+    }
+    .side-menu ul li:hover {
+      background-color: rgba(0,255,255,0.1);
+    }
+    h1 {
+      font-size: 3.5em;
+      margin-top: 70px;
+      backdrop-filter: blur(4px);
+      background-color: var(--bg-blur);
+      padding: 12px 24px;
+      border-radius: 10px;
+      border-right: 2px solid var(--neon);
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 3s steps(25, end), blink 0.7s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    .card-container {
+      margin-top: 50px;
+      margin-bottom: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 90%;
+      max-width: 500px;
+    }
+    .card {
+      background-color: var(--bg-blur);
+      border: 2px solid var(--neon);
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 1.4em;
+      color: var(--neon);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 20px #00FFFF33;
+      animation: floatCard 3s ease-in-out infinite alternate, fadeInUp 1s ease forwards;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 30px #00FFFFaa;
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      font-size: 1em;
+      color: var(--neon);
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      padding: 8px 12px;
+      border-top: 1px solid var(--neon);
+      display: flex;
+      justify-content: space-between;
+      z-index: 999;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes floatCard {
+      from { transform: translateY(0) }
+      to { transform: translateY(-10px) }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px) }
+      to { opacity: 1; transform: translateY(0) }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0 }
+      to { opacity: 1 }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="glass-container" data-aos="zoom-in">
-        <header>
-            <div class="status-indicator">
-                <span class="dot"></span> SYSTEM_READY
-            </div>
-            <h1 class="glow-text">PRODBY026B</h1>
-        </header>
+  <div class="status-bar">prodby026b</div>
 
-        <section class="gateway-box">
-            <div class="loader-bar"></div>
-            <p class="terminal-text">> SECURE_CONNECTION_ESTABLISHED</p>
-            <p class="terminal-text">> TARGET: PRODBY026B.SBS</p>
-            
-            <div class="action-section" data-aos="fade-up" data-aos-delay="400">
-                <a href="https://prodby026b.sbs" class="main-site-btn">
-                    ENTER SYSTEM
-                </a>
-            </div>
-        </section>
-        
-        <footer>
-            <p class="footer-copy">ACCESS_LEVEL: ROOT | 2026</p>
-        </footer>
-    </div>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ 
-            easing: 'ease-out-back', 
-            once: true,
-            duration: 1000 
-        });
-    </script>
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li onclick="alert('Cyber Nexus 026b • Designed by Barsam')">About Me</li>
+      <li onclick="alert('Vault coming soon 🔐')">Vault</li>
+      <li onclick="alert('Settings coming soon ⚙️')">Settings</li>
+    </ul>
+  </div>
+
+  <h1>Cyber Nexus 026b</h1>
+
+  <div class="card-container">
+    <div class="card" onclick="window.open('https://t.me/cipherAlgorithm','_blank')">cipher algorithm</div>
+    <div class="card" onclick="window.open('https://t.me/Pixel_Chaser','_blank')">[Pixel•Chaser]</div>
+    <div class="card" onclick="window.open('https://t.me/PacketChaser026b','_blank')">PacketChaser026b</div>
+  </div>
+
+  <footer>
+    <div>Network: stable</div>
+    <div>Packet log: active</div>
+    <div>© prodby026b</div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('sideMenu');
+      const currentRight = window.getComputedStyle(menu).getPropertyValue('right');
+      menu.style.right = currentRight === '0px' ? '-220px' : '0px';
+    }
+  </script>
+
 </body>
 </html>
