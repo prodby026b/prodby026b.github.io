@@ -1,527 +1,235 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prodby026b :: Gateway</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>prodby026b :: gateway</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
 
-        :root {
-            --neon-cyan: #00fff2;
-            --neon-blue: #00b3ff;
-            --neon-purple: #b06bff;
-            --neon-pink: #ff00aa;
-            --dark-bg: rgba(3, 5, 10, 0.85);
-            --glass: rgba(10, 20, 30, 0.6);
-            --border: rgba(0, 255, 242, 0.3);
-        }
+:root{
+  --neon:#00fff2;
+  --neon-dim:#00b3ab;
+  --violet:#b06bff;
+  --amber:#ffb020;
+  --void:#03050a;
+  --panel:rgba(4,10,14,0.72);
+  --line:rgba(0,255,242,0.35);
+  --bg-image:url('bg.jpg');
+}
 
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            overflow: hidden;
-            background: #000;
-            color: var(--neon-cyan);
-        }
+*{box-sizing:border-box;}
+html,body{
+  margin:0;padding:0;height:100%;width:100%;
+  background:var(--void);
+  font-family:'JetBrains Mono',monospace;
+  color:var(--neon);
+  overflow:hidden;
+}
 
-        /* Background Image with Overlay */
-        .bg-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920') center/cover;
-            filter: brightness(0.4) contrast(1.1);
-            z-index: -2;
-        }
+/* ---------- background layer ---------- */
+#bgLayer{
+  position:fixed;inset:0;
+  background-image:var(--bg-image);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  filter:brightness(0.55) saturate(1.1);
+  z-index:0;
+}
+@media (max-width:600px){
+  #bgLayer{ background-image:url('mobile-bg.jpg'); }
+}
 
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,20,40,0.6) 50%, rgba(0,0,0,0.8) 100%);
-            z-index: -1;
-        }
+/* CRT scanlines + vignette overlay */
+#scan{
+  position:fixed;inset:0;z-index:5;pointer-events:none;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.035) 0px,
+    rgba(255,255,255,0.035) 1px,
+    transparent 2px,
+    transparent 3px
+  );
+  mix-blend-mode:overlay;
+}
+#vignette{
+  position:fixed;inset:0;z-index:6;pointer-events:none;
+  box-shadow:inset 0 0 180px 60px rgba(0,0,0,0.85);
+}
+#flicker{
+  position:fixed;inset:0;z-index:7;pointer-events:none;
+  background:rgba(0,255,242,0.02);
+  animation:flick 5.5s infinite;
+}
+@keyframes flick{
+  0%,96%,100%{opacity:0;}
+  97%{opacity:1;}
+  98%{opacity:0;}
+  99%{opacity:.6;}
+}
 
-        /* CRT Scanlines */
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.1),
-                rgba(0, 0, 0, 0.1) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-            z-index: 1000;
-            opacity: 0.3;
-        }
+/* ---------- top status bar ---------- */
+.status-bar{
+  position:fixed;top:0;left:0;width:100%;height:34px;
+  background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 14px;font-size:.72em;letter-spacing:2px;
+  z-index:50;color:var(--neon-dim);
+}
+.status-bar .dot{
+  display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--neon);box-shadow:0 0 8px var(--neon);
+  margin-right:6px;animation:blink 1.4s infinite;
+}
+@keyframes blink{50%{opacity:.25;}}
 
-        /* Top Bar */
-        .top-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 100;
-            font-size: 12px;
-            letter-spacing: 2px;
-        }
+/* ---------- main terminal window ---------- */
+.wrap{
+  position:relative;z-index:10;
+  height:100%;width:100%;
+  display:flex;align-items:center;justify-content:center;
+  padding:60px 16px 40px;
+}
+.terminal{
+  width:100%;max-width:480px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:6px;
+  box-shadow:0 0 40px rgba(0,255,242,0.12), inset 0 0 30px rgba(0,255,242,0.03);
+  padding:0;
+  overflow:hidden;
+}
+.term-head{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 12px;
+  background:rgba(0,255,242,0.06);
+  border-bottom:1px solid var(--line);
+  font-size:.68em;letter-spacing:2px;color:var(--neon-dim);
+}
+.term-head span.led{
+  width:8px;height:8px;border-radius:50%;background:var(--neon);
+  box-shadow:0 0 6px var(--neon);
+}
+.term-body{padding:20px 20px 22px;}
 
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.boot-line{
+  font-size:.78em;line-height:1.7;color:var(--neon-dim);
+  white-space:pre-wrap;
+}
+.boot-line .ok{color:var(--neon);}
+.boot-line .warn{color:var(--amber);}
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--neon-cyan);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--neon-cyan);
-            animation: pulse 2s infinite;
-        }
+.title{
+  margin:18px 0 4px;
+  font-size:1.9em;font-weight:800;letter-spacing:1px;
+  color:var(--neon);
+  text-shadow:0 0 14px rgba(0,255,242,0.55);
+}
+.subtitle{
+  font-size:.72em;color:var(--violet);letter-spacing:3px;margin-bottom:18px;
+}
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
+.link-list{list-style:none;margin:0;padding:0;}
+.link-list li{
+  border:1px solid var(--line);
+  border-radius:4px;
+  margin-bottom:10px;
+  overflow:hidden;
+}
+.link-list a{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;
+  color:var(--neon);
+  text-decoration:none;
+  font-size:.85em;
+  letter-spacing:.5px;
+  transition:background .2s, color .2s, padding-right .2s;
+}
+.link-list a:hover{
+  background:rgba(0,255,242,0.08);
+  color:#fff;
+}
+.link-list a::after{
+  content:"›";
+  color:var(--violet);
+  font-size:1.2em;
+}
+.link-list .tag{
+  font-size:.65em;color:var(--neon-dim);
+}
 
-        /* Main Container */
-        .main-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 100px 20px;
-        }
+footer{
+  position:fixed;bottom:0;left:0;width:100%;
+  font-size:.62em;color:var(--neon-dim);
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(4px);
+  border-top:1px solid var(--line);
+  padding:6px 12px;
+  display:flex;justify-content:space-between;
+  letter-spacing:1px;z-index:50;
+}
 
-        /* Terminal Window */
-        .terminal {
-            width: 100%;
-            max-width: 700px;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            box-shadow: 0 0 60px rgba(0, 255, 242, 0.2),
-                        inset 0 0 60px rgba(0, 255, 242, 0.05);
-            overflow: hidden;
-            animation: slideIn 0.8s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .terminal-header {
-            background: rgba(0, 255, 242, 0.1);
-            padding: 12px 20px;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
-
-        .terminal-dot {
-            width: 12px;
-            height: 12px;
-            background: var(--neon-cyan);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--neon-cyan);
-        }
-
-        .terminal-body {
-            padding: 40px;
-        }
-
-        /* Boot Sequence */
-        .boot-text {
-            font-size: 13px;
-            line-height: 2;
-            color: rgba(0, 255, 242, 0.8);
-            margin-bottom: 30px;
-            min-height: 100px;
-        }
-
-        .boot-line {
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        .success { color: var(--neon-cyan); }
-        .warning { color: var(--neon-purple); }
-        .error { color: var(--neon-pink); }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        /* Title Section */
-        .title-section {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .main-title {
-            font-size: 48px;
-            font-weight: 800;
-            letter-spacing: 8px;
-            background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-blue) 50%, var(--neon-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 40px rgba(0, 255, 242, 0.5);
-            margin-bottom: 10px;
-            animation: glitch 3s infinite;
-        }
-
-        @keyframes glitch {
-            0%, 90%, 100% { transform: translate(0); }
-            92% { transform: translate(-2px, 2px); }
-            94% { transform: translate(2px, -2px); }
-            96% { transform: translate(-2px, 0); }
-            98% { transform: translate(2px, 0); }
-        }
-
-        .subtitle {
-            font-size: 14px;
-            color: var(--neon-purple);
-            letter-spacing: 4px;
-        }
-
-        /* Links Grid */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-
-        .link-card {
-            background: rgba(0, 255, 242, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 242, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .link-card:hover::before {
-            left: 100%;
-        }
-
-        .link-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--neon-cyan);
-            box-shadow: 0 10px 30px rgba(0, 255, 242, 0.3);
-            background: rgba(0, 255, 242, 0.1);
-        }
-
-        .link-info {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .link-name {
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .link-type {
-            font-size: 11px;
-            color: rgba(0, 255, 242, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .link-arrow {
-            font-size: 20px;
-            color: var(--neon-purple);
-            transition: transform 0.3s;
-        }
-
-        .link-card:hover .link-arrow {
-            transform: translateX(5px);
-        }
-
-        /* Stats Section */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid var(--border);
-        }
-
-        .stat-box {
-            text-align: center;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 6px;
-            border: 1px solid rgba(0, 255, 242, 0.2);
-        }
-
-        .stat-value {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--neon-cyan);
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 11px;
-            color: rgba(0, 255, 242, 0.6);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Footer */
-        .footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 15px 30px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            font-size: 11px;
-            letter-spacing: 1px;
-            color: rgba(0, 255, 242, 0.6);
-            z-index: 100;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .main-title { font-size: 32px; }
-            .terminal-body { padding: 25px; }
-            .links-grid { grid-template-columns: 1fr; }
-            .stats-container { grid-template-columns: 1fr; }
-            .top-bar, .footer { padding: 10px 15px; font-size: 10px; }
-        }
-
-        /* Loading Animation */
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 18px;
-            background: var(--neon-cyan);
-            animation: blink 1s infinite;
-            vertical-align: middle;
-            margin-right: 5px;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-    </style>
+@media (max-width:600px){
+  .terminal{max-width:100%;}
+  .title{font-size:1.5em;}
+}
+</style>
 </head>
 <body>
-    <div class="bg-container"></div>
-    <div class="bg-overlay"></div>
-    <div class="scanlines"></div>
 
-    <div class="top-bar">
-        <div class="status-indicator">
-            <div class="status-dot"></div>
-            <span>PRODBY026B</span>
-        </div>
-        <div id="clock">00:00:00</div>
+<div id="bgLayer"></div>
+<div id="scan"></div>
+<div id="vignette"></div>
+<div id="flicker"></div>
+
+<div class="status-bar">
+  <div><span class="dot"></span>PRODBY026B</div>
+  <div id="clock">--:--:--</div>
+</div>
+
+<div class="wrap">
+  <div class="terminal">
+    <div class="term-head">
+      <span class="led"></span> root@026b : ~/gateway
     </div>
+    <div class="term-body">
+      <div class="boot-line" id="bootLine">
+&gt; initializing session<span class="ok"> [OK]</span>
+&gt; loading identity: <span class="ok">prodby026b</span>
+&gt; channels detected: <span class="ok">4</span>
+      </div>
 
-    <div class="main-container">
-        <div class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-dot"></div>
-                <span>root@026b:~/gateway</span>
-            </div>
-            <div class="terminal-body">
-                <div class="boot-text" id="bootText">
-                    <span class="cursor"></span>
-                </div>
+      <div class="title">CYBER NEXUS</div>
+      <div class="subtitle">// 026b gateway node</div>
 
-                <div class="title-section">
-                    <h1 class="main-title">CYBER NEXUS</h1>
-                    <div class="subtitle">// 026b GATEWAY NODE</div>
-                </div>
-
-                <div class="links-grid">
-                    <a href="https://t.me/prodby026b" target="_blank" class="link-card">
-                        <div class="link-info">
-                            <div class="link-name">prodby026b</div>
-                            <div class="link-type">Telegram Channel</div>
-                        </div>
-                        <div class="link-arrow">→</div>
-                    </a>
-
-                    <a href="https://pixelchaser.sbs" target="_blank" class="link-card">
-                        <div class="link-info">
-                            <div class="link-name">pixelchaser.sbs</div>
-                            <div class="link-type">Official Website</div>
-                        </div>
-                        <div class="link-arrow">→</div>
-                    </a>
-
-                    <a href="https://github.com/prodby026b" target="_blank" class="link-card">
-                        <div class="link-info">
-                            <div class="link-name">prodby026b</div>
-                            <div class="link-type">GitHub Profile</div>
-                        </div>
-                        <div class="link-arrow">→</div>
-                    </a>
-
-                    <a href="https://t.me/cipherAlgorithm" target="_blank" class="link-card">
-                        <div class="link-info">
-                            <div class="link-name">cipherAlgorithm</div>
-                            <div class="link-type">Telegram Bot</div>
-                        </div>
-                        <div class="link-arrow">→</div>
-                    </a>
-                </div>
-
-                <div class="stats-container">
-                    <div class="stat-box">
-                        <div class="stat-value" id="uptime">00:00:00</div>
-                        <div class="stat-label">Uptime</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value">4</div>
-                        <div class="stat-label">Active Nodes</div>
-                    </div>
-                    <div class="stat-box">
-                        <div class="stat-value">99.9%</div>
-                        <div class="stat-label">Uptime Rate</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <ul class="link-list">
+        <li><a href="https://t.me/prodby026b" target="_blank" rel="noopener">prodby026b <span class="tag">telegram</span></a></li>
+        <li><a href="https://pixelchaser.sbs" target="_blank" rel="noopener">pixelchaser.sbs <span class="tag">site</span></a></li>
+        <li><a href="https://github.com/prodby026b" target="_blank" rel="noopener">prodby026b <span class="tag">github</span></a></li>
+        <li><a href="https://t.me/cipherAlgorithm" target="_blank" rel="noopener">cipherAlgorithm <span class="tag">telegram</span></a></li>
+      </ul>
     </div>
+  </div>
+</div>
 
-    <div class="footer">
-        <div>SYSTEM: ONLINE</div>
-        <div>ENCRYPTION: AES-256</div>
-        <div>© 2024 PRODBY026B</div>
-    </div>
+<footer>
+  <div>net: stable</div>
+  <div>log: active</div>
+  <div>© prodby026b</div>
+</footer>
 
-    <script>
-        // Clock
-        function updateClock() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', { 
-                hour12: false, 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                second: '2-digit' 
-            });
-            document.getElementById('clock').textContent = timeString;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
+<script>
+  // clock
+  function tick(){
+    const d = new Date();
+    document.getElementById('clock').textContent =
+      d.toTimeString().split(' ')[0];
+  }
+  tick(); setInterval(tick, 1000);
+</script>
 
-        // Boot Sequence Animation
-        const bootLines = [
-            { text: '> Initializing secure connection...', delay: 0, class: '' },
-            { text: '> Loading identity: prodby026b', delay: 400, class: 'success' },
-            { text: '> Detecting network channels...', delay: 800, class: '' },
-            { text: '> Channels found: 4 active nodes', delay: 1200, class: 'success' },
-            { text: '> Establishing encrypted tunnel...', delay: 1600, class: '' },
-            { text: '> Connection secured [AES-256-GCM]', delay: 2000, class: 'success' },
-            { text: '> Gateway ready.', delay: 2400, class: 'warning' }
-        ];
-
-        const bootText = document.getElementById('bootText');
-        
-        bootLines.forEach((line, index) => {
-            setTimeout(() => {
-                const div = document.createElement('div');
-                div.className = 'boot-line ' + line.class;
-                div.textContent = line.text;
-                bootText.appendChild(div);
-            }, line.delay);
-        });
-
-        // Uptime Counter
-        let seconds = 0;
-        setInterval(() => {
-            seconds++;
-            const hrs = Math.floor(seconds / 3600);
-            const mins = Math.floor((seconds % 3600) / 60);
-            const secs = seconds % 60;
-            document.getElementById('uptime').textContent = 
-                `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        }, 1000);
-
-        // Parallax Effect for Background
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            const bg = document.querySelector('.bg-container');
-            bg.style.transform = `translate(${-x * 20}px, ${-y * 20}px) scale(1.1)`;
-        });
-
-        // Add hover sound effect simulation (visual feedback)
-        document.querySelectorAll('.link-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-            });
-        });
-    </script>
 </body>
 </html>
