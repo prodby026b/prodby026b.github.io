@@ -1,235 +1,225 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>prodby026b :: gateway</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1c1c1e">
+<meta name="color-scheme" content="dark">
+<title>prodby026b</title>
+<meta name="description" content="prodby026b — independent developer building self-hosted systems.">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
 :root{
-  --neon:#00fff2;
-  --neon-dim:#00b3ab;
-  --violet:#b06bff;
-  --amber:#ffb020;
-  --void:#03050a;
-  --panel:rgba(4,10,14,0.72);
-  --line:rgba(0,255,242,0.35);
+  /* variable names match the main site; swap values for the exact ones from style.min.css */
+  --ink:#1c1c1e;
+  --ink-2:#2c2c2e;
+  --ink-3:#3a3a3c;
+  --paper:#f5f5f7;
+  --paper-dim:#a1a1a6;
+  --copper:#0a84ff;
+  --verdigris:#30d158;
+  --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.2);
   --bg-image:url('bg.jpg');
 }
 
 *{box-sizing:border-box;}
-html,body{
-  margin:0;padding:0;height:100%;width:100%;
-  background:var(--void);
-  font-family:'JetBrains Mono',monospace;
-  color:var(--neon);
-  overflow:hidden;
-}
-
-/* ---------- background layer ---------- */
-#bgLayer{
-  position:fixed;inset:0;
-  background-image:var(--bg-image);
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  filter:brightness(0.55) saturate(1.1);
-  z-index:0;
-}
-@media (max-width:600px){
-  #bgLayer{ background-image:url('mobile-bg.jpg'); }
-}
-
-/* CRT scanlines + vignette overlay */
-#scan{
-  position:fixed;inset:0;z-index:5;pointer-events:none;
-  background:repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.035) 0px,
-    rgba(255,255,255,0.035) 1px,
-    transparent 2px,
-    transparent 3px
-  );
-  mix-blend-mode:overlay;
-}
-#vignette{
-  position:fixed;inset:0;z-index:6;pointer-events:none;
-  box-shadow:inset 0 0 180px 60px rgba(0,0,0,0.85);
-}
-#flicker{
-  position:fixed;inset:0;z-index:7;pointer-events:none;
-  background:rgba(0,255,242,0.02);
-  animation:flick 5.5s infinite;
-}
-@keyframes flick{
-  0%,96%,100%{opacity:0;}
-  97%{opacity:1;}
-  98%{opacity:0;}
-  99%{opacity:.6;}
-}
-
-/* ---------- top status bar ---------- */
-.status-bar{
-  position:fixed;top:0;left:0;width:100%;height:34px;
-  background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(6px);
-  border-bottom:1px solid var(--line);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 14px;font-size:.72em;letter-spacing:2px;
-  z-index:50;color:var(--neon-dim);
-}
-.status-bar .dot{
-  display:inline-block;width:6px;height:6px;border-radius:50%;
-  background:var(--neon);box-shadow:0 0 8px var(--neon);
-  margin-right:6px;animation:blink 1.4s infinite;
-}
-@keyframes blink{50%{opacity:.25;}}
-
-/* ---------- main terminal window ---------- */
-.wrap{
-  position:relative;z-index:10;
-  height:100%;width:100%;
+html{background:var(--ink);}
+body{
+  margin:0;min-height:100vh;min-height:100dvh;
   display:flex;align-items:center;justify-content:center;
-  padding:60px 16px 40px;
+  padding:max(24px,env(safe-area-inset-top)) 18px max(24px,env(safe-area-inset-bottom));
+  font-family:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color:var(--paper);
+  -webkit-font-smoothing:antialiased;
 }
-.terminal{
-  width:100%;max-width:480px;
-  background:var(--panel);
+
+/* ---------- quiet photo background ---------- */
+.bg{
+  position:fixed;inset:0;z-index:0;
+  background:var(--bg-image) center/cover no-repeat;
+  filter:brightness(.38) saturate(.8) blur(3px);
+  transform:scale(1.05);
+}
+.shade{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(110% 80% at 50% 0%,rgba(28,28,30,.15),rgba(28,28,30,.85)),
+    linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.55));
+}
+@media (max-width:600px){ .bg{background-image:url('mobile-bg.jpg');} }
+
+/* ---------- card ---------- */
+.card{
+  position:relative;z-index:2;
+  width:100%;max-width:420px;
+  padding:34px 28px 22px;
+  background:rgba(28,28,30,.74);
+  -webkit-backdrop-filter:blur(18px) saturate(1.2);
+  backdrop-filter:blur(18px) saturate(1.2);
   border:1px solid var(--line);
-  border-radius:6px;
-  box-shadow:0 0 40px rgba(0,255,242,0.12), inset 0 0 30px rgba(0,255,242,0.03);
-  padding:0;
-  overflow:hidden;
+  border-radius:14px;
+  box-shadow:0 28px 70px rgba(0,0,0,.5);
+  animation:rise .8s cubic-bezier(.2,.7,.2,1) both;
 }
-.term-head{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 12px;
-  background:rgba(0,255,242,0.06);
-  border-bottom:1px solid var(--line);
-  font-size:.68em;letter-spacing:2px;color:var(--neon-dim);
+/* corner ticks, same detail as the frames on the main site */
+.card::before,.card::after{
+  content:"";position:absolute;width:24px;height:24px;
+  border:1px solid var(--copper);opacity:.75;pointer-events:none;
 }
-.term-head span.led{
-  width:8px;height:8px;border-radius:50%;background:var(--neon);
-  box-shadow:0 0 6px var(--neon);
-}
-.term-body{padding:20px 20px 22px;}
+.card::before{top:-1px;left:-1px;border-right:0;border-bottom:0;border-top-left-radius:14px;}
+.card::after{bottom:-1px;right:-1px;border-left:0;border-top:0;border-bottom-right-radius:14px;}
 
-.boot-line{
-  font-size:.78em;line-height:1.7;color:var(--neon-dim);
-  white-space:pre-wrap;
-}
-.boot-line .ok{color:var(--neon);}
-.boot-line .warn{color:var(--amber);}
-
-.title{
-  margin:18px 0 4px;
-  font-size:1.9em;font-weight:800;letter-spacing:1px;
-  color:var(--neon);
-  text-shadow:0 0 14px rgba(0,255,242,0.55);
-}
-.subtitle{
-  font-size:.72em;color:var(--violet);letter-spacing:3px;margin-bottom:18px;
+@keyframes rise{
+  from{opacity:0;transform:translateY(12px);}
+  to{opacity:1;transform:none;}
 }
 
-.link-list{list-style:none;margin:0;padding:0;}
-.link-list li{
-  border:1px solid var(--line);
-  border-radius:4px;
-  margin-bottom:10px;
-  overflow:hidden;
+/* ---------- identity ---------- */
+.id{display:flex;align-items:center;gap:16px;}
+.mark{
+  flex:none;width:52px;height:52px;
+  display:grid;place-items:center;
+  font-family:'Fraunces',Georgia,serif;font-size:1.5rem;font-weight:500;
+  color:var(--paper);
+  background:linear-gradient(160deg,var(--ink-3),var(--ink-2));
+  border:1px solid var(--line-strong);
+  border-radius:12px;
 }
-.link-list a{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:12px 14px;
-  color:var(--neon);
-  text-decoration:none;
-  font-size:.85em;
-  letter-spacing:.5px;
-  transition:background .2s, color .2s, padding-right .2s;
+.name{
+  margin:0;
+  font-family:'Fraunces',Georgia,serif;
+  font-size:1.9rem;font-weight:400;line-height:1.1;letter-spacing:-.015em;
 }
-.link-list a:hover{
-  background:rgba(0,255,242,0.08);
-  color:#fff;
+.name em{font-style:italic;font-weight:300;color:var(--copper);}
+.role{margin:6px 0 0;font-size:.875rem;line-height:1.45;color:var(--paper-dim);}
+
+.status{
+  display:inline-flex;align-items:center;gap:8px;
+  margin:20px 0 0;padding:5px 12px 5px 10px;
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.7rem;
+  color:var(--paper-dim);
+  border:1px solid var(--line);border-radius:999px;
 }
-.link-list a::after{
-  content:"›";
-  color:var(--violet);
-  font-size:1.2em;
-}
-.link-list .tag{
-  font-size:.65em;color:var(--neon-dim);
+.status i{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--verdigris);box-shadow:0 0 8px var(--verdigris);
 }
 
-footer{
-  position:fixed;bottom:0;left:0;width:100%;
-  font-size:.62em;color:var(--neon-dim);
-  background:rgba(0,0,0,0.5);
-  backdrop-filter:blur(4px);
+/* ---------- links ---------- */
+.links{
+  list-style:none;margin:24px 0 0;padding:22px 0 0;
   border-top:1px solid var(--line);
-  padding:6px 12px;
-  display:flex;justify-content:space-between;
-  letter-spacing:1px;z-index:50;
+  display:grid;gap:10px;
+}
+.link{
+  display:flex;align-items:center;gap:14px;
+  min-height:62px;padding:10px 14px;
+  color:var(--paper);text-decoration:none;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--line);
+  border-radius:10px;
+  transition:border-color .2s,background .2s;
+}
+.ico{
+  flex:none;width:40px;height:40px;
+  display:grid;place-items:center;
+  color:var(--paper-dim);
+  background:rgba(0,0,0,.25);
+  border:1px solid var(--line);
+  border-radius:9px;
+  transition:color .2s,border-color .2s;
+}
+.ico svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.txt{min-width:0;display:flex;flex-direction:column;gap:3px;}
+.k{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.68rem;color:var(--paper-dim);}
+.v{font-size:.95rem;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.go{
+  margin-left:auto;flex:none;
+  font-size:1rem;color:var(--paper-dim);
+  transition:color .2s,transform .2s;
+}
+.link:hover,
+.link:focus-visible{
+  background:rgba(255,255,255,.05);
+  border-color:var(--line-strong);
+  outline:none;
+}
+.link:focus-visible{box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--copper);}
+.link:hover .ico,
+.link:focus-visible .ico{color:var(--copper);border-color:rgba(10,132,255,.45);}
+.link:hover .go,
+.link:focus-visible .go{color:var(--paper);transform:translate(2px,-2px);}
+
+.copy{
+  margin:22px 0 0;text-align:center;
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-size:.68rem;
+  color:var(--paper-dim);opacity:.8;
 }
 
-@media (max-width:600px){
-  .terminal{max-width:100%;}
-  .title{font-size:1.5em;}
+@media (max-width:420px){
+  .card{padding:28px 20px 20px;}
+  .name{font-size:1.6rem;}
+}
+@media (prefers-reduced-motion:reduce){
+  .card{animation:none;}
+  .link,.ico,.go{transition:none;}
 }
 </style>
 </head>
 <body>
 
-<div id="bgLayer"></div>
-<div id="scan"></div>
-<div id="vignette"></div>
-<div id="flicker"></div>
+<div class="bg" aria-hidden="true"></div>
+<div class="shade" aria-hidden="true"></div>
 
-<div class="status-bar">
-  <div><span class="dot"></span>prodby026b</div>
-  <div id="clock">--:--:--</div>
-</div>
-
-<div class="wrap">
-  <div class="terminal">
-    <div class="term-head">
-      <span class="led"></span> root@prodby026b : ~/gateway
+<main class="card">
+  <header class="id">
+    <div class="mark" aria-hidden="true">P</div>
+    <div>
+      <h1 class="name">prodby<em>026b</em></h1>
+      <p class="role">Independent developer building self-hosted systems.</p>
     </div>
-    <div class="term-body">
-      <div class="boot-line" id="bootLine">
-&gt; initializing session<span class="ok"> [OK]</span>
-&gt; loading identity: <span class="ok">prodby026b</span>
-&gt; channels detected: <span class="ok">4</span>
-      </div>
+  </header>
 
-      <div class="title">CYBER NEXUS</div>
-      <div class="subtitle">// prodby026b gateway node</div>
+  <p class="status"><i></i>open for projects</p>
 
-      <ul class="link-list">
-        <li><a href="https://t.me/prodby026b" target="_blank" rel="noopener">prodby026b <span class="tag">telegram</span></a></li>
-        <li><a href="https://cipherwork.sbs" target="_blank" rel="noopene://cipherwork.sbs <span class="tag">site</span></a></li>
-        <li><a href="https://github.com/prodby026b" target="_blank" rel="noopener">prodby026b <span class="tag">github</span></a></li>
-        <li><a href="https://t.me/cipherAlgorithm" target="_blank" rel="noopener">cipherAlgorithm <span class="tag">telegram</span></a></li>
-      </ul>
-    </div>
-  </div>
-</div>
+  <ul class="links">
+    <li>
+      <a class="link" href="https://t.me/prodby026b" target="_blank" rel="noopener me">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 4.5L2.5 11.8c-1 .4-1 1 .2 1.4l4.7 1.5 1.8 5.6c.2.6.5.7.9.4l2.7-2 4.3 3.2c.7.5 1.2.3 1.4-.7L21.8 5.4c.3-1.2-.4-1.7-1.5-1.2z"/></svg></span>
+        <span class="txt"><span class="k">telegram</span><span class="v">@prodby026b</span></span>
+        <span class="go" aria-hidden="true">↗</span>
+      </a>
+    </li>
+    <li>
+      <a class="link" href="https://cipherwork.sbs" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></span>
+        <span class="txt"><span class="k">website</span><span class="v">cipherwork.sbs</span></span>
+        <span class="go" aria-hidden="true">↗</span>
+      </a>
+    </li>
+    <li>
+      <a class="link" href="https://github.com/prodby026b" target="_blank" rel="noopener me">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 015 0c1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.68-4.57 4.92.36.31.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0012 2z"/></svg></span>
+        <span class="txt"><span class="k">github</span><span class="v">@prodby026b</span></span>
+        <span class="go" aria-hidden="true">↗</span>
+      </a>
+    </li>
+    <li>
+      <a class="link" href="https://t.me/cipherAlgorithm" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M5 5a14 14 0 0114 14M5 11a8 8 0 018 8"/><circle cx="6" cy="18" r="1.2"/></svg></span>
+        <span class="txt"><span class="k">telegram channel</span><span class="v">cipherAlgorithm</span></span>
+        <span class="go" aria-hidden="true">↗</span>
+      </a>
+    </li>
+  </ul>
 
-<footer>
-  <div>net: stable</div>
-  <div>log: active</div>
-  <div>© prodby026b</div>
-</footer>
-
-<script>
-  // clock
-  function tick(){
-    const d = new Date();
-    document.getElementById('clock').textContent =
-      d.toTimeString().split(' ')[0];
-  }
-  tick(); setInterval(tick, 1000);
-</script>
+  <p class="copy">© 2026 prodby026b</p>
+</main>
 
 </body>
 </html>
